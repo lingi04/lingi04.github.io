@@ -1,0 +1,1019 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>해린이 첫돌 초대장</title>
+    <style>
+      :root {
+        --bg: #fff8f2;
+        --bg-soft: #fffdf9;
+        --card: rgba(255, 255, 255, 0.92);
+        --text: #4f4038;
+        --muted: #85736c;
+        --accent: #f2b29d;
+        --accent-strong: #e98a6a;
+        --accent-soft: #fff0e7;
+        --line: rgba(127, 91, 73, 0.14);
+        --shadow: 0 22px 56px rgba(115, 76, 58, 0.12);
+        --radius-xl: 30px;
+        --radius-lg: 22px;
+        --radius-md: 16px;
+        --max-width: 880px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+        color: var(--text);
+        line-height: 1.7;
+        word-break: keep-all;
+        background:
+          radial-gradient(circle at top left, rgba(255, 221, 205, 0.7), transparent 28%),
+          radial-gradient(circle at top right, rgba(255, 240, 219, 0.88), transparent 34%),
+          linear-gradient(180deg, #fff7f2 0%, #fffdfb 42%, #fff9f4 100%);
+      }
+
+      img {
+        display: block;
+        width: 100%;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      input,
+      label {
+        font: inherit;
+      }
+
+      button {
+        border: 0;
+        cursor: pointer;
+      }
+
+      h1,
+      h2,
+      h3,
+      p,
+      figure {
+        margin: 0;
+      }
+
+      .container {
+        width: min(calc(100% - 28px), var(--max-width));
+        margin: 0 auto;
+      }
+
+      .section {
+        padding: 34px 0;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(7px);
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid rgba(242, 178, 157, 0.38);
+        color: #a0614d;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .landing {
+        min-height: 100svh;
+        display: flex;
+        align-items: center;
+        padding: 24px 0;
+      }
+
+      .landing-card {
+        position: relative;
+        overflow: hidden;
+        padding: 34px 22px 30px;
+        background:
+          linear-gradient(180deg, rgba(255, 251, 247, 0.82), rgba(255, 247, 241, 0.96)),
+          radial-gradient(circle at top, rgba(255, 203, 177, 0.45), transparent 36%);
+      }
+
+      .landing-card::before,
+      .landing-card::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        background: rgba(255, 198, 171, 0.2);
+        filter: blur(10px);
+      }
+
+      .landing-card::before {
+        width: 200px;
+        height: 200px;
+        top: -80px;
+        left: -60px;
+      }
+
+      .landing-card::after {
+        width: 240px;
+        height: 240px;
+        right: -100px;
+        bottom: -120px;
+      }
+
+      .landing-inner {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 580px;
+      }
+
+      .landing-title {
+        margin: 0 0 16px;
+        font-size: 29px;
+        line-height: 1.22;
+        letter-spacing: -0.04em;
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .landing-title small {
+        display: block;
+        margin-bottom: 6px;
+        padding-bottom: 6px;
+        color: #a0614d;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        opacity: 0.9;
+        border-bottom: 1px solid rgba(160, 97, 77, 0.28);
+      }
+
+      .landing-story {
+        position: relative;
+        margin: 18px 0 12px;
+        overflow: hidden;
+        min-height: 390px;
+        border-radius: 24px;
+        background: #f4ebe4;
+        border: 1px solid rgba(242, 178, 157, 0.26);
+        box-shadow: 0 18px 36px rgba(116, 82, 64, 0.12);
+      }
+
+      .landing-story img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .landing-info {
+        margin: 8px 0 18px;
+        text-align: center;
+        color: #6c5a53;
+      }
+
+      .landing-info strong {
+        display: block;
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .landing-info span {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .landing-stage {
+        position: relative;
+        flex: 1;
+        min-height: 220px;
+        margin: -6px 0 -18px;
+        overflow: visible;
+        z-index: 3;
+      }
+
+      .landing-stage::before {
+        content: "";
+        position: absolute;
+        left: 6%;
+        right: 6%;
+        bottom: 18px;
+        height: 14px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, rgba(242, 178, 157, 0), rgba(242, 178, 157, 0.95), rgba(242, 178, 157, 0));
+      }
+
+      .landing-track {
+        position: absolute;
+        inset: 0;
+        animation: cross-stage 12s linear infinite;
+      }
+
+      .landing-track.track-2 {
+        animation-delay: -6s;
+      }
+
+      .landing-character {
+        position: absolute;
+        right: 0;
+        bottom: 14px;
+        width: min(176px, 37vw);
+      }
+
+      .landing-character img {
+        width: 100%;
+        height: auto;
+        filter: drop-shadow(0 16px 18px rgba(94, 69, 56, 0.16));
+        animation: bounce 1.08s ease-in-out infinite;
+      }
+
+      .landing-character.walker img {
+        animation-duration: 0.92s;
+      }
+
+      .landing-character.crawler {
+        width: min(168px, 34vw);
+        bottom: 22px;
+      }
+
+      .landing-note {
+        position: absolute;
+        top: 8px;
+        left: 18px;
+        font-size: 24px;
+        color: #895b4d;
+        opacity: 0;
+        animation: note-float 1.6s ease-out infinite;
+      }
+
+      .landing-note.note-2 {
+        left: 44px;
+        top: -8px;
+        font-size: 18px;
+        animation-delay: 0.45s;
+      }
+
+      .button-row {
+        display: grid;
+        gap: 10px;
+      }
+
+      .button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 50px;
+        padding: 12px 16px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, #f4bea9, #e99273);
+        color: #fffaf7;
+        font-weight: 700;
+        box-shadow: 0 12px 24px rgba(233, 146, 115, 0.28);
+      }
+
+      .button.secondary {
+        background: rgba(255, 255, 255, 0.82);
+        color: var(--text);
+        border: 1px solid var(--line);
+        box-shadow: none;
+      }
+
+      .landing-hint {
+        margin-top: 14px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .hero-card {
+        overflow: hidden;
+      }
+
+      .hero-image {
+        position: relative;
+        min-height: 370px;
+        background: url("./_resource/album/키즈카페 탐색.jpeg") center 42% / cover no-repeat;
+      }
+
+      .hero-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(61, 41, 34, 0.08), rgba(61, 41, 34, 0.34));
+      }
+
+      .hero-content {
+        padding: 28px 22px 30px;
+      }
+
+      .hero-badge {
+        margin-bottom: 14px;
+      }
+
+      .hero-title {
+        font-size: 31px;
+        line-height: 1.28;
+        letter-spacing: -0.03em;
+      }
+
+      .hero-message {
+        margin-top: 18px;
+      }
+
+      .hero-message-kicker {
+        display: inline-block;
+        margin-bottom: 12px;
+        color: #b17561;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .hero-message-text {
+        color: var(--text);
+        white-space: pre-line;
+        font-size: 15px;
+      }
+
+      .title-wrap {
+        text-align: center;
+        margin-bottom: 18px;
+      }
+
+      .section-title {
+        font-size: 25px;
+        letter-spacing: -0.03em;
+      }
+
+      .section-desc {
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .wishlist-card,
+      .info-card,
+      .location-card {
+        padding: 24px 20px;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 14px;
+      }
+
+      .timeline-item {
+        display: grid;
+        gap: 16px;
+        padding: 16px;
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid var(--line);
+      }
+
+      .timeline-media {
+        overflow: hidden;
+        border-radius: 18px;
+        background: #f8efe9;
+      }
+
+      .timeline-media img {
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+      }
+
+      .timeline-date {
+        display: inline-flex;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: #a26855;
+        font-size: 12px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .timeline-title {
+        font-size: 18px;
+        margin-bottom: 6px;
+      }
+
+      .timeline-desc {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .wishlist-summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 16px;
+        border-radius: 18px;
+        background: var(--accent-soft);
+        color: #875947;
+        margin-bottom: 18px;
+      }
+
+      .wishlist-grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .gift-option {
+        position: relative;
+      }
+
+      .gift-option input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .gift-label {
+        display: block;
+        padding: 16px 18px;
+        border-radius: 20px;
+        border: 1px solid var(--line);
+        background: #fff;
+        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .gift-name {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 6px;
+        font-weight: 700;
+      }
+
+      .gift-tag {
+        display: inline-flex;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: #fff6f0;
+        color: #b2745f;
+        font-size: 11px;
+      }
+
+      .gift-desc {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .gift-option input:checked + .gift-label {
+        border-color: rgba(233, 146, 115, 0.56);
+        box-shadow: 0 14px 28px rgba(233, 146, 115, 0.18);
+        transform: translateY(-2px);
+      }
+
+      .wishlist-note {
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .info-grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .info-row {
+        display: grid;
+        grid-template-columns: 92px 1fr;
+        gap: 10px;
+        align-items: start;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .info-row:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      .info-label {
+        color: #9e7467;
+        font-weight: 700;
+      }
+
+      .map-box {
+        margin-top: 18px;
+        overflow: hidden;
+        border-radius: 20px;
+        border: 1px solid var(--line);
+      }
+
+      .map-box iframe {
+        display: block;
+        width: 100%;
+        height: 280px;
+        border: 0;
+      }
+
+      .footer {
+        padding: 6px 0 40px;
+        color: var(--muted);
+        text-align: center;
+        font-size: 13px;
+      }
+
+      @keyframes cross-stage {
+        0% {
+          transform: translateX(110%);
+        }
+        100% {
+          transform: translateX(-118%);
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes note-float {
+        0% {
+          transform: translate(0, 14px) scale(0.72);
+          opacity: 0;
+        }
+        20% {
+          opacity: 0.85;
+        }
+        100% {
+          transform: translate(-24px, -28px) scale(1.08);
+          opacity: 0;
+        }
+      }
+
+      @media (min-width: 740px) {
+        .section {
+          padding: 42px 0;
+        }
+
+        .landing-card {
+          padding: 44px 40px 36px;
+        }
+
+        .landing-title {
+          font-size: 40px;
+        }
+
+        .landing-title small {
+          margin-bottom: 8px;
+          font-size: 13px;
+        }
+
+        .landing-story {
+          margin-left: auto;
+          margin-right: auto;
+          width: min(620px, 100%);
+          min-height: 470px;
+        }
+
+        .landing-letter {
+          left: auto;
+          right: 18px;
+          bottom: 18px;
+          width: min(280px, 46%);
+        }
+
+        .landing-stage {
+          min-height: 290px;
+        }
+
+        .landing-character {
+          width: 208px;
+        }
+
+        .landing-character.crawler {
+          width: 196px;
+        }
+
+        .hero-card {
+          display: grid;
+          grid-template-columns: 1.04fr 0.96fr;
+        }
+
+        .hero-content {
+          padding: 38px 34px;
+        }
+
+        .hero-title {
+          font-size: 40px;
+        }
+
+        .timeline-item {
+          grid-template-columns: 220px 1fr;
+          align-items: center;
+        }
+
+        .button-row {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .landing-track,
+        .landing-character img,
+        .landing-note {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="landing" id="landing">
+      <div class="container">
+        <div class="card landing-card">
+          <div class="landing-inner">
+            <h1 class="landing-title"><small>Hae-rin's First Birthday</small>소중한 가족을 초대합니다</h1>
+
+            <div class="landing-story">
+              <img src="./_resource/landing_letter.jpg" alt="랜딩 편지 이미지" />
+            </div>
+
+            <div class="landing-info">
+              <strong>2026년 5월 17일 일요일 오전 11시 · 바이탈 바이브</strong>
+              <span>서울 강남구 밤고개로34길 14 2층</span>
+            </div>
+
+            <div class="landing-stage" aria-hidden="true">
+              <div class="landing-track">
+                <div class="landing-character walker">
+                  <span class="landing-note">♪</span>
+                  <span class="landing-note note-2">♫</span>
+                  <img src="./_resource/landing_page_character_2.png" alt="" />
+                </div>
+              </div>
+              <div class="landing-track track-2">
+                <div class="landing-character crawler">
+                  <img src="./_resource/landing_page_character_1.png" alt="" />
+                </div>
+              </div>
+            </div>
+
+            <p class="landing-hint">스크롤하면 해린이의 1년 사진과 기록이 이어집니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main id="invitation-content">
+      <header class="section">
+        <div class="container">
+          <div class="card hero-card">
+            <div class="hero-image" aria-label="해린이 대표 사진"></div>
+            <div class="hero-content">
+              <div class="badge hero-badge">First Birthday Invitation</div>
+              <h1 class="hero-title">TO. 소중한 가족분들께</h1>
+              <div class="hero-message">
+                <span class="hero-message-kicker">Invitation Message</span>
+                <p class="hero-message-text">가족의 사랑과 보살핌 속에서 해린이가 건강하게 첫돌을 맞이하게 되었습니다.
+
+처음 부모가 되어 맞이한 1년은 설레고도 서툴렀지만,
+해린이의 웃음과 가족분들의 따뜻한 응원 덕분에
+하루하루를 감사한 마음으로 걸어올 수 있었습니다.
+
+해린이의 첫 번째 생일을 맞아 작은 자리를 준비했습니다.
+바쁘시더라도 함께 오셔서 기쁜 마음을 나누고, 첫돌을 따뜻하게 축복해주시면 감사하겠습니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="section">
+        <div class="container">
+          <div class="title-wrap">
+            <h2 class="section-title">해린이의 1년</h2>
+            <p class="section-desc">출생부터 걸음마까지, 기억하고 싶은 순간들을 차곡차곡 담았어요</p>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="timeline-media">
+                <img src="./_resource/album/출생.jpeg" alt="태어난 직후의 해린이" />
+              </div>
+              <div>
+                <span class="timeline-date">2025.05.12 출생</span>
+                <h3 class="timeline-title">세상과 처음 만난 날</h3>
+                <p class="timeline-desc">오전 11시 42분, 3430g의 작고 소중한 해린이를 처음 만난 순간입니다.</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-media">
+                <img src="./_resource/album/조리원에서.jpeg" alt="조리원에서의 해린이" />
+              </div>
+              <div>
+                <span class="timeline-date">생후 첫 주</span>
+                <h3 class="timeline-title">조리원에서의 고요한 시간</h3>
+                <p class="timeline-desc">세상에 적응하듯 눈을 천천히 뜨고 바라보던 얼굴이 아직도 생생합니다.</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-media">
+                <img src="./_resource/album/100일촬영.jpeg" alt="100일 촬영 사진" />
+              </div>
+              <div>
+                <span class="timeline-date">100일</span>
+                <h3 class="timeline-title">처음 맞는 큰 기념일</h3>
+                <p class="timeline-desc">가족 모두가 함께 웃으며 남긴 백일 촬영은 오래 기억하고 싶은 장면이 되었어요.</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-media">
+                <img src="./_resource/album/200일.jpeg" alt="200일 기념 사진" />
+              </div>
+              <div>
+                <span class="timeline-date">200일</span>
+                <h3 class="timeline-title">점점 더 또렷해진 표정</h3>
+                <p class="timeline-desc">하루가 다르게 표정이 풍성해지고, 웃음도 반응도 점점 더 많아졌습니다.</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-media">
+                <img src="./_resource/album/처음 고구마 먹은날.jpeg" alt="처음 고구마를 먹는 해린이" />
+              </div>
+              <div>
+                <span class="timeline-date">첫 이유식</span>
+                <h3 class="timeline-title">처음 고구마를 먹은 날</h3>
+                <p class="timeline-desc">작은 입으로 천천히 맛보던 모습이 귀여워서 모두가 숨죽여 바라봤던 순간이에요.</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-media">
+                <img src="./_resource/album/처음 고구마 먹은날_2.jpeg" alt="이유식을 먹는 해린이 두 번째 사진" />
+              </div>
+              <div>
+                <span class="timeline-date">먹는 즐거움</span>
+                <h3 class="timeline-title">맛을 알아가던 표정</h3>
+                <p class="timeline-desc">이제는 먹는 시간도 놀이처럼 즐기며 하루하루 더 야무진 모습을 보여줍니다.</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-media">
+                <img src="./_resource/album/들킴.jpeg" alt="탐색하며 기어다니는 해린이" />
+              </div>
+              <div>
+                <span class="timeline-date">탐험 시작</span>
+                <h3 class="timeline-title">조금씩 세상을 넓혀가던 때</h3>
+                <p class="timeline-desc">배밀이와 기어다니기로 집 안 구석구석을 직접 탐험하기 시작했어요.</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-media">
+                <img src="./_resource/album/밥주세요....jpeg" alt="울음을 터뜨리는 해린이" />
+              </div>
+              <div>
+                <span class="timeline-date">솔직한 감정 표현</span>
+                <h3 class="timeline-title">밥 주세요의 힘찬 외침</h3>
+                <p class="timeline-desc">배고플 때도, 졸릴 때도, 원하는 걸 또렷하게 전하는 해린이의 표정이 너무 사랑스러워요.</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-media">
+                <img src="./_resource/album/조리원에서_2.jpeg" alt="조리원에서 가족과 함께 있는 해린이" />
+              </div>
+              <div>
+                <span class="timeline-date">가족사진</span>
+                <h3 class="timeline-title">우리 셋의 첫 순간</h3>
+                <p class="timeline-desc">작고 여린 해린이를 품에 안고, 가족이 되었다는 사실이 더 선명하게 느껴졌던 날입니다.</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-media">
+                <img src="./_resource/album/키즈카페 탐색.jpeg" alt="키즈카페에서 탐색하는 해린이" />
+              </div>
+              <div>
+                <span class="timeline-date">첫걸음 무렵</span>
+                <h3 class="timeline-title">세상을 향해 한 발 더</h3>
+                <p class="timeline-desc">호기심 가득한 눈빛으로 주변을 둘러보는 모습에서, 해린이의 씩씩한 내일이 보였습니다.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="title-wrap">
+            <h2 class="section-title">선물 위시리스트</h2>
+            <p class="section-desc">백엔드 연결 전에도 가볍게 선택해볼 수 있는 형태로 넣어두었어요</p>
+          </div>
+          <div class="card wishlist-card">
+            <div class="wishlist-summary">
+              <strong>선택한 선물</strong>
+              <span id="gift-count">0개</span>
+            </div>
+            <div class="wishlist-grid">
+              <div class="gift-option">
+                <input id="gift-book" type="checkbox" />
+                <label class="gift-label" for="gift-book">
+                  <span class="gift-name">그림책 세트 <span class="gift-tag">추천</span></span>
+                  <span class="gift-desc">자기 전 함께 읽을 수 있는 촉감책, 생활동화, 그림책을 좋아해요.</span>
+                </label>
+              </div>
+              <div class="gift-option">
+                <input id="gift-block" type="checkbox" />
+                <label class="gift-label" for="gift-block">
+                  <span class="gift-name">블록 장난감 <span class="gift-tag">놀이</span></span>
+                  <span class="gift-desc">쌓고 무너뜨리며 오래 가지고 놀 수 있는 장난감을 생각하고 있어요.</span>
+                </label>
+              </div>
+              <div class="gift-option">
+                <input id="gift-clothes" type="checkbox" />
+                <label class="gift-label" for="gift-clothes">
+                  <span class="gift-name">외출복 또는 신발 <span class="gift-tag">실용</span></span>
+                  <span class="gift-desc">활동하기 편한 90 사이즈 옷이나 첫걸음마용 신발도 좋아요.</span>
+                </label>
+              </div>
+              <div class="gift-option">
+                <input id="gift-coupon" type="checkbox" />
+                <label class="gift-label" for="gift-coupon">
+                  <span class="gift-name">문화상품권 <span class="gift-tag">자유 선택</span></span>
+                  <span class="gift-desc">필요한 시기에 해린이 용품을 고를 수 있어 가장 유연하게 사용할 수 있습니다.</span>
+                </label>
+              </div>
+            </div>
+            <p class="wishlist-note">현재는 화면에서만 선택되는 임시 기능입니다. Phase 2에서 실제 예약 기능으로 확장할 수 있어요.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="title-wrap">
+            <h2 class="section-title">잔치 안내</h2>
+            <p class="section-desc">핵심 정보부터 먼저 보기 쉽게 정리했습니다</p>
+          </div>
+          <div class="card info-card">
+            <div class="info-grid">
+              <div class="info-row">
+                <div class="info-label">일시</div>
+                <div>2026년 5월 17일 일요일 오전 11시</div>
+              </div>
+              <div class="info-row">
+                <div class="info-label">장소</div>
+                <div>바이탈 바이브</div>
+              </div>
+              <div class="info-row">
+                <div class="info-label">주소</div>
+                <div>서울 강남구 밤고개로34길 14 2층</div>
+              </div>
+              <div class="info-row">
+                <div class="info-label">주차</div>
+                <div>주차 정보는 현재 확인 중이며, 확정되면 이 영역 문구만 바로 교체하면 됩니다.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="title-wrap">
+            <h2 class="section-title">오시는 길</h2>
+            <p class="section-desc">약도와 지도 링크를 함께 넣어두었습니다</p>
+          </div>
+          <div class="card location-card">
+            <div class="info-grid">
+              <div class="info-row">
+                <div class="info-label">대중교통</div>
+                <div>가까운 역이나 버스 정보는 장소 확인 후 추가하기 좋게 자리만 남겨두었습니다.</div>
+              </div>
+              <div class="info-row">
+                <div class="info-label">주차장</div>
+                <div>주차 가능 여부와 무료 시간은 아직 확인 전이라 별도 메모 상태로 두었습니다.</div>
+              </div>
+            </div>
+
+            <div class="map-box">
+              <iframe
+                title="바이탈 바이브 지도"
+                src="https://maps.google.com/maps?q=37.463781,127.106746&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+
+            <div class="button-row">
+              <a class="button" href="https://map.kakao.com/link/map/바이탈바이브,37.463781,127.106746" target="_blank" rel="noreferrer">
+                카카오맵 열기
+              </a>
+              <a class="button secondary" href="https://map.naver.com/p/search/%EB%B0%94%EC%9D%B4%ED%83%88%20%EB%B0%94%EC%9D%B4%EB%B8%8C" target="_blank" rel="noreferrer">
+                네이버지도 열기
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="container">해린이의 첫 번째 생일을 함께 축하해주세요.</div>
+    </footer>
+
+    <script>
+      let landingScrollLocked = false;
+      let touchStartY = 0;
+
+      function scrollToInvitation() {
+        const invitation = document.getElementById("invitation-content");
+        if (!invitation) {
+          return;
+        }
+
+        landingScrollLocked = true;
+        invitation.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        window.setTimeout(() => {
+          landingScrollLocked = false;
+        }, 900);
+      }
+
+      function handleLandingWheel(event) {
+        const landing = document.getElementById("landing");
+        if (!landingScrollLocked && landing && window.scrollY < landing.offsetHeight - 80 && event.deltaY > 10) {
+          event.preventDefault();
+          scrollToInvitation();
+        }
+      }
+
+      function handleLandingTouchStart(event) {
+        if (event.touches && event.touches.length > 0) {
+          touchStartY = event.touches[0].clientY;
+        }
+      }
+
+      function handleLandingTouchEnd(event) {
+        const landing = document.getElementById("landing");
+        if (!landingScrollLocked && landing && window.scrollY < landing.offsetHeight - 80 && event.changedTouches && event.changedTouches.length > 0) {
+          const touchEndY = event.changedTouches[0].clientY;
+          const deltaY = touchStartY - touchEndY;
+          if (deltaY > 30) {
+            scrollToInvitation();
+          }
+        }
+      }
+
+      function updateGiftCount() {
+        const selectedCount = document.querySelectorAll('.gift-option input:checked').length;
+        const giftCount = document.getElementById("gift-count");
+        if (giftCount) {
+          giftCount.textContent = selectedCount + "개";
+        }
+      }
+
+      document.querySelectorAll('.gift-option input').forEach((input) => {
+        input.addEventListener("change", updateGiftCount);
+      });
+
+      updateGiftCount();
+
+      window.addEventListener("wheel", handleLandingWheel, { passive: false });
+      window.addEventListener("touchstart", handleLandingTouchStart, { passive: true });
+      window.addEventListener("touchend", handleLandingTouchEnd, { passive: true });
+    </script>
+  </body>
+</html>

@@ -36,10 +36,8 @@
         color: var(--text);
         line-height: 1.7;
         word-break: keep-all;
-        background:
-          radial-gradient(circle at top left, rgba(255, 221, 205, 0.7), transparent 28%),
-          radial-gradient(circle at top right, rgba(255, 240, 219, 0.88), transparent 34%),
-          linear-gradient(180deg, #fff7f2 0%, #fffdfb 42%, #fff9f4 100%);
+        background: #ffffff;
+        overflow-x: hidden;
       }
 
       img {
@@ -106,176 +104,88 @@
       .landing {
         min-height: 100svh;
         display: flex;
-        align-items: center;
-        padding: 24px 0;
+        align-items: stretch;
+        justify-content: center;
+        padding: 0;
+        background: #ffffff;
       }
 
-      .landing-card {
-        position: relative;
-        overflow: hidden;
-        padding: 34px 22px 30px;
-        background:
-          linear-gradient(180deg, rgba(255, 251, 247, 0.82), rgba(255, 247, 241, 0.96)),
-          radial-gradient(circle at top, rgba(255, 203, 177, 0.45), transparent 36%);
+      .landing .container {
+        width: min(100%, 1440px);
       }
 
-      .landing-card::before,
-      .landing-card::after {
-        content: "";
-        position: absolute;
-        border-radius: 999px;
-        background: rgba(255, 198, 171, 0.2);
-        filter: blur(10px);
-      }
-
-      .landing-card::before {
-        width: 200px;
-        height: 200px;
-        top: -80px;
-        left: -60px;
-      }
-
-      .landing-card::after {
-        width: 240px;
-        height: 240px;
-        right: -100px;
-        bottom: -120px;
-      }
-
-      .landing-inner {
-        position: relative;
-        z-index: 1;
+      .landing-shell {
+        min-height: 100svh;
         display: flex;
         flex-direction: column;
-        min-height: 580px;
+        justify-content: space-between;
+        padding: 18px 16px 22px;
+        background: #ffffff;
       }
 
-      .landing-title {
-        margin: 0 0 16px;
-        font-size: 29px;
-        line-height: 1.22;
-        letter-spacing: -0.04em;
-        text-align: center;
-        font-weight: 700;
+      .landing-top,
+      .landing-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 14px;
       }
 
-      .landing-title small {
-        display: block;
-        margin-bottom: 6px;
-        padding-bottom: 6px;
-        color: #a0614d;
-        font-size: 12px;
+      .landing-label {
+        color: #111111;
+        font-size: 11px;
         font-weight: 700;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.18em;
         text-transform: uppercase;
-        opacity: 0.9;
-        border-bottom: 1px solid rgba(160, 97, 77, 0.28);
       }
 
-      .landing-story {
-        position: relative;
-        margin: 18px 0 12px;
-        overflow: hidden;
-        min-height: 390px;
-        border-radius: 24px;
-        background: #f4ebe4;
-        border: 1px solid rgba(242, 178, 157, 0.26);
-        box-shadow: 0 18px 36px rgba(116, 82, 64, 0.12);
-      }
-
-      .landing-story img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .landing-info {
-        margin: 8px 0 18px;
-        text-align: center;
-        color: #6c5a53;
-      }
-
-      .landing-info strong {
-        display: block;
-        font-size: 15px;
-        font-weight: 700;
-      }
-
-      .landing-info span {
-        display: block;
-        margin-top: 4px;
-        color: var(--muted);
-        font-size: 13px;
+      .landing-step {
+        color: #6f6f6f;
+        font-size: 12px;
       }
 
       .landing-stage {
-        position: relative;
         flex: 1;
-        min-height: 220px;
-        margin: -6px 0 -18px;
-        overflow: visible;
-        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 0;
+        padding: 14px 0;
       }
 
-      .landing-stage::before {
-        content: "";
-        position: absolute;
-        left: 6%;
-        right: 6%;
-        bottom: 18px;
-        height: 14px;
-        border-radius: 999px;
-        background: linear-gradient(90deg, rgba(242, 178, 157, 0), rgba(242, 178, 157, 0.95), rgba(242, 178, 157, 0));
-      }
-
-      .landing-track {
-        position: absolute;
-        inset: 0;
-        animation: cross-stage 12s linear infinite;
-      }
-
-      .landing-track.track-2 {
-        animation-delay: -6s;
-      }
-
-      .landing-character {
-        position: absolute;
-        right: 0;
-        bottom: 14px;
-        width: min(176px, 37vw);
-      }
-
-      .landing-character img {
+      .landing-media {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 100%;
+        height: 100%;
+        min-height: 0;
+      }
+
+      .landing-media img,
+      .landing-media video {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
         height: auto;
-        filter: drop-shadow(0 16px 18px rgba(94, 69, 56, 0.16));
-        animation: bounce 1.08s ease-in-out infinite;
+        object-fit: contain;
       }
 
-      .landing-character.walker img {
-        animation-duration: 0.92s;
+      .landing-video-media {
+        height: min(78svh, 920px);
       }
 
-      .landing-character.crawler {
-        width: min(168px, 34vw);
-        bottom: 22px;
+      .landing-letter-media {
+        height: min(82svh, 980px);
       }
 
-      .landing-note {
-        position: absolute;
-        top: 8px;
-        left: 18px;
-        font-size: 24px;
-        color: #895b4d;
-        opacity: 0;
-        animation: note-float 1.6s ease-out infinite;
-      }
-
-      .landing-note.note-2 {
-        left: 44px;
-        top: -8px;
-        font-size: 18px;
-        animation-delay: 0.45s;
+      .landing-copy {
+        color: #4c4c4c;
+        font-size: 12px;
+        line-height: 1.6;
+        max-width: 560px;
       }
 
       .button-row {
@@ -287,162 +197,300 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        width: 100%;
-        min-height: 50px;
-        padding: 12px 16px;
+        width: auto;
+        min-height: 46px;
+        padding: 12px 20px;
         border-radius: 999px;
-        background: linear-gradient(180deg, #f4bea9, #e99273);
-        color: #fffaf7;
+        background: #111111;
+        color: #ffffff;
         font-weight: 700;
-        box-shadow: 0 12px 24px rgba(233, 146, 115, 0.28);
-      }
-
-      .button.secondary {
-        background: rgba(255, 255, 255, 0.82);
-        color: var(--text);
-        border: 1px solid var(--line);
+        letter-spacing: 0.02em;
         box-shadow: none;
       }
 
-      .landing-hint {
-        margin-top: 14px;
-        text-align: center;
-        color: var(--muted);
-        font-size: 13px;
+      .button.secondary {
+        background: #ffffff;
+        color: #111111;
+        border: 1px solid rgba(17, 17, 17, 0.16);
+        box-shadow: none;
       }
 
-      .hero-card {
+      .story-main {
+        background: #ffffff;
+      }
+
+      .overview-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        border-top: 8px solid #000000;
+        border-bottom: 8px solid #000000;
+        min-height: 100svh;
+      }
+
+      .overview-tile {
+        min-height: calc((100svh - 16px) / 2);
+        padding: 26px 22px;
+        border-right: 8px solid #000000;
+        border-bottom: 8px solid #000000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        text-decoration: none;
+        color: #000000;
         overflow: hidden;
       }
 
-      .hero-image {
-        position: relative;
-        min-height: 370px;
-        background: url("./_resource/album/키즈카페 탐색.jpeg") center 42% / cover no-repeat;
+      .overview-tile:nth-child(2n) {
+        border-right: 0;
       }
 
-      .hero-image::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, rgba(61, 41, 34, 0.08), rgba(61, 41, 34, 0.34));
+      .overview-tile:nth-last-child(-n + 2) {
+        border-bottom: 0;
       }
 
-      .hero-content {
-        padding: 28px 22px 30px;
+      .overview-tile.album {
+        background: linear-gradient(135deg, #71ffae 0%, #f4fff9 100%);
       }
 
-      .hero-badge {
-        margin-bottom: 14px;
+      .overview-tile.diary {
+        background: #ff39d1;
       }
 
-      .hero-title {
-        font-size: 31px;
-        line-height: 1.28;
-        letter-spacing: -0.03em;
+      .overview-tile.wishlist {
+        background: #46f184;
       }
 
-      .hero-message {
+      .overview-tile.location {
+        background: linear-gradient(135deg, #ffffff 0%, #f3b4ff 100%);
+      }
+
+      .overview-label {
+        display: block;
+        margin-bottom: 16px;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .overview-title {
+        max-width: 100%;
+        font-size: clamp(34px, 7.6vw, 52px);
+        line-height: 0.92;
+        letter-spacing: -0.06em;
+        font-weight: 900;
+        word-break: keep-all;
+        overflow-wrap: anywhere;
+      }
+
+      .overview-caption {
         margin-top: 18px;
-      }
-
-      .hero-message-kicker {
-        display: inline-block;
-        margin-bottom: 12px;
-        color: #b17561;
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 700;
       }
 
-      .hero-message-text {
-        color: var(--text);
-        white-space: pre-line;
-        font-size: 15px;
+      .story-main > section {
+        padding: 0;
       }
 
-      .title-wrap {
-        text-align: center;
-        margin-bottom: 18px;
+      .story-main > section + section {
+        border-top: 8px solid #000000;
       }
 
-      .section-title {
-        font-size: 25px;
-        letter-spacing: -0.03em;
+      .story-shell {
+        width: 100%;
+        margin: 0 auto;
+        overflow-x: clip;
       }
 
-      .section-desc {
-        margin-top: 6px;
-        color: var(--muted);
-        font-size: 14px;
+      .story-eyebrow {
+        display: block;
+        margin-bottom: 14px;
+        color: #000000;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
       }
 
-      .wishlist-card,
-      .info-card,
-      .location-card {
-        padding: 24px 20px;
+      .story-heading {
+        max-width: 760px;
+        font-size: 44px;
+        line-height: 0.96;
+        letter-spacing: -0.05em;
+        color: #000000;
+        font-weight: 900;
       }
 
-      .timeline {
+      .story-lead {
+        max-width: 620px;
+        margin-top: 14px;
+        color: #111111;
+        font-size: 18px;
+      }
+
+      .album-panel,
+      .journal-panel,
+      .wishlist-panel,
+      .info-panel {
+        padding: 28px 22px;
+      }
+
+      .album-list {
         display: grid;
-        gap: 14px;
+        gap: 0;
+        margin-top: 0;
+        border-top: 8px solid #000000;
       }
 
-      .timeline-item {
+      .album-entry {
         display: grid;
-        gap: 16px;
-        padding: 16px;
-        border-radius: var(--radius-lg);
-        background: rgba(255, 255, 255, 0.8);
-        border: 1px solid var(--line);
+        align-items: start;
+        gap: 0;
+        border-bottom: 8px solid #000000;
       }
 
-      .timeline-media {
-        overflow: hidden;
-        border-radius: 18px;
-        background: #f8efe9;
+      .album-image {
+        border-right: 8px solid #000000;
       }
 
-      .timeline-media img {
-        aspect-ratio: 4 / 3;
+      .album-image img {
+        aspect-ratio: 4 / 4;
         object-fit: cover;
       }
 
-      .timeline-date {
-        display: inline-flex;
-        padding: 6px 12px;
-        border-radius: 999px;
-        background: var(--accent-soft);
-        color: #a26855;
+      .album-body {
+        padding: 26px 22px;
+      }
+
+      .album-entry:nth-child(4n + 1) .album-body {
+        background: #71ffae;
+      }
+
+      .album-entry:nth-child(4n + 2) .album-body {
+        background: #ff39d1;
+      }
+
+      .album-entry:nth-child(4n + 3) .album-body {
+        background: linear-gradient(135deg, #ffffff 0%, #f2bbff 100%);
+      }
+
+      .album-entry:nth-child(4n + 4) .album-body {
+        background: #46f184;
+      }
+
+      .album-date {
+        color: #000000;
         font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
         font-weight: 700;
-        margin-bottom: 10px;
       }
 
-      .timeline-title {
-        font-size: 18px;
-        margin-bottom: 6px;
+      .album-title {
+        margin-top: 8px;
+        font-size: 34px;
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+        color: #000000;
+        font-weight: 900;
       }
 
-      .timeline-desc {
-        color: var(--muted);
+      .album-copy {
+        margin-top: 10px;
+        color: #000000;
+        font-size: 16px;
+      }
+
+      .journal-layout {
+        display: grid;
+        gap: 0;
+        margin-top: 0;
+        border-top: 8px solid #000000;
+        border-bottom: 8px solid #000000;
+      }
+
+      .journal-panel.visual {
+        background: linear-gradient(135deg, #ffffff 0%, #f4c6ff 100%);
+        border-right: 8px solid #000000;
+      }
+
+      .journal-panel.copy {
+        background: #73ffb0;
+      }
+
+      .journal-header {
+        border-bottom: 8px solid #000000;
+      }
+
+      .journal-visual img {
+        aspect-ratio: 16 / 11;
+        object-fit: cover;
+        border: 8px solid #000000;
+      }
+
+      .journal-quote {
+        max-width: 700px;
+        font-size: 42px;
+        line-height: 0.98;
+        letter-spacing: -0.05em;
+        color: #000000;
+        white-space: pre-line;
+        font-weight: 900;
+      }
+
+      .journal-note {
+        margin-top: 14px;
+        color: #000000;
         font-size: 14px;
+        font-weight: 700;
+      }
+
+      .detail-anchor {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 18px;
+        color: #000000;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      #detail-album,
+      #detail-diary,
+      #detail-wishlist,
+      #detail-location {
+        scroll-margin-top: 18px;
       }
 
       .wishlist-summary {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: baseline;
         gap: 12px;
-        padding: 14px 16px;
-        border-radius: 18px;
-        background: var(--accent-soft);
-        color: #875947;
-        margin-bottom: 18px;
+        padding: 26px 22px;
+        margin-bottom: 0;
+        background: linear-gradient(135deg, #73ffb0 0%, #effff5 100%);
+        color: #000000;
+        border-bottom: 8px solid #000000;
+      }
+
+      .wishlist-summary strong {
+        font-size: 38px;
+        line-height: 0.96;
+        letter-spacing: -0.05em;
+        font-weight: 900;
       }
 
       .wishlist-grid {
         display: grid;
-        gap: 12px;
+        gap: 0;
+        border-top: 0;
       }
 
       .gift-option {
@@ -457,11 +505,18 @@
 
       .gift-label {
         display: block;
-        padding: 16px 18px;
-        border-radius: 20px;
-        border: 1px solid var(--line);
-        background: #fff;
-        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        padding: 24px 22px;
+        border-bottom: 8px solid #000000;
+        background: #ffffff;
+        transition: padding-left 0.2s ease, border-color 0.2s ease;
+      }
+
+      .gift-option:nth-child(odd) .gift-label {
+        background: #ff39d1;
+      }
+
+      .gift-option:nth-child(even) .gift-label {
+        background: #46f184;
       }
 
       .gift-name {
@@ -469,65 +524,82 @@
         justify-content: space-between;
         align-items: center;
         gap: 12px;
-        margin-bottom: 6px;
+        margin-bottom: 8px;
         font-weight: 700;
+        color: #111111;
       }
 
       .gift-tag {
         display: inline-flex;
         padding: 4px 10px;
         border-radius: 999px;
-        background: #fff6f0;
-        color: #b2745f;
+        background: rgba(255, 255, 255, 0.86);
+        color: #000000;
         font-size: 11px;
-      }
-
-      .gift-desc {
-        color: var(--muted);
-        font-size: 13px;
-      }
-
-      .gift-option input:checked + .gift-label {
-        border-color: rgba(233, 146, 115, 0.56);
-        box-shadow: 0 14px 28px rgba(233, 146, 115, 0.18);
-        transform: translateY(-2px);
-      }
-
-      .wishlist-note {
-        margin-top: 14px;
-        color: var(--muted);
-        font-size: 13px;
-      }
-
-      .info-grid {
-        display: grid;
-        gap: 12px;
-      }
-
-      .info-row {
-        display: grid;
-        grid-template-columns: 92px 1fr;
-        gap: 10px;
-        align-items: start;
-        padding-bottom: 12px;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .info-row:last-child {
-        padding-bottom: 0;
-        border-bottom: none;
-      }
-
-      .info-label {
-        color: #9e7467;
         font-weight: 700;
       }
 
+      .gift-desc {
+        color: #000000;
+        font-size: 14px;
+      }
+
+      .gift-option input:checked + .gift-label {
+        padding-left: 14px;
+        border-color: #000000;
+      }
+
+      .wishlist-note {
+        margin-top: 0;
+        padding: 18px 22px 0;
+        color: #000000;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .details-grid {
+        display: grid;
+        gap: 0;
+        margin-top: 0;
+        border-top: 8px solid #000000;
+      }
+
+      .details-row {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 16px;
+        align-items: start;
+        padding: 22px;
+        border-bottom: 8px solid #000000;
+      }
+
+      .details-row:last-child {
+        border-bottom: 8px solid #000000;
+      }
+
+      .details-label {
+        color: #000000;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 12px;
+      }
+
+      .details-grid > div:first-child .details-row:nth-child(odd),
+      .details-grid > div:last-child .details-row:nth-child(even) {
+        background: #73ffb0;
+      }
+
+      .details-grid > div:first-child .details-row:nth-child(even),
+      .details-grid > div:last-child .details-row:nth-child(odd) {
+        background: #ff39d1;
+      }
+
       .map-box {
-        margin-top: 18px;
+        margin-top: 0;
         overflow: hidden;
-        border-radius: 20px;
-        border: 1px solid var(--line);
+        border-top: 0;
+        border-bottom: 8px solid #000000;
       }
 
       .map-box iframe {
@@ -537,44 +609,22 @@
         border: 0;
       }
 
+      .location-actions {
+        margin-top: 0;
+        padding: 22px 0 0;
+      }
+
+      .info-header {
+        background: linear-gradient(135deg, #ffffff 0%, #ffd2f6 100%);
+        border-bottom: 8px solid #000000;
+      }
+
       .footer {
-        padding: 6px 0 40px;
-        color: var(--muted);
+        padding: 24px 0 40px;
+        color: #000000;
         text-align: center;
         font-size: 13px;
-      }
-
-      @keyframes cross-stage {
-        0% {
-          transform: translateX(110%);
-        }
-        100% {
-          transform: translateX(-118%);
-        }
-      }
-
-      @keyframes bounce {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
-      @keyframes note-float {
-        0% {
-          transform: translate(0, 14px) scale(0.72);
-          opacity: 0;
-        }
-        20% {
-          opacity: 0.85;
-        }
-        100% {
-          transform: translate(-24px, -28px) scale(1.08);
-          opacity: 0;
-        }
+        font-weight: 700;
       }
 
       @media (min-width: 740px) {
@@ -582,372 +632,155 @@
           padding: 42px 0;
         }
 
-        .landing-card {
-          padding: 44px 40px 36px;
+        .landing-shell {
+          padding: 22px 28px 26px;
         }
 
-        .landing-title {
-          font-size: 40px;
+        .landing-label {
+          font-size: 12px;
         }
 
-        .landing-title small {
-          margin-bottom: 8px;
+        .landing-step {
           font-size: 13px;
         }
 
-        .landing-story {
-          margin-left: auto;
-          margin-right: auto;
-          width: min(620px, 100%);
-          min-height: 470px;
+        .landing-copy {
+          font-size: 13px;
         }
 
-        .landing-letter {
-          left: auto;
-          right: 18px;
-          bottom: 18px;
-          width: min(280px, 46%);
+        .landing-video-media {
+          height: min(84svh, 980px);
         }
 
-        .landing-stage {
-          min-height: 290px;
+        .landing-letter-media {
+          height: min(88svh, 1080px);
         }
 
-        .landing-character {
-          width: 208px;
+        .story-heading {
+          font-size: 86px;
         }
 
-        .landing-character.crawler {
-          width: 196px;
+        .overview-tile {
+          min-height: calc((100svh - 16px) / 2);
         }
 
-        .hero-card {
-          display: grid;
-          grid-template-columns: 1.04fr 0.96fr;
+        .overview-title {
+          font-size: clamp(52px, 6vw, 84px);
         }
 
-        .hero-content {
-          padding: 38px 34px;
+        .album-entry {
+          grid-template-columns: 1fr 1fr;
         }
 
-        .hero-title {
-          font-size: 40px;
+        .album-entry:nth-child(even) .album-image {
+          order: 2;
         }
 
-        .timeline-item {
-          grid-template-columns: 220px 1fr;
-          align-items: center;
+        .album-entry:nth-child(even) .album-body {
+          order: 1;
+        }
+
+        .journal-layout {
+          grid-template-columns: 1fr 1fr;
+          align-items: end;
+        }
+
+        .details-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          column-gap: 0;
         }
 
         .button-row {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
+
       }
 
       @media (prefers-reduced-motion: reduce) {
-        .landing-track,
-        .landing-character img,
-        .landing-note {
-          animation: none;
+        html {
+          scroll-behavior: auto;
         }
       }
     </style>
   </head>
   <body>
-    <section class="landing" id="landing">
+    <section class="landing" id="landing-video">
       <div class="container">
-        <div class="card landing-card">
-          <div class="landing-inner">
-            <h1 class="landing-title"><small>Hae-rin's First Birthday</small>소중한 가족을 초대합니다</h1>
+        <div class="landing-shell">
+          <div class="landing-top">
+            <span class="landing-label">Hae-rin First Birthday</span>
+            <span class="landing-step">01 / 02</span>
+          </div>
 
-            <div class="landing-story">
-              <img src="./_resource/landing_letter.jpg" alt="랜딩 편지 이미지" />
+          <div class="landing-stage">
+            <div class="landing-media landing-video-media">
+              <video id="birth-video" autoplay muted playsinline preload="auto">
+                <source src="./_resource/haerin-is-born.mp4" type="video/mp4" />
+              </video>
             </div>
+          </div>
 
-            <div class="landing-info">
-              <strong>2026년 5월 17일 일요일 오전 11시 · 바이탈 바이브</strong>
-              <span>서울 강남구 밤고개로34길 14 2층</span>
-            </div>
-
-            <div class="landing-stage" aria-hidden="true">
-              <div class="landing-track">
-                <div class="landing-character walker">
-                  <span class="landing-note">♪</span>
-                  <span class="landing-note note-2">♫</span>
-                  <img src="./_resource/landing_page_character_2.png" alt="" />
-                </div>
-              </div>
-              <div class="landing-track track-2">
-                <div class="landing-character crawler">
-                  <img src="./_resource/landing_page_character_1.png" alt="" />
-                </div>
+          <div class="landing-bottom">
+            <p class="landing-copy">클릭하면 영상이 마지막 장면으로 이동하고, 스크롤하면 영상이 끝으로 이동한 뒤 다음 화면으로 이어집니다.</p>
+            <div>
+              <div class="button-row">
+                <button class="button" id="continue-button" type="button">touch to continue</button>
               </div>
             </div>
-
-            <p class="landing-hint">스크롤하면 해린이의 1년 사진과 기록이 이어집니다.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <main id="invitation-content">
-      <header class="section">
-        <div class="container">
-          <div class="card hero-card">
-            <div class="hero-image" aria-label="해린이 대표 사진"></div>
-            <div class="hero-content">
-              <div class="badge hero-badge">First Birthday Invitation</div>
-              <h1 class="hero-title">TO. 소중한 가족분들께</h1>
-              <div class="hero-message">
-                <span class="hero-message-kicker">Invitation Message</span>
-                <p class="hero-message-text">가족의 사랑과 보살핌 속에서 해린이가 건강하게 첫돌을 맞이하게 되었습니다.
+    <section class="landing" id="landing-letter">
+      <div class="container">
+        <div class="landing-shell">
+          <div class="landing-top">
+            <span class="landing-label">Hae-rin First Birthday</span>
+            <span class="landing-step">02 / 02</span>
+          </div>
 
-처음 부모가 되어 맞이한 1년은 설레고도 서툴렀지만,
-해린이의 웃음과 가족분들의 따뜻한 응원 덕분에
-하루하루를 감사한 마음으로 걸어올 수 있었습니다.
-
-해린이의 첫 번째 생일을 맞아 작은 자리를 준비했습니다.
-바쁘시더라도 함께 오셔서 기쁜 마음을 나누고, 첫돌을 따뜻하게 축복해주시면 감사하겠습니다.</p>
-              </div>
+          <div class="landing-stage">
+            <div class="landing-media landing-letter-media">
+              <img src="./_resource/landing_letter.jpg" alt="랜딩 편지 이미지" />
             </div>
           </div>
-        </div>
-      </header>
 
-      <section class="section">
-        <div class="container">
-          <div class="title-wrap">
-            <h2 class="section-title">해린이의 1년</h2>
-            <p class="section-desc">출생부터 걸음마까지, 기억하고 싶은 순간들을 차곡차곡 담았어요</p>
+          <div class="landing-bottom">
+            <p class="landing-copy">이미지 비율을 유지한 채 화면을 꽉 채워 보여주고, 클릭 또는 스크롤 시 본문으로 이어집니다.</p>
+            <div class="landing-copy">tap or scroll</div>
           </div>
-          <div class="timeline">
-            <article class="timeline-item">
-              <div class="timeline-media">
-                <img src="./_resource/album/출생.jpeg" alt="태어난 직후의 해린이" />
-              </div>
-              <div>
-                <span class="timeline-date">2025.05.12 출생</span>
-                <h3 class="timeline-title">세상과 처음 만난 날</h3>
-                <p class="timeline-desc">오전 11시 42분, 3430g의 작고 소중한 해린이를 처음 만난 순간입니다.</p>
-              </div>
-            </article>
+        </div>
+      </div>
+    </section>
 
-            <article class="timeline-item">
-              <div class="timeline-media">
-                <img src="./_resource/album/조리원에서.jpeg" alt="조리원에서의 해린이" />
-              </div>
-              <div>
-                <span class="timeline-date">생후 첫 주</span>
-                <h3 class="timeline-title">조리원에서의 고요한 시간</h3>
-                <p class="timeline-desc">세상에 적응하듯 눈을 천천히 뜨고 바라보던 얼굴이 아직도 생생합니다.</p>
-              </div>
-            </article>
-
-            <article class="timeline-item">
-              <div class="timeline-media">
-                <img src="./_resource/album/100일촬영.jpeg" alt="100일 촬영 사진" />
-              </div>
-              <div>
-                <span class="timeline-date">100일</span>
-                <h3 class="timeline-title">처음 맞는 큰 기념일</h3>
-                <p class="timeline-desc">가족 모두가 함께 웃으며 남긴 백일 촬영은 오래 기억하고 싶은 장면이 되었어요.</p>
-              </div>
-            </article>
-
-            <article class="timeline-item">
-              <div class="timeline-media">
-                <img src="./_resource/album/200일.jpeg" alt="200일 기념 사진" />
-              </div>
-              <div>
-                <span class="timeline-date">200일</span>
-                <h3 class="timeline-title">점점 더 또렷해진 표정</h3>
-                <p class="timeline-desc">하루가 다르게 표정이 풍성해지고, 웃음도 반응도 점점 더 많아졌습니다.</p>
-              </div>
-            </article>
-
-            <article class="timeline-item">
-              <div class="timeline-media">
-                <img src="./_resource/album/처음 고구마 먹은날.jpeg" alt="처음 고구마를 먹는 해린이" />
-              </div>
-              <div>
-                <span class="timeline-date">첫 이유식</span>
-                <h3 class="timeline-title">처음 고구마를 먹은 날</h3>
-                <p class="timeline-desc">작은 입으로 천천히 맛보던 모습이 귀여워서 모두가 숨죽여 바라봤던 순간이에요.</p>
-              </div>
-            </article>
-
-            <article class="timeline-item">
-              <div class="timeline-media">
-                <img src="./_resource/album/처음 고구마 먹은날_2.jpeg" alt="이유식을 먹는 해린이 두 번째 사진" />
-              </div>
-              <div>
-                <span class="timeline-date">먹는 즐거움</span>
-                <h3 class="timeline-title">맛을 알아가던 표정</h3>
-                <p class="timeline-desc">이제는 먹는 시간도 놀이처럼 즐기며 하루하루 더 야무진 모습을 보여줍니다.</p>
-              </div>
-            </article>
-
-            <article class="timeline-item">
-              <div class="timeline-media">
-                <img src="./_resource/album/들킴.jpeg" alt="탐색하며 기어다니는 해린이" />
-              </div>
-              <div>
-                <span class="timeline-date">탐험 시작</span>
-                <h3 class="timeline-title">조금씩 세상을 넓혀가던 때</h3>
-                <p class="timeline-desc">배밀이와 기어다니기로 집 안 구석구석을 직접 탐험하기 시작했어요.</p>
-              </div>
-            </article>
-
-            <article class="timeline-item">
-              <div class="timeline-media">
-                <img src="./_resource/album/밥주세요....jpeg" alt="울음을 터뜨리는 해린이" />
-              </div>
-              <div>
-                <span class="timeline-date">솔직한 감정 표현</span>
-                <h3 class="timeline-title">밥 주세요의 힘찬 외침</h3>
-                <p class="timeline-desc">배고플 때도, 졸릴 때도, 원하는 걸 또렷하게 전하는 해린이의 표정이 너무 사랑스러워요.</p>
-              </div>
-            </article>
-
-            <article class="timeline-item">
-              <div class="timeline-media">
-                <img src="./_resource/album/조리원에서_2.jpeg" alt="조리원에서 가족과 함께 있는 해린이" />
-              </div>
-              <div>
-                <span class="timeline-date">가족사진</span>
-                <h3 class="timeline-title">우리 셋의 첫 순간</h3>
-                <p class="timeline-desc">작고 여린 해린이를 품에 안고, 가족이 되었다는 사실이 더 선명하게 느껴졌던 날입니다.</p>
-              </div>
-            </article>
-
-            <article class="timeline-item">
-              <div class="timeline-media">
-                <img src="./_resource/album/키즈카페 탐색.jpeg" alt="키즈카페에서 탐색하는 해린이" />
-              </div>
-              <div>
-                <span class="timeline-date">첫걸음 무렵</span>
-                <h3 class="timeline-title">세상을 향해 한 발 더</h3>
-                <p class="timeline-desc">호기심 가득한 눈빛으로 주변을 둘러보는 모습에서, 해린이의 씩씩한 내일이 보였습니다.</p>
-              </div>
-            </article>
+    <main class="story-main" id="invitation-content">
+      <section>
+        <div class="story-shell">
+          <div class="overview-grid">
+            <a class="overview-tile album" href="./album.html">
+              <span class="overview-label">01</span>
+              <strong class="overview-title">앨범</strong>
+              <span class="overview-caption">해린이의 첫 1년 기록</span>
+            </a>
+            <a class="overview-tile diary" href="./diary.html">
+              <span class="overview-label">02</span>
+              <strong class="overview-title">다이어리</strong>
+              <span class="overview-caption">짧고 오래 남을 문장</span>
+            </a>
+            <a class="overview-tile wishlist" href="./wishlist.html">
+              <span class="overview-label">03</span>
+              <strong class="overview-title">Wishlist</strong>
+              <span class="overview-caption">받고 싶은 선물 목록</span>
+            </a>
+            <a class="overview-tile location" href="./location.html">
+              <span class="overview-label">04</span>
+              <strong class="overview-title">장소 설명</strong>
+              <span class="overview-caption">잔치 정보와 오시는 길</span>
+            </a>
           </div>
         </div>
       </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="title-wrap">
-            <h2 class="section-title">선물 위시리스트</h2>
-            <p class="section-desc">백엔드 연결 전에도 가볍게 선택해볼 수 있는 형태로 넣어두었어요</p>
-          </div>
-          <div class="card wishlist-card">
-            <div class="wishlist-summary">
-              <strong>선택한 선물</strong>
-              <span id="gift-count">0개</span>
-            </div>
-            <div class="wishlist-grid">
-              <div class="gift-option">
-                <input id="gift-book" type="checkbox" />
-                <label class="gift-label" for="gift-book">
-                  <span class="gift-name">그림책 세트 <span class="gift-tag">추천</span></span>
-                  <span class="gift-desc">자기 전 함께 읽을 수 있는 촉감책, 생활동화, 그림책을 좋아해요.</span>
-                </label>
-              </div>
-              <div class="gift-option">
-                <input id="gift-block" type="checkbox" />
-                <label class="gift-label" for="gift-block">
-                  <span class="gift-name">블록 장난감 <span class="gift-tag">놀이</span></span>
-                  <span class="gift-desc">쌓고 무너뜨리며 오래 가지고 놀 수 있는 장난감을 생각하고 있어요.</span>
-                </label>
-              </div>
-              <div class="gift-option">
-                <input id="gift-clothes" type="checkbox" />
-                <label class="gift-label" for="gift-clothes">
-                  <span class="gift-name">외출복 또는 신발 <span class="gift-tag">실용</span></span>
-                  <span class="gift-desc">활동하기 편한 90 사이즈 옷이나 첫걸음마용 신발도 좋아요.</span>
-                </label>
-              </div>
-              <div class="gift-option">
-                <input id="gift-coupon" type="checkbox" />
-                <label class="gift-label" for="gift-coupon">
-                  <span class="gift-name">문화상품권 <span class="gift-tag">자유 선택</span></span>
-                  <span class="gift-desc">필요한 시기에 해린이 용품을 고를 수 있어 가장 유연하게 사용할 수 있습니다.</span>
-                </label>
-              </div>
-            </div>
-            <p class="wishlist-note">현재는 화면에서만 선택되는 임시 기능입니다. Phase 2에서 실제 예약 기능으로 확장할 수 있어요.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="title-wrap">
-            <h2 class="section-title">잔치 안내</h2>
-            <p class="section-desc">핵심 정보부터 먼저 보기 쉽게 정리했습니다</p>
-          </div>
-          <div class="card info-card">
-            <div class="info-grid">
-              <div class="info-row">
-                <div class="info-label">일시</div>
-                <div>2026년 5월 17일 일요일 오전 11시</div>
-              </div>
-              <div class="info-row">
-                <div class="info-label">장소</div>
-                <div>바이탈 바이브</div>
-              </div>
-              <div class="info-row">
-                <div class="info-label">주소</div>
-                <div>서울 강남구 밤고개로34길 14 2층</div>
-              </div>
-              <div class="info-row">
-                <div class="info-label">주차</div>
-                <div>주차 정보는 현재 확인 중이며, 확정되면 이 영역 문구만 바로 교체하면 됩니다.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="title-wrap">
-            <h2 class="section-title">오시는 길</h2>
-            <p class="section-desc">약도와 지도 링크를 함께 넣어두었습니다</p>
-          </div>
-          <div class="card location-card">
-            <div class="info-grid">
-              <div class="info-row">
-                <div class="info-label">대중교통</div>
-                <div>가까운 역이나 버스 정보는 장소 확인 후 추가하기 좋게 자리만 남겨두었습니다.</div>
-              </div>
-              <div class="info-row">
-                <div class="info-label">주차장</div>
-                <div>주차 가능 여부와 무료 시간은 아직 확인 전이라 별도 메모 상태로 두었습니다.</div>
-              </div>
-            </div>
-
-            <div class="map-box">
-              <iframe
-                title="바이탈 바이브 지도"
-                src="https://maps.google.com/maps?q=37.463781,127.106746&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-
-            <div class="button-row">
-              <a class="button" href="https://map.kakao.com/link/map/바이탈바이브,37.463781,127.106746" target="_blank" rel="noreferrer">
-                카카오맵 열기
-              </a>
-              <a class="button secondary" href="https://map.naver.com/p/search/%EB%B0%94%EC%9D%B4%ED%83%88%20%EB%B0%94%EC%9D%B4%EB%B8%8C" target="_blank" rel="noreferrer">
-                네이버지도 열기
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
     </main>
 
     <footer class="footer">
@@ -957,26 +790,137 @@
     <script>
       let landingScrollLocked = false;
       let touchStartY = 0;
+      let landingScrollTransitionTimer = null;
+      let birthVideoEndedPreview = false;
 
-      function scrollToInvitation() {
-        const invitation = document.getElementById("invitation-content");
-        if (!invitation) {
+      const birthVideo = document.getElementById("birth-video");
+      const videoLanding = document.getElementById("landing-video");
+      const letterLanding = document.getElementById("landing-letter");
+      const invitationContent = document.getElementById("invitation-content");
+      const continueButton = document.getElementById("continue-button");
+
+      function scrollToSection(section) {
+        if (!section) {
           return;
         }
 
         landingScrollLocked = true;
-        invitation.scrollIntoView({ behavior: "smooth", block: "start" });
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
 
         window.setTimeout(() => {
           landingScrollLocked = false;
         }, 900);
       }
 
+      function clearLandingScrollTransition() {
+        if (landingScrollTransitionTimer) {
+          window.clearTimeout(landingScrollTransitionTimer);
+          landingScrollTransitionTimer = null;
+        }
+      }
+
+      function skipVideoToEnd() {
+        if (!birthVideo) {
+          return false;
+        }
+
+        const safeDuration = Number.isFinite(birthVideo.duration) && birthVideo.duration > 0
+          ? birthVideo.duration
+          : Number.isFinite(birthVideo.seekable?.end?.(0))
+            ? birthVideo.seekable.end(0)
+            : 0;
+
+        if (safeDuration <= 0) {
+          return false;
+        }
+
+        const targetTime = Math.max(safeDuration - 0.08, 0);
+        birthVideo.currentTime = targetTime;
+        birthVideo.pause();
+        birthVideoEndedPreview = true;
+        return true;
+      }
+
+      function isVideoAtEnd() {
+        if (birthVideoEndedPreview) {
+          return true;
+        }
+
+        if (!birthVideo || Number.isNaN(birthVideo.duration) || birthVideo.duration <= 0) {
+          return false;
+        }
+
+        return birthVideo.currentTime >= birthVideo.duration - 0.12;
+      }
+
+      function resetVideo() {
+        if (!birthVideo) {
+          return;
+        }
+
+        clearLandingScrollTransition();
+        birthVideoEndedPreview = false;
+        birthVideo.currentTime = 0;
+        birthVideo.playbackRate = 3;
+        const playAttempt = birthVideo.play();
+        if (playAttempt && typeof playAttempt.catch === "function") {
+          playAttempt.catch(() => {});
+        }
+      }
+
+      function queueLandingTransition(section, delay) {
+        clearLandingScrollTransition();
+        landingScrollTransitionTimer = window.setTimeout(() => {
+          landingScrollTransitionTimer = null;
+          scrollToSection(section);
+        }, delay);
+      }
+
+      function isSectionInView(section) {
+        if (!section) {
+          return false;
+        }
+
+        const rect = section.getBoundingClientRect();
+        return rect.top <= window.innerHeight * 0.35 && rect.bottom >= window.innerHeight * 0.35;
+      }
+
+      function handleLandingAdvance(trigger) {
+        if (landingScrollLocked) {
+          return;
+        }
+
+        if (isSectionInView(videoLanding)) {
+          if (trigger === "scroll") {
+            const skipped = skipVideoToEnd();
+            queueLandingTransition(letterLanding, skipped ? 420 : 120);
+            return;
+          }
+
+          if (isVideoAtEnd()) {
+            scrollToSection(letterLanding);
+            return;
+          }
+
+          if (!skipVideoToEnd()) {
+            scrollToSection(letterLanding);
+          }
+          return;
+        }
+
+        if (isSectionInView(letterLanding)) {
+          scrollToSection(invitationContent);
+        }
+      }
+
       function handleLandingWheel(event) {
-        const landing = document.getElementById("landing");
-        if (!landingScrollLocked && landing && window.scrollY < landing.offsetHeight - 80 && event.deltaY > 10) {
+        if (event.deltaY <= 10) {
+          return;
+        }
+
+        if (isSectionInView(videoLanding) || isSectionInView(letterLanding)) {
           event.preventDefault();
-          scrollToInvitation();
+          handleLandingAdvance("scroll");
         }
       }
 
@@ -987,14 +931,33 @@
       }
 
       function handleLandingTouchEnd(event) {
-        const landing = document.getElementById("landing");
-        if (!landingScrollLocked && landing && window.scrollY < landing.offsetHeight - 80 && event.changedTouches && event.changedTouches.length > 0) {
-          const touchEndY = event.changedTouches[0].clientY;
-          const deltaY = touchStartY - touchEndY;
-          if (deltaY > 30) {
-            scrollToInvitation();
-          }
+        if (!event.changedTouches || event.changedTouches.length === 0) {
+          return;
         }
+
+        const touchEndY = event.changedTouches[0].clientY;
+        const deltaY = touchStartY - touchEndY;
+        if (deltaY > 30 && (isSectionInView(videoLanding) || isSectionInView(letterLanding))) {
+          handleLandingAdvance("scroll");
+        }
+      }
+
+      function handleLandingClick(event) {
+        const interactiveElement = event.target.closest("button, a, input, label");
+        if (interactiveElement) {
+          return;
+        }
+
+        if (isSectionInView(videoLanding) || isSectionInView(letterLanding)) {
+          handleLandingAdvance("click");
+        }
+      }
+
+      if (birthVideo) {
+        birthVideo.playbackRate = 3;
+        birthVideo.addEventListener("loadedmetadata", () => {
+          birthVideo.playbackRate = 3;
+        });
       }
 
       function updateGiftCount() {
@@ -1011,9 +974,23 @@
 
       updateGiftCount();
 
+      if (continueButton) {
+        continueButton.addEventListener("click", () => {
+          scrollToSection(letterLanding);
+        });
+      }
+
+      document.addEventListener("click", handleLandingClick);
       window.addEventListener("wheel", handleLandingWheel, { passive: false });
       window.addEventListener("touchstart", handleLandingTouchStart, { passive: true });
       window.addEventListener("touchend", handleLandingTouchEnd, { passive: true });
+      window.addEventListener("scroll", () => {
+        if (window.scrollY < window.innerHeight * 0.35) {
+          resetVideo();
+        }
+      }, { passive: true });
+
+      resetVideo();
     </script>
   </body>
 </html>

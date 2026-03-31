@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>해린이 첫돌 초대장 · Wishlist</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif; background: #fff; color: #000; }
+      a { color: inherit; text-decoration: none; }
+      h1, p, strong, span { margin: 0; }
+      .hero, .summary, .note, .gift-label { padding: 26px 22px; }
+      .hero { background: linear-gradient(135deg, #73ffb0 0%, #effff5 100%); border-bottom: 8px solid #000; }
+      .eyebrow { display: block; margin-bottom: 14px; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+      .title { max-width: 820px; font-size: clamp(46px, 9vw, 96px); line-height: 0.94; letter-spacing: -0.06em; font-weight: 900; }
+      .back { display: inline-flex; margin-top: 18px; font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+      .summary { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; background: linear-gradient(135deg, #73ffb0 0%, #effff5 100%); border-bottom: 8px solid #000; }
+      .summary strong { font-size: clamp(34px, 6vw, 58px); line-height: 0.94; font-weight: 900; }
+      .wishlist-grid { display: grid; }
+      .gift-option { position: relative; }
+      .gift-option input { position: absolute; opacity: 0; pointer-events: none; }
+      .gift-label { display: block; border-bottom: 8px solid #000; }
+      .gift-option:nth-child(odd) .gift-label { background: #ff39d1; }
+      .gift-option:nth-child(even) .gift-label { background: #46f184; }
+      .gift-name { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-weight: 800; margin-bottom: 8px; }
+      .gift-tag { display: inline-flex; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,.86); font-size: 11px; font-weight: 700; }
+      .gift-desc { font-size: 15px; }
+      .gift-option input:checked + .gift-label { padding-left: 36px; }
+      .note { font-size: 13px; font-weight: 700; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <span class="eyebrow">Wishlist</span>
+        <h1 class="title">받고 싶은 선물 목록.</h1>
+        <a class="back" href="./index.html#invitation-content">Back to menu</a>
+      </section>
+      <section class="summary">
+        <strong>Wishlist</strong>
+        <span id="gift-count">0개</span>
+      </section>
+      <section class="wishlist-grid">
+        <div class="gift-option">
+          <input id="gift-book" type="checkbox" />
+          <label class="gift-label" for="gift-book"><span class="gift-name">그림책 세트 <span class="gift-tag">추천</span></span><span class="gift-desc">자기 전 함께 읽을 수 있는 촉감책, 생활동화, 그림책을 좋아해요.</span></label>
+        </div>
+        <div class="gift-option">
+          <input id="gift-block" type="checkbox" />
+          <label class="gift-label" for="gift-block"><span class="gift-name">블록 장난감 <span class="gift-tag">놀이</span></span><span class="gift-desc">쌓고 무너뜨리며 오래 가지고 놀 수 있는 장난감을 생각하고 있어요.</span></label>
+        </div>
+        <div class="gift-option">
+          <input id="gift-clothes" type="checkbox" />
+          <label class="gift-label" for="gift-clothes"><span class="gift-name">외출복 또는 신발 <span class="gift-tag">실용</span></span><span class="gift-desc">활동하기 편한 90 사이즈 옷이나 첫걸음마용 신발도 좋아요.</span></label>
+        </div>
+        <div class="gift-option">
+          <input id="gift-coupon" type="checkbox" />
+          <label class="gift-label" for="gift-coupon"><span class="gift-name">문화상품권 <span class="gift-tag">자유 선택</span></span><span class="gift-desc">필요한 시기에 해린이 용품을 고를 수 있어 가장 유연하게 사용할 수 있습니다.</span></label>
+        </div>
+      </section>
+      <p class="note">현재는 화면에서만 선택되는 임시 기능이며, Phase 2에서 실제 예약 기능으로 확장할 수 있어요.</p>
+    </main>
+    <script>
+      function updateGiftCount() {
+        const selectedCount = document.querySelectorAll(".gift-option input:checked").length;
+        const giftCount = document.getElementById("gift-count");
+        if (giftCount) {
+          giftCount.textContent = selectedCount + "개";
+        }
+      }
+      document.querySelectorAll(".gift-option input").forEach((input) => {
+        input.addEventListener("change", updateGiftCount);
+      });
+      updateGiftCount();
+    </script>
+  </body>
+</html>

@@ -6,10 +6,20 @@
     <title>해린이 첫돌 초대장 · 앨범</title>
     <style>
       * { box-sizing: border-box; }
+      :root {
+        --line: #000000;
+        --paper: #fff8bf;
+        --paper-alt: #ffd3f1;
+        --paper-mint: #d4ffd5;
+        --bg: #ffffff;
+      }
       body {
         margin: 0;
         font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
-        background: #ffffff;
+        background:
+          radial-gradient(circle at top left, rgba(113, 255, 174, 0.28), transparent 24%),
+          radial-gradient(circle at top right, rgba(255, 57, 209, 0.2), transparent 22%),
+          #ffffff;
         color: #000000;
       }
       a { color: inherit; text-decoration: none; }
@@ -53,27 +63,67 @@
         text-transform: uppercase;
       }
       .album-list {
-        display: grid;
-        border-top: 8px solid #000000;
+        position: relative;
+        padding: 34px 18px 80px;
+      }
+      .album-list::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 8px;
+        transform: translateX(-50%);
+        background: var(--line);
       }
       .album-entry {
-        display: grid;
-        border-bottom: 8px solid #000000;
+        position: relative;
+        width: min(100%, 460px);
+        margin: 0 auto 42px;
       }
-      .album-image {
-        border-right: 8px solid #000000;
+      .album-entry:nth-child(odd) {
+        left: -18px;
+        transform: rotate(-2.4deg);
       }
-      .album-image img {
+      .album-entry:nth-child(even) {
+        left: 18px;
+        transform: rotate(2.1deg);
+      }
+      .album-photo {
+        position: relative;
+        border: 8px solid var(--line);
+        background: var(--bg);
+        box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.12);
+        overflow: hidden;
+      }
+      .album-photo img {
         aspect-ratio: 4 / 4;
         object-fit: cover;
       }
-      .album-body {
-        padding: 26px 22px;
+      .album-note {
+        position: absolute;
+        left: 14px;
+        right: 14px;
+        bottom: 16px;
+        padding: 14px 14px 16px;
+        border: 4px solid var(--line);
+        box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.18);
+        z-index: 1;
       }
-      .album-entry:nth-child(4n + 1) .album-body { background: #71ffae; }
-      .album-entry:nth-child(4n + 2) .album-body { background: #ff39d1; }
-      .album-entry:nth-child(4n + 3) .album-body { background: linear-gradient(135deg, #ffffff 0%, #f2bbff 100%); }
-      .album-entry:nth-child(4n + 4) .album-body { background: #46f184; }
+      .album-entry:nth-child(3n + 1) .album-note { background: var(--paper); }
+      .album-entry:nth-child(3n + 2) .album-note { background: var(--paper-alt); }
+      .album-entry:nth-child(3n + 3) .album-note { background: var(--paper-mint); }
+      .album-note::before {
+        content: "";
+        position: absolute;
+        top: -14px;
+        left: 18px;
+        width: 72px;
+        height: 24px;
+        background: rgba(255, 255, 255, 0.72);
+        border: 3px solid var(--line);
+        transform: rotate(-8deg);
+      }
       .date {
         font-size: 12px;
         letter-spacing: 0.12em;
@@ -82,7 +132,7 @@
       }
       .entry-title {
         margin-top: 8px;
-        font-size: clamp(30px, 5vw, 44px);
+        font-size: clamp(28px, 7vw, 42px);
         line-height: 0.96;
         letter-spacing: -0.05em;
         font-weight: 900;
@@ -90,13 +140,46 @@
       .copy {
         margin-top: 10px;
         font-size: 16px;
+        line-height: 1.45;
       }
       @media (min-width: 740px) {
-        .album-entry {
-          grid-template-columns: 1fr 1fr;
+        .album-list {
+          padding: 42px 28px 92px;
         }
-        .album-entry:nth-child(even) .album-image { order: 2; }
-        .album-entry:nth-child(even) .album-body { order: 1; }
+        .album-entry {
+          width: min(48vw, 520px);
+          margin-bottom: 56px;
+        }
+        .album-entry:nth-child(odd) {
+          margin-left: calc(50% - 520px);
+          left: -42px;
+        }
+        .album-entry:nth-child(even) {
+          margin-left: 50%;
+          left: 42px;
+        }
+      }
+      @media (max-width: 420px) {
+        .album-list::before {
+          left: 24px;
+          transform: none;
+        }
+        .album-entry,
+        .album-entry:nth-child(odd),
+        .album-entry:nth-child(even) {
+          width: calc(100% - 24px);
+          margin-left: 24px;
+          left: 0;
+        }
+        .album-note {
+          left: 10px;
+          right: 10px;
+          bottom: 10px;
+          padding: 12px 12px 14px;
+        }
+        .copy {
+          font-size: 15px;
+        }
       }
     </style>
   </head>
@@ -111,44 +194,64 @@
 
       <section class="album-list">
         <article class="album-entry">
-          <div class="album-image"><img src="./_resource/album/출생.jpeg" alt="태어난 직후의 해린이" /></div>
-          <div class="album-body"><div class="date">2025.05.12 · birth</div><h2 class="entry-title">세상과 처음 만난 날</h2><p class="copy">오전 11시 42분, 3430g의 작고 소중한 해린이를 처음 만난 순간입니다.</p></div>
+          <div class="album-photo">
+            <img src="./_resource/album/출생.jpeg" alt="태어난 직후의 해린이" />
+            <div class="album-note"><div class="date">2025.05.12 · birth</div><h2 class="entry-title">세상과 처음 만난 날</h2><p class="copy">오전 11시 42분, 3430g의 작고 소중한 해린이를 처음 만난 순간입니다.</p></div>
+          </div>
         </article>
         <article class="album-entry">
-          <div class="album-image"><img src="./_resource/album/조리원에서.jpeg" alt="조리원에서의 해린이" /></div>
-          <div class="album-body"><div class="date">first week</div><h2 class="entry-title">조리원에서의 고요한 시간</h2><p class="copy">세상에 적응하듯 눈을 천천히 뜨고 바라보던 얼굴이 아직도 생생합니다.</p></div>
+          <div class="album-photo">
+            <img src="./_resource/album/조리원에서.jpeg" alt="조리원에서의 해린이" />
+            <div class="album-note"><div class="date">first week</div><h2 class="entry-title">조리원에서의 고요한 시간</h2><p class="copy">세상에 적응하듯 눈을 천천히 뜨고 바라보던 얼굴이 아직도 생생합니다.</p></div>
+          </div>
         </article>
         <article class="album-entry">
-          <div class="album-image"><img src="./_resource/album/100일촬영.jpeg" alt="100일 촬영 사진" /></div>
-          <div class="album-body"><div class="date">100 days</div><h2 class="entry-title">처음 맞는 큰 기념일</h2><p class="copy">가족 모두가 함께 웃으며 남긴 백일 촬영은 오래 기억하고 싶은 장면이 되었어요.</p></div>
+          <div class="album-photo">
+            <img src="./_resource/album/100일촬영.jpeg" alt="100일 촬영 사진" />
+            <div class="album-note"><div class="date">100 days</div><h2 class="entry-title">처음 맞는 큰 기념일</h2><p class="copy">가족 모두가 함께 웃으며 남긴 백일 촬영은 오래 기억하고 싶은 장면이 되었어요.</p></div>
+          </div>
         </article>
         <article class="album-entry">
-          <div class="album-image"><img src="./_resource/album/200일.jpeg" alt="200일 기념 사진" /></div>
-          <div class="album-body"><div class="date">200 days</div><h2 class="entry-title">점점 더 또렷해진 표정</h2><p class="copy">하루가 다르게 표정이 풍성해지고, 웃음도 반응도 점점 더 많아졌습니다.</p></div>
+          <div class="album-photo">
+            <img src="./_resource/album/200일.jpeg" alt="200일 기념 사진" />
+            <div class="album-note"><div class="date">200 days</div><h2 class="entry-title">점점 더 또렷해진 표정</h2><p class="copy">하루가 다르게 표정이 풍성해지고, 웃음도 반응도 점점 더 많아졌습니다.</p></div>
+          </div>
         </article>
         <article class="album-entry">
-          <div class="album-image"><img src="./_resource/album/처음 고구마 먹은날.jpeg" alt="처음 고구마를 먹는 해린이" /></div>
-          <div class="album-body"><div class="date">first meal</div><h2 class="entry-title">처음 고구마를 먹은 날</h2><p class="copy">작은 입으로 천천히 맛보던 모습이 귀여워서 모두가 숨죽여 바라봤던 순간이에요.</p></div>
+          <div class="album-photo">
+            <img src="./_resource/album/처음 고구마 먹은날.jpeg" alt="처음 고구마를 먹는 해린이" />
+            <div class="album-note"><div class="date">first meal</div><h2 class="entry-title">처음 고구마를 먹은 날</h2><p class="copy">작은 입으로 천천히 맛보던 모습이 귀여워서 모두가 숨죽여 바라봤던 순간이에요.</p></div>
+          </div>
         </article>
         <article class="album-entry">
-          <div class="album-image"><img src="./_resource/album/처음 고구마 먹은날_2.jpeg" alt="이유식을 먹는 해린이 두 번째 사진" /></div>
-          <div class="album-body"><div class="date">growing taste</div><h2 class="entry-title">맛을 알아가던 표정</h2><p class="copy">이제는 먹는 시간도 놀이처럼 즐기며 하루하루 더 야무진 모습을 보여줍니다.</p></div>
+          <div class="album-photo">
+            <img src="./_resource/album/처음 고구마 먹은날_2.jpeg" alt="이유식을 먹는 해린이 두 번째 사진" />
+            <div class="album-note"><div class="date">growing taste</div><h2 class="entry-title">맛을 알아가던 표정</h2><p class="copy">이제는 먹는 시간도 놀이처럼 즐기며 하루하루 더 야무진 모습을 보여줍니다.</p></div>
+          </div>
         </article>
         <article class="album-entry">
-          <div class="album-image"><img src="./_resource/album/들킴.jpeg" alt="탐색하며 기어다니는 해린이" /></div>
-          <div class="album-body"><div class="date">exploring home</div><h2 class="entry-title">조금씩 세상을 넓혀가던 때</h2><p class="copy">배밀이와 기어다니기로 집 안 구석구석을 직접 탐험하기 시작했어요.</p></div>
+          <div class="album-photo">
+            <img src="./_resource/album/들킴.jpeg" alt="탐색하며 기어다니는 해린이" />
+            <div class="album-note"><div class="date">exploring home</div><h2 class="entry-title">조금씩 세상을 넓혀가던 때</h2><p class="copy">배밀이와 기어다니기로 집 안 구석구석을 직접 탐험하기 시작했어요.</p></div>
+          </div>
         </article>
         <article class="album-entry">
-          <div class="album-image"><img src="./_resource/album/밥주세요....jpeg" alt="울음을 터뜨리는 해린이" /></div>
-          <div class="album-body"><div class="date">clear feelings</div><h2 class="entry-title">밥 주세요의 힘찬 외침</h2><p class="copy">배고플 때도, 졸릴 때도, 원하는 걸 또렷하게 전하는 해린이의 표정이 너무 사랑스러워요.</p></div>
+          <div class="album-photo">
+            <img src="./_resource/album/밥주세요....jpeg" alt="울음을 터뜨리는 해린이" />
+            <div class="album-note"><div class="date">clear feelings</div><h2 class="entry-title">밥 주세요의 힘찬 외침</h2><p class="copy">배고플 때도, 졸릴 때도, 원하는 걸 또렷하게 전하는 해린이의 표정이 너무 사랑스러워요.</p></div>
+          </div>
         </article>
         <article class="album-entry">
-          <div class="album-image"><img src="./_resource/album/조리원에서_2.jpeg" alt="조리원에서 가족과 함께 있는 해린이" /></div>
-          <div class="album-body"><div class="date">family</div><h2 class="entry-title">우리 셋의 첫 순간</h2><p class="copy">작고 여린 해린이를 품에 안고, 가족이 되었다는 사실이 더 선명하게 느껴졌던 날입니다.</p></div>
+          <div class="album-photo">
+            <img src="./_resource/album/조리원에서_2.jpeg" alt="조리원에서 가족과 함께 있는 해린이" />
+            <div class="album-note"><div class="date">family</div><h2 class="entry-title">우리 셋의 첫 순간</h2><p class="copy">작고 여린 해린이를 품에 안고, 가족이 되었다는 사실이 더 선명하게 느껴졌던 날입니다.</p></div>
+          </div>
         </article>
         <article class="album-entry">
-          <div class="album-image"><img src="./_resource/album/키즈카페 탐색.jpeg" alt="키즈카페에서 탐색하는 해린이" /></div>
-          <div class="album-body"><div class="date">first steps</div><h2 class="entry-title">세상을 향해 한 발 더</h2><p class="copy">호기심 가득한 눈빛으로 주변을 둘러보는 모습에서, 해린이의 씩씩한 내일이 보였습니다.</p></div>
+          <div class="album-photo">
+            <img src="./_resource/album/키즈카페 탐색.jpeg" alt="키즈카페에서 탐색하는 해린이" />
+            <div class="album-note"><div class="date">first steps</div><h2 class="entry-title">세상을 향해 한 발 더</h2><p class="copy">호기심 가득한 눈빛으로 주변을 둘러보는 모습에서, 해린이의 씩씩한 내일이 보였습니다.</p></div>
+          </div>
         </article>
       </section>
     </main>

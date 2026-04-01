@@ -6,27 +6,373 @@
     <title>해린이 첫돌 초대장 · Wishlist</title>
     <style>
       * { box-sizing: border-box; }
-      body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif; background: #fff; color: #000; }
+      :root {
+        --line: #000000;
+        --mint: #73ffb0;
+        --pink: #ff39d1;
+        --lavender: #f4c6ff;
+        --cream: #fff7ca;
+        --white: #ffffff;
+      }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+        background:
+          radial-gradient(circle at top right, rgba(255, 57, 209, 0.16), transparent 20%),
+          radial-gradient(circle at bottom left, rgba(115, 255, 176, 0.2), transparent 24%),
+          #ffffff;
+        color: #000000;
+      }
       a { color: inherit; text-decoration: none; }
-      h1, p, strong, span { margin: 0; }
-      .hero, .summary, .note, .gift-label { padding: 26px 22px; }
-      .hero { background: linear-gradient(135deg, #73ffb0 0%, #effff5 100%); border-bottom: 8px solid #000; }
-      .eyebrow { display: block; margin-bottom: 14px; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
-      .title { max-width: 820px; font-size: clamp(46px, 9vw, 96px); line-height: 0.94; letter-spacing: -0.06em; font-weight: 900; }
-      .back { display: inline-flex; margin-top: 18px; font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
-      .summary { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; background: linear-gradient(135deg, #73ffb0 0%, #effff5 100%); border-bottom: 8px solid #000; }
-      .summary strong { font-size: clamp(34px, 6vw, 58px); line-height: 0.94; font-weight: 900; }
-      .wishlist-grid { display: grid; }
-      .gift-option { position: relative; }
-      .gift-option input { position: absolute; opacity: 0; pointer-events: none; }
-      .gift-label { display: block; border-bottom: 8px solid #000; }
-      .gift-option:nth-child(odd) .gift-label { background: #ff39d1; }
-      .gift-option:nth-child(even) .gift-label { background: #46f184; }
-      .gift-name { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-weight: 800; margin-bottom: 8px; }
-      .gift-tag { display: inline-flex; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,.86); font-size: 11px; font-weight: 700; }
-      .gift-desc { font-size: 15px; }
-      .gift-option input:checked + .gift-label { padding-left: 36px; }
-      .note { font-size: 13px; font-weight: 700; }
+      h1, h2, p, strong, span { margin: 0; }
+      .hero {
+        padding: 28px 22px 24px;
+        background: linear-gradient(135deg, var(--mint) 0%, #effff5 100%);
+        border-bottom: 8px solid var(--line);
+      }
+      .eyebrow {
+        display: block;
+        margin-bottom: 14px;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .title {
+        max-width: 820px;
+        font-size: clamp(46px, 9vw, 96px);
+        line-height: 0.94;
+        letter-spacing: -0.06em;
+        font-weight: 900;
+      }
+      .lead {
+        max-width: 640px;
+        margin-top: 14px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+      .back {
+        display: inline-flex;
+        margin-top: 18px;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .wishlist-board {
+        padding: 18px;
+        background: #ffffff;
+      }
+      .board-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: baseline;
+        padding: 14px 16px;
+        border: 8px solid var(--line);
+        border-bottom: 8px solid var(--line);
+        background: linear-gradient(135deg, #ffffff 0%, var(--lavender) 100%);
+      }
+      .board-header strong {
+        font-size: clamp(34px, 6vw, 56px);
+        line-height: 0.94;
+        font-weight: 900;
+      }
+      .board-header span {
+        font-size: 14px;
+        font-weight: 800;
+      }
+      .board-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        border-right: 8px solid var(--line);
+        border-left: 8px solid var(--line);
+        border-bottom: 8px solid var(--line);
+      }
+      .gift-tile {
+        position: relative;
+      }
+      .gift-tile input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .gift-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 220px;
+        padding: 16px;
+        border-bottom: 8px solid var(--line);
+      }
+      .gift-tile.books .gift-card { background: var(--pink); }
+      .gift-tile.blocks .gift-card { background: var(--mint); }
+      .gift-tile.clothes .gift-card { background: linear-gradient(135deg, #ffffff 0%, var(--lavender) 100%); }
+      .gift-tile.coupon .gift-card { background: var(--cream); }
+      .gift-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        align-items: flex-start;
+      }
+      .gift-tag {
+        display: inline-flex;
+        padding: 6px 10px;
+        border: 3px solid var(--line);
+        background: rgba(255, 255, 255, 0.88);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      .gift-visual {
+        position: relative;
+        width: 88px;
+        height: 88px;
+        flex: 0 0 88px;
+        border: 4px solid var(--line);
+        background: rgba(255, 255, 255, 0.76);
+        overflow: hidden;
+      }
+      .gift-visual::after {
+        content: "";
+        position: absolute;
+        inset: 8px;
+        border: 3px dashed rgba(0, 0, 0, 0.16);
+        pointer-events: none;
+      }
+      .gift-visual > span {
+        position: absolute;
+        display: block;
+      }
+      .visual-books .book-a,
+      .visual-books .book-b,
+      .visual-books .book-c {
+        width: 48px;
+        height: 11px;
+        border: 3px solid var(--line);
+        left: 16px;
+      }
+      .visual-books .book-a { top: 20px; background: #ffffff; transform: rotate(-8deg); }
+      .visual-books .book-b { top: 37px; background: #ffd6f4; transform: rotate(4deg); }
+      .visual-books .book-c { top: 54px; background: #d4ffd8; transform: rotate(-2deg); }
+      .visual-blocks .block-a,
+      .visual-blocks .block-b,
+      .visual-blocks .block-c { border: 3px solid var(--line); }
+      .visual-blocks .block-a { width: 22px; height: 22px; left: 14px; top: 42px; background: #ffffff; }
+      .visual-blocks .block-b { width: 26px; height: 26px; left: 34px; top: 18px; background: #ffd6f4; }
+      .visual-blocks .block-c { width: 22px; height: 22px; left: 48px; top: 46px; background: #d4ffd8; }
+      .visual-clothes .shirt {
+        left: 20px;
+        top: 22px;
+        width: 42px;
+        height: 36px;
+        background: #ffffff;
+        border: 3px solid var(--line);
+        clip-path: polygon(20% 0, 34% 0, 40% 10%, 60% 10%, 66% 0, 80% 0, 100% 20%, 84% 38%, 84% 100%, 16% 100%, 16% 38%, 0 20%);
+      }
+      .visual-clothes .shoe {
+        left: 28px;
+        top: 62px;
+        width: 32px;
+        height: 10px;
+        background: #ffd6f4;
+        border: 3px solid var(--line);
+        border-radius: 10px 12px 10px 6px;
+      }
+      .visual-card .card-body {
+        left: 16px;
+        top: 22px;
+        width: 48px;
+        height: 32px;
+        background: #ffffff;
+        border: 3px solid var(--line);
+        border-radius: 8px;
+      }
+      .visual-card .card-line-a,
+      .visual-card .card-line-b {
+        left: 24px;
+        height: 4px;
+        background: var(--line);
+      }
+      .visual-card .card-line-a { top: 34px; width: 22px; }
+      .visual-card .card-line-b { top: 46px; width: 16px; }
+      .visual-card .card-badge {
+        left: 46px;
+        top: 50px;
+        width: 14px;
+        height: 14px;
+        border: 3px solid var(--line);
+        background: #d4ffd8;
+        border-radius: 50%;
+      }
+      .gift-title {
+        margin-top: 12px;
+        font-size: clamp(28px, 5vw, 44px);
+        line-height: 0.94;
+        letter-spacing: -0.05em;
+        font-weight: 900;
+      }
+      .gift-desc {
+        max-width: 520px;
+        margin-top: 10px;
+        font-size: 14px;
+        line-height: 1.45;
+        font-weight: 700;
+      }
+      .gift-bottom {
+        margin-top: 14px;
+      }
+      .gift-price {
+        display: inline-flex;
+        padding: 8px 12px;
+        border: 3px solid var(--line);
+        background: rgba(255, 255, 255, 0.88);
+        font-size: 14px;
+        font-weight: 900;
+      }
+      .gift-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+        min-height: 42px;
+        padding: 8px 12px;
+        border: 3px solid var(--line);
+        background: #111111;
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .gift-tile input:checked + .gift-card {
+        box-shadow: inset 0 0 0 8px rgba(0, 0, 0, 0.12);
+      }
+      .note {
+        padding: 14px 4px 0;
+        font-size: 13px;
+        line-height: 1.55;
+        font-weight: 700;
+      }
+      @media (min-width: 780px) {
+        .wishlist-board {
+          min-height: calc(100svh - 220px);
+        }
+        .board-grid {
+          grid-template-columns: 1.3fr 0.95fr 1.05fr;
+          grid-template-rows: minmax(150px, 0.85fr) minmax(150px, 1fr) minmax(130px, 0.8fr);
+          min-height: calc(100svh - 330px);
+        }
+        .gift-card {
+          height: 100%;
+          min-height: 0;
+          border-right: 8px solid var(--line);
+          border-bottom: 8px solid var(--line);
+        }
+        .gift-tile:nth-child(3n) .gift-card {
+          border-right: 0;
+        }
+        .gift-tile.books {
+          grid-column: 1 / 3;
+          grid-row: 1 / 2;
+        }
+        .gift-tile.blocks {
+          grid-column: 3 / 4;
+          grid-row: 1 / 3;
+        }
+        .gift-tile.clothes {
+          grid-column: 1 / 2;
+          grid-row: 2 / 4;
+        }
+        .gift-tile.coupon {
+          grid-column: 2 / 4;
+          grid-row: 3 / 4;
+        }
+        .gift-tile.books .gift-card,
+        .gift-tile.coupon .gift-card {
+          min-height: 0;
+        }
+        .gift-tile.blocks .gift-card,
+        .gift-tile.clothes .gift-card {
+          min-height: 0;
+        }
+        .gift-tile.coupon .gift-card,
+        .gift-tile.clothes .gift-card,
+        .gift-tile.blocks .gift-card {
+          border-bottom: 0;
+        }
+        .gift-visual {
+          width: 72px;
+          height: 72px;
+          flex-basis: 72px;
+        }
+        .gift-tag {
+          padding: 5px 8px;
+          font-size: 10px;
+        }
+        .gift-title {
+          font-size: clamp(24px, 2.6vw, 36px);
+        }
+        .gift-desc {
+          font-size: 13px;
+          line-height: 1.38;
+        }
+        .gift-price {
+          padding: 6px 10px;
+          font-size: 13px;
+        }
+        .gift-link {
+          min-height: 36px;
+          margin-top: 8px;
+          font-size: 12px;
+        }
+        .visual-books .book-a,
+        .visual-books .book-b,
+        .visual-books .book-c {
+          width: 38px;
+          height: 9px;
+          left: 14px;
+        }
+        .visual-books .book-a { top: 17px; }
+        .visual-books .book-b { top: 30px; }
+        .visual-books .book-c { top: 43px; }
+        .visual-blocks .block-a { width: 18px; height: 18px; left: 12px; top: 35px; }
+        .visual-blocks .block-b { width: 22px; height: 22px; left: 28px; top: 14px; }
+        .visual-blocks .block-c { width: 18px; height: 18px; left: 40px; top: 38px; }
+        .visual-clothes .shirt {
+          left: 16px;
+          top: 18px;
+          width: 34px;
+          height: 28px;
+        }
+        .visual-clothes .shoe {
+          left: 22px;
+          top: 50px;
+          width: 26px;
+          height: 8px;
+        }
+        .visual-card .card-body {
+          left: 13px;
+          top: 18px;
+          width: 38px;
+          height: 25px;
+        }
+        .visual-card .card-line-a,
+        .visual-card .card-line-b {
+          left: 19px;
+          height: 3px;
+        }
+        .visual-card .card-line-a { top: 27px; width: 18px; }
+        .visual-card .card-line-b { top: 36px; width: 12px; }
+        .visual-card .card-badge {
+          left: 36px;
+          top: 39px;
+          width: 12px;
+          height: 12px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -34,41 +380,122 @@
       <section class="hero">
         <span class="eyebrow">Wishlist</span>
         <h1 class="title">받고 싶은 선물 목록.</h1>
+        <p class="lead">하나의 보드 안에서, 해린이가 지금 좋아할 것들과 오래 잘 사용할 수 있을 것들을 골라 담았습니다.</p>
         <a class="back" href="./index.html#invitation-content">Back to menu</a>
       </section>
-      <section class="summary">
-        <strong>Wishlist</strong>
-        <span id="gift-count">0개</span>
+
+      <section class="wishlist-board">
+        <div class="board-header">
+          <strong>Gift Board</strong>
+          <span id="gift-count">0개 선택</span>
+        </div>
+
+        <div class="board-grid">
+          <div class="gift-tile books">
+            <input id="gift-book" type="checkbox" />
+            <label class="gift-card" for="gift-book">
+              <div>
+                <div class="gift-top">
+                  <span class="gift-tag">추천</span>
+                  <span class="gift-visual visual-books" aria-hidden="true">
+                    <span class="book-a"></span>
+                    <span class="book-b"></span>
+                    <span class="book-c"></span>
+                  </span>
+                </div>
+                <h2 class="gift-title">그림책 세트</h2>
+                <p class="gift-desc">자기 전 함께 읽을 수 있는 촉감책, 생활동화, 그림책을 좋아해요. 여러 번 꺼내 보기 좋은 책이면 더 잘 읽을 것 같아요.</p>
+              </div>
+              <div class="gift-bottom">
+                <span class="gift-price">38,000원</span>
+                <br />
+                <a class="gift-link" href="https://example.com/gifts/picture-books" target="_blank" rel="noreferrer">구매 링크</a>
+              </div>
+            </label>
+          </div>
+
+          <div class="gift-tile blocks">
+            <input id="gift-block" type="checkbox" />
+            <label class="gift-card" for="gift-block">
+              <div>
+                <div class="gift-top">
+                  <span class="gift-tag">놀이</span>
+                  <span class="gift-visual visual-blocks" aria-hidden="true">
+                    <span class="block-a"></span>
+                    <span class="block-b"></span>
+                    <span class="block-c"></span>
+                  </span>
+                </div>
+                <h2 class="gift-title">블록 장난감</h2>
+                <p class="gift-desc">쌓고 무너뜨리며 오래 가지고 놀 수 있는 장난감을 생각하고 있어요. 단순하지만 반복해서 즐길 수 있는 형태를 좋아합니다.</p>
+              </div>
+              <div class="gift-bottom">
+                <span class="gift-price">45,000원</span>
+                <br />
+                <a class="gift-link" href="https://example.com/gifts/block-toy" target="_blank" rel="noreferrer">구매 링크</a>
+              </div>
+            </label>
+          </div>
+
+          <div class="gift-tile clothes">
+            <input id="gift-clothes" type="checkbox" />
+            <label class="gift-card" for="gift-clothes">
+              <div>
+                <div class="gift-top">
+                  <span class="gift-tag">실용</span>
+                  <span class="gift-visual visual-clothes" aria-hidden="true">
+                    <span class="shirt"></span>
+                    <span class="shoe"></span>
+                  </span>
+                </div>
+                <h2 class="gift-title">외출복 또는 신발</h2>
+                <p class="gift-desc">활동하기 편한 90 사이즈 옷이나 첫걸음마용 신발도 좋아요. 자주 손이 가는 편한 선물이 특히 유용할 것 같습니다.</p>
+              </div>
+              <div class="gift-bottom">
+                <span class="gift-price">52,000원</span>
+                <br />
+                <a class="gift-link" href="https://example.com/gifts/outfit-shoes" target="_blank" rel="noreferrer">구매 링크</a>
+              </div>
+            </label>
+          </div>
+
+          <div class="gift-tile coupon">
+            <input id="gift-coupon" type="checkbox" />
+            <label class="gift-card" for="gift-coupon">
+              <div>
+                <div class="gift-top">
+                  <span class="gift-tag">자유 선택</span>
+                  <span class="gift-visual visual-card" aria-hidden="true">
+                    <span class="card-body"></span>
+                    <span class="card-line-a"></span>
+                    <span class="card-line-b"></span>
+                    <span class="card-badge"></span>
+                  </span>
+                </div>
+                <h2 class="gift-title">문화상품권</h2>
+                <p class="gift-desc">필요한 시기에 해린이 용품을 고를 수 있어 가장 유연하게 사용할 수 있습니다. 나중에 꼭 필요한 것을 고를 수 있어 실용적이에요.</p>
+              </div>
+              <div class="gift-bottom">
+                <span class="gift-price">50,000원</span>
+                <br />
+                <a class="gift-link" href="https://example.com/gifts/gift-card" target="_blank" rel="noreferrer">구매 링크</a>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <p class="note">현재는 화면에서만 선택되는 임시 기능이며, 추후에는 실제 예약 여부를 표시하는 방식으로 확장할 수 있습니다.</p>
       </section>
-      <section class="wishlist-grid">
-        <div class="gift-option">
-          <input id="gift-book" type="checkbox" />
-          <label class="gift-label" for="gift-book"><span class="gift-name">그림책 세트 <span class="gift-tag">추천</span></span><span class="gift-desc">자기 전 함께 읽을 수 있는 촉감책, 생활동화, 그림책을 좋아해요.</span></label>
-        </div>
-        <div class="gift-option">
-          <input id="gift-block" type="checkbox" />
-          <label class="gift-label" for="gift-block"><span class="gift-name">블록 장난감 <span class="gift-tag">놀이</span></span><span class="gift-desc">쌓고 무너뜨리며 오래 가지고 놀 수 있는 장난감을 생각하고 있어요.</span></label>
-        </div>
-        <div class="gift-option">
-          <input id="gift-clothes" type="checkbox" />
-          <label class="gift-label" for="gift-clothes"><span class="gift-name">외출복 또는 신발 <span class="gift-tag">실용</span></span><span class="gift-desc">활동하기 편한 90 사이즈 옷이나 첫걸음마용 신발도 좋아요.</span></label>
-        </div>
-        <div class="gift-option">
-          <input id="gift-coupon" type="checkbox" />
-          <label class="gift-label" for="gift-coupon"><span class="gift-name">문화상품권 <span class="gift-tag">자유 선택</span></span><span class="gift-desc">필요한 시기에 해린이 용품을 고를 수 있어 가장 유연하게 사용할 수 있습니다.</span></label>
-        </div>
-      </section>
-      <p class="note">현재는 화면에서만 선택되는 임시 기능이며, Phase 2에서 실제 예약 기능으로 확장할 수 있어요.</p>
     </main>
     <script>
       function updateGiftCount() {
-        const selectedCount = document.querySelectorAll(".gift-option input:checked").length;
+        const selectedCount = document.querySelectorAll(".gift-tile input:checked").length;
         const giftCount = document.getElementById("gift-count");
         if (giftCount) {
-          giftCount.textContent = selectedCount + "개";
+          giftCount.textContent = selectedCount + "개 선택";
         }
       }
-      document.querySelectorAll(".gift-option input").forEach((input) => {
+      document.querySelectorAll(".gift-tile input").forEach((input) => {
         input.addEventListener("change", updateGiftCount);
       });
       updateGiftCount();

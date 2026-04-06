@@ -219,17 +219,139 @@
         background: #ffffff;
       }
 
+      .overview-section {
+        display: grid;
+        grid-template-rows: auto auto 1fr;
+        min-height: 100svh;
+        border-top: 8px solid #000000;
+      }
+
       .overview-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(2, minmax(0, 1fr));
         gap: 0;
-        border-top: 8px solid #000000;
         border-bottom: 8px solid #000000;
-        min-height: 100svh;
+        min-height: 0;
+      }
+
+      .sub_1,
+      .sub_2,
+      .mobile_marquee {
+        overflow: hidden;
+      }
+
+      .div1 {
+        border-bottom: 5px solid #000000;
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        font-family: "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+        font-size: 2.2rem;
+        font-weight: 800;
+        line-height: 1;
+        height: 3.6rem;
+      }
+
+      .overview-intro {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 12.6rem;
+        padding: 18px 22px;
+        border-bottom: 8px solid #000000;
+        text-align: center;
+        color: #000000;
+      }
+
+      .overview-intro-copy {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        line-height: 0.95;
+        font-weight: 900;
+        letter-spacing: -0.06em;
+      }
+
+      .overview-intro-copy span:first-child {
+        font-size: clamp(30px, 7vw, 68px);
+      }
+
+      .overview-intro-copy span:last-child {
+        font-size: clamp(24px, 5vw, 52px);
+      }
+
+      .sub_1 {
+        display: inline-grid;
+        justify-items: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+      }
+
+      .sub_2 {
+        display: none;
+      }
+
+      .marquee-item_1,
+      .marquee-item_2,
+      .marquee-item_3 {
+        display: inline-flex;
+        white-space: nowrap;
+        color: #000000;
+        padding-top: 3px;
+      }
+
+      .marquee-item_1 {
+        width: 100%;
+        height: 100%;
+        align-items: center;
+      }
+
+      .marquee-item_2 {
+        display: none;
+      }
+
+      .marquee-track {
+        display: inline-flex;
+        align-items: center;
+        width: max-content;
+        min-width: 100%;
+        animation: scroll-marquee var(--marquee-duration, 14s) linear infinite;
+      }
+
+      .marquee-copy {
+        display: inline-flex;
+        align-items: center;
+        flex: 0 0 auto;
+        padding-right: 3rem;
+      }
+
+      @keyframes scroll-marquee {
+        from {
+          transform: translateX(0);
+        }
+
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      .mobile {
+        display: none;
+        justify-items: right;
+        align-items: center;
+        padding-top: 3px;
+      }
+
+      .mobile_marquee {
+        width: 100%;
       }
 
       .overview-tile {
-        min-height: calc((100svh - 16px) / 2);
+        min-height: 0;
         padding: 26px 22px;
         border-right: 8px solid #000000;
         border-bottom: 8px solid #000000;
@@ -660,10 +782,6 @@
           font-size: 86px;
         }
 
-        .overview-tile {
-          min-height: calc((100svh - 16px) / 2);
-        }
-
         .overview-title {
           font-size: clamp(52px, 6vw, 84px);
         }
@@ -693,12 +811,51 @@
         .button-row {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
+      }
 
+      @media (max-width: 920px) {
+        .sub_1,
+        .sub_2 {
+          display: none;
+        }
+
+        .div1 {
+          height: 3rem;
+          border-bottom: 4px solid #000000;
+          display: block;
+        }
+
+        .overview-intro {
+          min-height: 10.5rem;
+          border-bottom: 4px solid #000000;
+          padding: 14px 18px;
+        }
+
+        .mobile {
+          display: block;
+          width: 100%;
+          font-size: 1.65rem;
+          height: 3rem;
+        }
+
+        .marquee-item_3 {
+          padding-top: 0.4rem;
+          padding-bottom: 0;
+        }
+
+        .overview-section {
+          min-height: 100svh;
+        }
       }
 
       @media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
+        }
+
+        .marquee-track {
+          animation: none;
+          transform: translateX(0);
         }
       }
     </style>
@@ -757,35 +914,62 @@
     <main class="story-main" id="invitation-content">
       <section>
         <div class="story-shell">
-          <div class="overview-grid">
-            <a class="overview-tile album" href="./album.html">
-              <span class="overview-label">01</span>
-              <strong class="overview-title">앨범</strong>
-              <span class="overview-caption">해린이의 첫 1년 기록</span>
-            </a>
-            <a class="overview-tile diary" href="./diary.html">
-              <span class="overview-label">02</span>
-              <strong class="overview-title">다이어리</strong>
-              <span class="overview-caption">짧고 오래 남을 문장</span>
-            </a>
-            <a class="overview-tile wishlist" href="./wishlist.html">
-              <span class="overview-label">03</span>
-              <strong class="overview-title">Wishlist</strong>
-              <span class="overview-caption">받고 싶은 선물 목록</span>
-            </a>
-            <a class="overview-tile location" href="./location.html">
-              <span class="overview-label">04</span>
-              <strong class="overview-title">장소 설명</strong>
-              <span class="overview-caption">잔치 정보와 오시는 길</span>
-            </a>
+          <div class="overview-section">
+            <div class="div1" aria-label="사랑해 한해린 우주보다 더">
+              <div class="mobile">
+                <div class="mobile_marquee">
+                  <div class="marquee-item_3">
+                    <div class="marquee-track" data-marquee-track data-marquee-speed="90">
+                      <span class="marquee-copy">사랑해 한해린 우주보다 더</span>
+                      <span class="marquee-copy" aria-hidden="true">사랑해 한해린 우주보다 더</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sub_1">
+                <div class="marquee-item_1">
+                  <div class="marquee-track" data-marquee-track data-marquee-speed="110">
+                    <span class="marquee-copy">사랑해 한해린 우주보다 더</span>
+                    <span class="marquee-copy" aria-hidden="true">사랑해 한해린 우주보다 더</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="overview-intro" aria-label="해링구 돌잔치 프로젝트">
+              <div class="overview-intro-copy">
+                <span>해링구 돌잔치</span>
+                <span>프로젝트</span>
+              </div>
+            </div>
+
+            <div class="overview-grid">
+              <a class="overview-tile diary" href="./diary.html">
+                <span class="overview-label">01</span>
+                <strong class="overview-title">해린이에 대하여</strong>
+                <span class="overview-caption">짧고 오래 남을 문장</span>
+              </a>
+              <a class="overview-tile album" href="./album.html">
+                <span class="overview-label">02</span>
+                <strong class="overview-title">시크릿 사진첩</strong>
+                <span class="overview-caption">해린이의 첫 1년 기록</span>
+              </a>
+              <a class="overview-tile wishlist" href="./wishlist.html">
+                <span class="overview-label">03</span>
+                <strong class="overview-title">돌 선물 리스트</strong>
+                <span class="overview-caption">(선착순)</span>
+              </a>
+              <a class="overview-tile location" href="./location.html">
+                <span class="overview-label">04</span>
+                <strong class="overview-title">돌잔치 안내</strong>
+                <span class="overview-caption">잔치 정보와 오시는 길</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
     </main>
-
-    <footer class="footer">
-      <div class="container">해린이의 첫 번째 생일을 함께 축하해주세요.</div>
-    </footer>
 
     <script>
       let landingScrollLocked = false;
@@ -798,6 +982,16 @@
       const letterLanding = document.getElementById("landing-letter");
       const invitationContent = document.getElementById("invitation-content");
       const continueButton = document.getElementById("continue-button");
+      const marqueeTracks = document.querySelectorAll("[data-marquee-track]");
+
+      function updateMarqueeSpeeds() {
+        marqueeTracks.forEach((track) => {
+          const speed = Number(track.dataset.marqueeSpeed) || 100;
+          const distance = track.scrollWidth / 2;
+          const duration = distance > 0 ? distance / speed : 1;
+          track.style.setProperty("--marquee-duration", duration + "s");
+        });
+      }
 
       function scrollToSection(section) {
         if (!section) {
@@ -984,12 +1178,14 @@
       window.addEventListener("wheel", handleLandingWheel, { passive: false });
       window.addEventListener("touchstart", handleLandingTouchStart, { passive: true });
       window.addEventListener("touchend", handleLandingTouchEnd, { passive: true });
+      window.addEventListener("resize", updateMarqueeSpeeds);
       window.addEventListener("scroll", () => {
         if (window.scrollY < window.innerHeight * 0.35) {
           resetVideo();
         }
       }, { passive: true });
 
+      updateMarqueeSpeeds();
       resetVideo();
     </script>
   </body>

@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>해린이 첫돌 초대장 · 앨범</title>
     <style>
+      @font-face {
+        font-family: "NanumBarunGothic";
+        src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot");
+        font-weight: 400;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "NanumBarunGothic";
+        src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot");
+        font-weight: 700;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "NanumBarunGothic";
+        src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot");
+        font-weight: 300;
+        font-display: swap;
+      }
+
       * { box-sizing: border-box; }
       :root {
         --line: #000000;
@@ -12,10 +33,11 @@
         --paper-alt: #ffd3f1;
         --paper-mint: #d4ffd5;
         --bg: #ffffff;
+        --font-body: "NanumBarunGothic", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
       }
       body {
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+        font-family: var(--font-body);
         background:
           radial-gradient(circle at top left, rgba(113, 255, 174, 0.28), transparent 24%),
           radial-gradient(circle at top right, rgba(255, 57, 209, 0.2), transparent 22%),

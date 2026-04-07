@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>해린이 첫돌 초대장 · 장소 설명</title>
     <style>
+      @font-face {
+        font-family: "NanumBarunGothic";
+        src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot");
+        font-weight: 400;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "NanumBarunGothic";
+        src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot");
+        font-weight: 700;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "NanumBarunGothic";
+        src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot");
+        font-weight: 300;
+        font-display: swap;
+      }
+
       * { box-sizing: border-box; }
       :root {
         --line: #000000;
@@ -13,10 +34,11 @@
         --lavender: #f3b4ff;
         --cream: #fff9d7;
         --white: #ffffff;
+        --font-body: "NanumBarunGothic", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
       }
       body {
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+        font-family: var(--font-body);
         color: #000000;
         background:
           radial-gradient(circle at top left, rgba(255, 57, 209, 0.16), transparent 20%),

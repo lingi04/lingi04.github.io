@@ -5,6 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>해린이 첫돌 초대장</title>
     <style>
+      @font-face {
+        font-family: "CAChildrenModu";
+        src: url("./_resource/font/cachildren-modu.otf") format("opentype");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "NostalgicPoliceFairness";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/Griun_PolFairness-Rg.woff2") format("woff2");
+        font-weight: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "NanumBarunGothic";
+        src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot");
+        font-weight: 400;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "NanumBarunGothic";
+        src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot");
+        font-weight: 700;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "NanumBarunGothic";
+        src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot");
+        font-weight: 300;
+        font-display: swap;
+      }
+
       :root {
         --bg: #fff8f2;
         --bg-soft: #fffdf9;
@@ -20,6 +56,9 @@
         --radius-lg: 22px;
         --radius-md: 16px;
         --max-width: 880px;
+        --font-body: "NanumBarunGothic", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+        --font-marquee: "CAChildrenModu", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+        --font-display: "NostalgicPoliceFairness", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
       }
 
       * {
@@ -32,7 +71,7 @@
 
       body {
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+        font-family: var(--font-body);
         color: var(--text);
         line-height: 1.7;
         word-break: keep-all;
@@ -246,7 +285,7 @@
         display: block;
         width: 100%;
         overflow: hidden;
-        font-family: "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+        font-family: var(--font-marquee);
         font-size: 2.2rem;
         font-weight: 800;
         line-height: 1;
@@ -262,6 +301,7 @@
         border-bottom: 8px solid #000000;
         text-align: center;
         color: #000000;
+        font-family: var(--font-display);
       }
 
       .overview-intro-copy {
@@ -363,6 +403,7 @@
         text-decoration: none;
         color: #000000;
         overflow: hidden;
+        font-family: var(--font-display);
       }
 
       .overview-tile:nth-child(2n) {

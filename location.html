@@ -34,11 +34,14 @@
         --lavender: #f3b4ff;
         --cream: #fff9d7;
         --white: #ffffff;
+        --ink-soft: #2a2a2a;
         --font-body: "NanumBarunGothic", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
       }
       body {
         margin: 0;
         font-family: var(--font-body);
+        line-height: 1.5;
+        word-break: keep-all;
         color: #000000;
         background:
           radial-gradient(circle at top left, rgba(255, 57, 209, 0.16), transparent 20%),
@@ -48,91 +51,105 @@
       a { color: inherit; text-decoration: none; }
       h1, h2, p { margin: 0; }
       .page { width: 100%; }
+      .shell {
+        width: min(100%, 980px);
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.7);
+      }
       .hero {
-        padding: 28px 22px 24px;
+        padding: 18px 22px 16px;
         background: linear-gradient(135deg, #ffffff 0%, #f3b4ff 100%);
         border-bottom: 8px solid var(--line);
       }
       .eyebrow {
         display: block;
-        margin-bottom: 14px;
-        font-size: 12px;
+        margin-bottom: 8px;
+        font-size: 11px;
         font-weight: 800;
         letter-spacing: 0.14em;
         text-transform: uppercase;
       }
       .title {
         max-width: 860px;
-        font-size: clamp(46px, 9vw, 96px);
-        line-height: 0.94;
+        font-size: clamp(32px, 7vw, 64px);
+        line-height: 0.96;
         letter-spacing: -0.06em;
         font-weight: 900;
       }
-      .lead {
-        max-width: 620px;
-        margin-top: 14px;
-        font-size: 18px;
-        font-weight: 700;
-      }
       .back {
         display: inline-flex;
-        margin-top: 18px;
-        font-size: 13px;
+        margin-top: 10px;
+        font-size: 12px;
         font-weight: 800;
         letter-spacing: 0.08em;
         text-transform: uppercase;
       }
-      .intro-band {
-        padding: 18px 22px;
-        border-bottom: 8px solid var(--line);
-        background: var(--cream);
-        font-size: 16px;
-        font-weight: 700;
-        line-height: 1.5;
-      }
-      .info-grid {
+      .content {
         display: grid;
-        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .section-block {
+        padding: 16px 18px;
         border-bottom: 8px solid var(--line);
       }
-      .info-card {
-        min-height: 180px;
-        padding: 22px;
-        border-bottom: 8px solid var(--line);
-      }
-      .info-card:last-child {
+      .section-block:last-child {
         border-bottom: 0;
       }
-      .info-card:nth-child(4n + 1) { background: var(--mint); }
-      .info-card:nth-child(4n + 2) { background: var(--white); }
-      .info-card:nth-child(4n + 3) { background: var(--pink); }
-      .info-card:nth-child(4n + 4) { background: linear-gradient(135deg, #ffffff 0%, var(--lavender) 100%); }
+      .section-head {
+        margin-bottom: 10px;
+      }
+      .info-list {
+        border-top: 2px solid var(--line);
+      }
+      .info-row {
+        display: grid;
+        gap: 10px;
+        padding: 12px 0;
+        border-bottom: 2px solid var(--line);
+      }
+      .info-detail {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 128px;
+        align-items: start;
+        gap: 10px;
+      }
       .card-label {
         display: block;
-        margin-bottom: 10px;
         font-size: 12px;
         font-weight: 900;
         letter-spacing: 0.12em;
         text-transform: uppercase;
       }
-      .card-title {
-        max-width: 420px;
-        font-size: clamp(28px, 7vw, 42px);
-        line-height: 0.95;
-        letter-spacing: -0.05em;
-        font-weight: 900;
+      .meta-list {
+        border-top: 2px solid var(--line);
       }
-      .card-copy {
-        max-width: 460px;
-        margin-top: 12px;
+      .meta-row {
+        display: grid;
+        gap: 8px;
+        padding: 16px 0;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.85);
+      }
+      .meta-value {
+        max-width: 640px;
         font-size: 16px;
-        line-height: 1.5;
-        font-weight: 700;
+        line-height: 1.24;
+        letter-spacing: -0.03em;
+        font-weight: 800;
+      }
+      .section-head .card-label,
+      .map-heading .card-label {
+        font-size: 15px;
+      }
+      .info-row .meta-value {
+        font-size: clamp(20px, 4.2vw, 28px);
+        line-height: 1.06;
+      }
+      .meta-row .meta-value {
+        font-size: 16px;
+        line-height: 1.35;
       }
       .map-section {
-        padding: 22px;
-        border-bottom: 8px solid var(--line);
-        background: #ffffff;
+        background: linear-gradient(135deg, #ffffff 0%, #f7fffb 100%);
       }
       .map-heading {
         margin-bottom: 16px;
@@ -150,20 +167,18 @@
       }
       .actions {
         display: grid;
-        gap: 12px;
-        padding: 22px;
-        background: linear-gradient(135deg, #ffffff 0%, #f5fffb 100%);
+        gap: 8px;
       }
       .button {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-height: 66px;
-        padding: 16px 18px;
-        border: 4px solid var(--line);
+        min-height: 34px;
+        padding: 4px 8px;
+        border: 2px solid var(--line);
         background: #111111;
         color: #ffffff;
-        font-size: 16px;
+        font-size: 12px;
         font-weight: 800;
         text-align: center;
       }
@@ -172,21 +187,30 @@
         color: #111111;
       }
       @media (min-width: 780px) {
-        .info-grid {
-          grid-template-columns: 1fr 1fr;
+        .hero {
+          padding: 22px 24px 18px;
         }
-        .info-card {
-          min-height: 220px;
-          border-right: 8px solid var(--line);
+        .info-row {
+          grid-template-columns: 140px minmax(0, 1fr);
+          align-items: start;
         }
-        .info-card:nth-child(2n) {
-          border-right: 0;
+        .info-row.address-row .actions {
+          justify-self: end;
+          width: 128px;
         }
-        .info-card:nth-last-child(-n + 2) {
-          border-bottom: 0;
+        .meta-row {
+          grid-template-columns: 140px minmax(0, 1fr);
+          align-items: center;
         }
-        .actions {
-          grid-template-columns: 1fr 1fr;
+        .section-head .card-label,
+        .map-heading .card-label {
+          font-size: 16px;
+        }
+        .info-row .meta-value {
+          font-size: clamp(22px, 2.5vw, 30px);
+        }
+        .meta-row .meta-value {
+          font-size: 17px;
         }
         .map-frame iframe {
           height: 420px;
@@ -196,70 +220,75 @@
   </head>
   <body>
     <main class="page">
-      <section class="hero">
-        <span class="eyebrow">Location</span>
-        <h1 class="title">잔치 정보와<br />오시는 길.</h1>
-        <p class="lead">해린이의 첫 생일을 함께할 장소와 시간을 한눈에 볼 수 있도록 정리했습니다.</p>
-        <a class="back" href="./index.html#invitation-content">Back to menu</a>
-      </section>
+      <div class="shell">
+        <section class="hero">
+          <span class="eyebrow">Location</span>
+          <h1 class="title">오시는 길</h1>
+          <a class="back" href="./index.html#invitation-content">Back to menu</a>
+        </section>
 
-      <section class="intro-band">
-        편하게 오실 수 있도록 기본 정보와 지도 링크를 한 페이지에 모아두었습니다.
-      </section>
+        <div class="content">
+          <section class="section-block">
+            <div class="section-head">
+              <span class="card-label">Essential Info</span>
+            </div>
+            <div class="info-list">
+              <article class="info-row">
+                <span class="card-label">Date</span>
+                <p class="meta-value">2026년 5월 17일<br />일요일 오전 11시</p>
+              </article>
+              <article class="info-row">
+                <span class="card-label">VENUE</span>
+                <p class="meta-value">바이탈<br />바이브</p>
+              </article>
+              <article class="info-row address-row">
+                <span class="card-label">Address</span>
+                <div class="info-detail">
+                  <p class="meta-value">서울 강남구<br />밤고개로34길 14 2층</p>
+                  <div class="actions">
+                    <a class="button" href="https://map.kakao.com/link/map/바이탈바이브,37.463781,127.106746" target="_blank" rel="noreferrer">카카오맵</a>
+                    <a class="button secondary" href="https://map.naver.com/p/search/%EB%B0%94%EC%9D%B4%ED%83%88%20%EB%B0%94%EC%9D%B4%EB%B8%8C" target="_blank" rel="noreferrer">네이버지도</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
 
-      <section class="info-grid">
-        <article class="info-card">
-          <span class="card-label">Date</span>
-          <h2 class="card-title">2026년 5월 17일 일요일 오전 11시</h2>
-          <p class="card-copy">가볍게 인사 나누고 식사하며 함께 축하할 수 있는 시간으로 준비하고 있습니다.</p>
-        </article>
-        <article class="info-card">
-          <span class="card-label">Venue</span>
-          <h2 class="card-title">바이탈 바이브</h2>
-          <p class="card-copy">해린이의 첫돌 잔치는 따뜻한 분위기의 공간인 바이탈 바이브에서 진행됩니다.</p>
-        </article>
-        <article class="info-card">
-          <span class="card-label">Address</span>
-          <h2 class="card-title">서울 강남구 밤고개로34길 14 2층</h2>
-          <p class="card-copy">지도를 함께 확인하시면 더 쉽게 찾으실 수 있도록 아래에 바로 연결해두었습니다.</p>
-        </article>
-        <article class="info-card">
-          <span class="card-label">Parking</span>
-          <h2 class="card-title">주차 정보 확인 중</h2>
-          <p class="card-copy">주차 가능 여부와 이용 방법은 확인 후 이 카드의 문구만 교체해 최신 정보로 반영합니다.</p>
-        </article>
-        <article class="info-card">
-          <span class="card-label">Transit</span>
-          <h2 class="card-title">대중교통 안내 추가 예정</h2>
-          <p class="card-copy">가까운 역, 버스 정류장, 도보 동선 정보는 확정되는 대로 보기 쉽게 업데이트할 예정입니다.</p>
-        </article>
-        <article class="info-card">
-          <span class="card-label">Guide</span>
-          <h2 class="card-title">지도 링크로 바로 이동 가능</h2>
-          <p class="card-copy">카카오맵과 네이버지도로 바로 이동할 수 있어 길 찾기나 공유가 편하도록 구성합니다.</p>
-        </article>
-      </section>
+          <section class="section-block map-section">
+            <div class="map-heading">
+              <span class="card-label">Map</span>
+            </div>
+            <div class="map-frame">
+              <iframe
+                title="바이탈 바이브 지도"
+                src="https://maps.google.com/maps?q=37.46375,127.10675&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </section>
 
-      <section class="map-section">
-        <div class="map-heading">
-          <span class="card-label">Map</span>
-          <h2 class="card-title">위치를 바로 확인해 주세요</h2>
-          <p class="card-copy">아래 지도에서 대략적인 위치를 확인하고, 필요하시면 외부 지도 앱으로 이어서 이동하실 수 있습니다.</p>
+          <section class="section-block">
+            <div class="section-head">
+              <span class="card-label">Visit Notes</span>
+            </div>
+            <div class="meta-list">
+              <article class="meta-row">
+                <span class="card-label">Parking</span>
+                <p class="meta-value">주차 정보 확인 중</p>
+              </article>
+              <article class="meta-row">
+                <span class="card-label">Transit</span>
+                <p class="meta-value">대중교통 안내 추가 예정</p>
+              </article>
+              <article class="meta-row">
+                <span class="card-label">Guide</span>
+                <p class="meta-value">아래 지도 앱 버튼으로 바로 길찾기 가능</p>
+              </article>
+            </div>
+          </section>
         </div>
-        <div class="map-frame">
-          <iframe
-            title="바이탈 바이브 지도"
-            src="https://maps.google.com/maps?q=37.463781,127.106746&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
-      </section>
-
-      <section class="actions">
-        <a class="button" href="https://map.kakao.com/link/map/바이탈바이브,37.463781,127.106746" target="_blank" rel="noreferrer">카카오맵 열기</a>
-        <a class="button secondary" href="https://map.naver.com/p/search/%EB%B0%94%EC%9D%B4%ED%83%88%20%EB%B0%94%EC%9D%B4%EB%B8%8C" target="_blank" rel="noreferrer">네이버지도 열기</a>
-      </section>
+      </div>
     </main>
   </body>
 </html>

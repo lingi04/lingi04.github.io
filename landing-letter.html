@@ -87,7 +87,7 @@
         height: 100%;
       }
 
-      .landing-media video {
+      .landing-media img {
         display: block;
         max-width: 100%;
         max-height: 100%;
@@ -96,8 +96,8 @@
         object-fit: contain;
       }
 
-      .landing-video-media {
-        height: min(84svh, 980px);
+      .landing-letter-media {
+        height: min(88svh, 1080px);
       }
 
       @media (min-width: 740px) {
@@ -121,14 +121,12 @@
         <div class="landing-shell">
           <div class="landing-top">
             <span class="landing-label">Hae-rin First Birthday</span>
-            <span class="landing-step">01 / 03</span>
+            <span class="landing-step">02 / 03</span>
           </div>
 
           <div class="landing-stage">
-            <div class="landing-media landing-video-media">
-              <video id="birth-video" autoplay muted playsinline preload="auto">
-                <source src="./_resource/haerin-is-born.mp4" type="video/mp4" />
-              </video>
+            <div class="landing-media landing-letter-media">
+              <img src="./_resource/landing_letter.jpg" alt="랜딩 편지 이미지" />
             </div>
           </div>
 
@@ -138,10 +136,8 @@
     </section>
 
     <script>
-      const birthVideo = document.getElementById("birth-video");
       let touchStartY = 0;
       let navigating = false;
-      let birthVideoEndedPreview = false;
 
       function goNextPage() {
         if (navigating) {
@@ -149,49 +145,31 @@
         }
 
         navigating = true;
-        window.location.href = "./landing-letter.html";
+        window.location.href = "./menu.html";
       }
 
-      function skipVideoToEnd() {
-        if (!birthVideo) {
+      function goPreviousPage() {
+        if (navigating) {
           return;
         }
 
-        const safeDuration = Number.isFinite(birthVideo.duration) && birthVideo.duration > 0
-          ? birthVideo.duration
-          : Number.isFinite(birthVideo.seekable?.end?.(0))
-            ? birthVideo.seekable.end(0)
-            : 0;
-
-        if (safeDuration <= 0) {
-          return;
-        }
-
-        birthVideo.currentTime = Math.max(safeDuration - 0.08, 0);
-        birthVideo.pause();
-        birthVideoEndedPreview = true;
+        navigating = true;
+        window.location.href = "./index.html";
       }
-
-      function isInteractiveTarget(target) {
-        return Boolean(target?.closest("a, button, input, label"));
-      }
-
-      document.addEventListener("click", (event) => {
-        if (isInteractiveTarget(event.target) || birthVideoEndedPreview) {
-          return;
-        }
-
-        skipVideoToEnd();
-      });
 
       window.addEventListener("wheel", (event) => {
-        if (event.deltaY <= 10) {
+        if (Math.abs(event.deltaY) <= 10) {
           return;
         }
 
         event.preventDefault();
-        skipVideoToEnd();
-        goNextPage();
+
+        if (event.deltaY > 0) {
+          goNextPage();
+          return;
+        }
+
+        goPreviousPage();
       }, { passive: false });
 
       window.addEventListener("touchstart", (event) => {
@@ -206,20 +184,17 @@
         }
 
         const deltaY = touchStartY - event.changedTouches[0].clientY;
-        if (deltaY <= 30) {
+        if (Math.abs(deltaY) <= 30) {
           return;
         }
 
-        skipVideoToEnd();
-        goNextPage();
-      }, { passive: true });
+        if (deltaY > 0) {
+          goNextPage();
+          return;
+        }
 
-      if (birthVideo) {
-        birthVideo.playbackRate = 3;
-        birthVideo.addEventListener("loadedmetadata", () => {
-          birthVideo.playbackRate = 3;
-        });
-      }
+        goPreviousPage();
+      }, { passive: true });
     </script>
   </body>
 </html>

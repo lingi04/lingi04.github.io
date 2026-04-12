@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>해린이 첫돌 초대장</title>
+    <style>
+      @font-face {
+        font-family: "CAChildrenModu";
+        src: url("./_resource/font/cachildren-modu.otf") format("opentype");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "NostalgicPoliceFairness";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/Griun_PolFairness-Rg.woff2") format("woff2");
+        font-weight: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "NanumBarunGothic";
+        src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot");
+        font-weight: 400;
+        font-display: swap;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        overflow: hidden;
+        font-family: "NanumBarunGothic", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+        background: #ffffff;
+        color: #4f4038;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .overview-section {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-height: 100svh;
+        background: #ffffff;
+        overflow: hidden;
+      }
+
+      .overview-decoration {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 3;
+      }
+
+      .overview-heart {
+        position: absolute;
+        width: 84px;
+        opacity: 0.92;
+        pointer-events: auto;
+        touch-action: none;
+        cursor: grab;
+        user-select: none;
+      }
+
+      .overview-heart.is-dragging {
+        cursor: grabbing;
+      }
+
+      .overview-section > *:not(.overview-decoration) {
+        position: relative;
+        z-index: 1;
+      }
+
+      .overview-message {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 72px;
+        padding: 16px 14px 10px;
+        overflow: hidden;
+        text-align: center;
+        color: #000000;
+        font-family: "CAChildrenModu", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+        font-size: clamp(26px, 5.9vw, 54px);
+        line-height: 1.12;
+        border-bottom: 4px solid #000000;
+      }
+
+      .overview-message-track {
+        position: absolute;
+        left: 100%;
+        top: 18%;
+        width: max-content;
+        pointer-events: none;
+        will-change: transform;
+        transform: translateY(-50%);
+        animation: overview-marquee var(--marquee-duration, 12s) linear infinite;
+      }
+
+      .overview-message-copy {
+        display: block;
+        width: max-content;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+      }
+
+      @keyframes overview-marquee {
+        from {
+          transform: translateX(0);
+        }
+
+        to {
+          transform: translateX(calc(-100vw - 100%));
+        }
+      }
+
+      .overview-figure {
+        padding: 0;
+        border-bottom: 4px solid #000000;
+        background: #ffffff;
+      }
+
+      .overview-figure img {
+        display: block;
+        width: 100%;
+        min-height: 320px;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .overview-menu {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, minmax(0, 1fr));
+        min-height: 0;
+      }
+
+      .overview-tile,
+      .overview-feature {
+        min-height: 0;
+        padding: 24px 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #000000;
+        overflow: hidden;
+        font-family: "NostalgicPoliceFairness", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+      }
+
+      .overview-tile {
+        border-right: 4px solid #000000;
+        border-bottom: 4px solid #000000;
+      }
+
+      .overview-tile:nth-child(2n) {
+        border-right: 0;
+      }
+
+      .overview-tile.diary,
+      .overview-tile.location {
+        background: #fff5b0;
+      }
+
+      .overview-tile.album,
+      .overview-tile.wishlist {
+        background: #d2fc4f;
+      }
+
+      .overview-feature {
+        grid-column: 1 / -1;
+        gap: 6px;
+        background: #92c3a4;
+      }
+
+      .overview-title {
+        max-width: 100%;
+        font-size: clamp(30px, 7vw, 50px);
+        line-height: 0.92;
+        letter-spacing: 0.02em;
+        font-weight: 900;
+        word-break: keep-all;
+      }
+
+      .overview-feature-title {
+        font-size: clamp(28px, 6.5vw, 58px);
+        line-height: 0.94;
+        letter-spacing: -0.06em;
+        font-weight: 900;
+        white-space: pre-line;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="overview-section">
+      <div class="overview-decoration" aria-hidden="true">
+        <img class="overview-heart" data-overview-heart src="./_resource/heart.svg" alt="" />
+        <img class="overview-heart" data-overview-heart src="./_resource/heart.svg" alt="" />
+      </div>
+
+      <div class="overview-message" aria-label="사랑해 한해린 귀여워 죽겠어 우주만큼">
+        <div class="overview-message-track" data-marquee-track data-marquee-speed="110">
+          <p class="overview-message-copy">사랑해 한해린 귀여워 죽겠어 우주만큼♥</p>
+        </div>
+      </div>
+
+      <div class="overview-figure">
+        <img src="./_resource/index_page_haerin.png" alt="해린이 인덱스 대표 이미지" />
+      </div>
+
+      <div class="overview-menu">
+        <a class="overview-tile diary" href="./diary.html">
+          <strong class="overview-title">해린이에 대하여</strong>
+        </a>
+        <a class="overview-tile album" href="./album.html">
+          <strong class="overview-title">시크릿<br />사진첩</strong>
+        </a>
+        <a class="overview-tile wishlist" href="./wishlist.html">
+          <strong class="overview-title">선물리스트</strong>
+        </a>
+        <a class="overview-tile location" href="./location.html">
+          <strong class="overview-title">오시는길</strong>
+        </a>
+        <div class="overview-feature" aria-label="해링구 돌잔치 프로젝트">
+          <strong class="overview-feature-title">해링구
+돌잔치 프로젝트</strong>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const marqueeTracks = document.querySelectorAll("[data-marquee-track]");
+      const overviewSection = document.querySelector(".overview-section");
+      const overviewHearts = document.querySelectorAll("[data-overview-heart]");
+      const HEART_SIZE = 84;
+      const HEART_SPEED = 120;
+      let touchStartY = 0;
+      let navigating = false;
+      let overviewHeartStates = [];
+      let overviewHeartAnimationFrame = null;
+      let overviewHeartLastTime = 0;
+      let draggedHeartState = null;
+      let draggedHeartPointerId = null;
+      let draggedHeartOffsetX = 0;
+      let draggedHeartOffsetY = 0;
+      let draggedHeartLastPointerX = 0;
+      let draggedHeartLastPointerY = 0;
+      let draggedHeartLastPointerTime = 0;
+
+      function goPreviousPage() {
+        if (navigating) {
+          return;
+        }
+
+        navigating = true;
+        window.location.href = "./landing-letter.html";
+      }
+
+      function clamp(value, min, max) {
+        return Math.min(Math.max(value, min), max);
+      }
+
+      function createHeartVelocity() {
+        const angle = Math.random() * Math.PI * 2;
+        return {
+          vx: Math.cos(angle) * HEART_SPEED,
+          vy: Math.sin(angle) * HEART_SPEED,
+        };
+      }
+
+      function normalizeHeartVelocity(state) {
+        const magnitude = Math.hypot(state.vx, state.vy);
+
+        if (magnitude === 0) {
+          Object.assign(state, createHeartVelocity());
+          return;
+        }
+
+        state.vx = (state.vx / magnitude) * HEART_SPEED;
+        state.vy = (state.vy / magnitude) * HEART_SPEED;
+      }
+
+      function setHeartPosition(state) {
+        state.element.style.left = state.x + "px";
+        state.element.style.top = state.y + "px";
+      }
+
+      function getOverviewBounds() {
+        return {
+          maxLeft: Math.max(overviewSection.clientWidth - HEART_SIZE, 0),
+          maxTop: Math.max(overviewSection.clientHeight - HEART_SIZE, 0),
+        };
+      }
+
+      function initializeOverviewHearts() {
+        if (!overviewSection || overviewHearts.length === 0) {
+          return;
+        }
+
+        const sectionWidth = overviewSection.clientWidth;
+        const sectionHeight = overviewSection.clientHeight;
+        const placements = [];
+
+        overviewHeartStates = Array.from(overviewHearts).map((heart) => {
+          const maxLeft = Math.max(sectionWidth - HEART_SIZE, 0);
+          const maxTop = Math.max(sectionHeight - HEART_SIZE, 0);
+          let x = 0;
+          let y = 0;
+
+          for (let attempt = 0; attempt < 20; attempt += 1) {
+            const nextX = Math.random() * maxLeft;
+            const nextY = Math.random() * maxTop;
+            const overlaps = placements.some((placement) => {
+              const dx = placement.x - nextX;
+              const dy = placement.y - nextY;
+              return Math.hypot(dx, dy) < HEART_SIZE;
+            });
+
+            x = nextX;
+            y = nextY;
+
+            if (!overlaps) {
+              break;
+            }
+          }
+
+          placements.push({ x, y });
+
+          const state = {
+            element: heart,
+            size: HEART_SIZE,
+            x,
+            y,
+            ...createHeartVelocity(),
+          };
+
+          setHeartPosition(state);
+          return state;
+        });
+      }
+
+      function resizeOverviewHearts() {
+        if (!overviewSection || overviewHeartStates.length === 0) {
+          return;
+        }
+
+        const { maxLeft, maxTop } = getOverviewBounds();
+
+        overviewHeartStates.forEach((state) => {
+          state.x = clamp(state.x, 0, maxLeft);
+          state.y = clamp(state.y, 0, maxTop);
+          setHeartPosition(state);
+        });
+      }
+
+      function reflectOverviewHeartOnWalls(state, maxLeft, maxTop) {
+        if (state.x <= 0) {
+          state.x = 0;
+          state.vx = Math.abs(state.vx);
+        } else if (state.x >= maxLeft) {
+          state.x = maxLeft;
+          state.vx = -Math.abs(state.vx);
+        }
+
+        if (state.y <= 0) {
+          state.y = 0;
+          state.vy = Math.abs(state.vy);
+        } else if (state.y >= maxTop) {
+          state.y = maxTop;
+          state.vy = -Math.abs(state.vy);
+        }
+      }
+
+      function resolveOverviewHeartCollisions() {
+        for (let i = 0; i < overviewHeartStates.length; i += 1) {
+          for (let j = i + 1; j < overviewHeartStates.length; j += 1) {
+            const first = overviewHeartStates[i];
+            const second = overviewHeartStates[j];
+            const firstCenterX = first.x + first.size / 2;
+            const firstCenterY = first.y + first.size / 2;
+            const secondCenterX = second.x + second.size / 2;
+            const secondCenterY = second.y + second.size / 2;
+            const dx = secondCenterX - firstCenterX;
+            const dy = secondCenterY - firstCenterY;
+            const distance = Math.hypot(dx, dy);
+            const minDistance = (first.size + second.size) / 2;
+
+            if (distance === 0 || distance >= minDistance) {
+              continue;
+            }
+
+            const normalX = dx / distance;
+            const normalY = dy / distance;
+            const overlap = minDistance - distance;
+            const relativeVelocityX = second.vx - first.vx;
+            const relativeVelocityY = second.vy - first.vy;
+            const speedAlongNormal = relativeVelocityX * normalX + relativeVelocityY * normalY;
+
+            first.x -= normalX * (overlap / 2);
+            first.y -= normalY * (overlap / 2);
+            second.x += normalX * (overlap / 2);
+            second.y += normalY * (overlap / 2);
+
+            if (speedAlongNormal >= 0) {
+              continue;
+            }
+
+            const impulse = -speedAlongNormal;
+            first.vx -= impulse * normalX;
+            first.vy -= impulse * normalY;
+            second.vx += impulse * normalX;
+            second.vy += impulse * normalY;
+            normalizeHeartVelocity(first);
+            normalizeHeartVelocity(second);
+          }
+        }
+      }
+
+      function animateOverviewHearts(timestamp) {
+        if (!overviewSection || overviewHeartStates.length === 0) {
+          return;
+        }
+
+        if (overviewHeartLastTime === 0) {
+          overviewHeartLastTime = timestamp;
+        }
+
+        const deltaTime = Math.min((timestamp - overviewHeartLastTime) / 1000, 0.033);
+        overviewHeartLastTime = timestamp;
+        const { maxLeft, maxTop } = getOverviewBounds();
+
+        overviewHeartStates.forEach((state) => {
+          if (state === draggedHeartState) {
+            return;
+          }
+
+          state.x += state.vx * deltaTime;
+          state.y += state.vy * deltaTime;
+          reflectOverviewHeartOnWalls(state, maxLeft, maxTop);
+        });
+
+        resolveOverviewHeartCollisions();
+
+        overviewHeartStates.forEach((state) => {
+          reflectOverviewHeartOnWalls(state, maxLeft, maxTop);
+          setHeartPosition(state);
+        });
+
+        overviewHeartAnimationFrame = window.requestAnimationFrame(animateOverviewHearts);
+      }
+
+      function syncDraggedHeartPosition(clientX, clientY) {
+        if (!draggedHeartState || !overviewSection) {
+          return;
+        }
+
+        const sectionRect = overviewSection.getBoundingClientRect();
+        const { maxLeft, maxTop } = getOverviewBounds();
+        draggedHeartState.x = clamp(clientX - sectionRect.left - draggedHeartOffsetX, 0, maxLeft);
+        draggedHeartState.y = clamp(clientY - sectionRect.top - draggedHeartOffsetY, 0, maxTop);
+        setHeartPosition(draggedHeartState);
+      }
+
+      function handleOverviewHeartPointerDown(event) {
+        const state = overviewHeartStates.find((item) => item.element === event.currentTarget);
+        if (!state || !overviewSection) {
+          return;
+        }
+
+        const heartRect = state.element.getBoundingClientRect();
+        draggedHeartState = state;
+        draggedHeartPointerId = event.pointerId;
+        draggedHeartOffsetX = event.clientX - heartRect.left;
+        draggedHeartOffsetY = event.clientY - heartRect.top;
+        draggedHeartLastPointerX = event.clientX;
+        draggedHeartLastPointerY = event.clientY;
+        draggedHeartLastPointerTime = event.timeStamp;
+        state.element.classList.add("is-dragging");
+        state.element.setPointerCapture(event.pointerId);
+        event.preventDefault();
+      }
+
+      function handleOverviewHeartPointerMove(event) {
+        if (!draggedHeartState || event.pointerId !== draggedHeartPointerId) {
+          return;
+        }
+
+        const deltaX = event.clientX - draggedHeartLastPointerX;
+        const deltaY = event.clientY - draggedHeartLastPointerY;
+        const deltaTimeMs = Math.max(event.timeStamp - draggedHeartLastPointerTime, 1);
+        draggedHeartState.vx = (deltaX / deltaTimeMs) * 1000;
+        draggedHeartState.vy = (deltaY / deltaTimeMs) * 1000;
+        syncDraggedHeartPosition(event.clientX, event.clientY);
+        draggedHeartLastPointerX = event.clientX;
+        draggedHeartLastPointerY = event.clientY;
+        draggedHeartLastPointerTime = event.timeStamp;
+        event.preventDefault();
+      }
+
+      function releaseDraggedHeart(event) {
+        if (!draggedHeartState || event.pointerId !== draggedHeartPointerId) {
+          return;
+        }
+
+        if (Math.hypot(draggedHeartState.vx, draggedHeartState.vy) > 0) {
+          normalizeHeartVelocity(draggedHeartState);
+        } else {
+          Object.assign(draggedHeartState, createHeartVelocity());
+        }
+
+        draggedHeartState.element.classList.remove("is-dragging");
+        if (draggedHeartState.element.hasPointerCapture(event.pointerId)) {
+          draggedHeartState.element.releasePointerCapture(event.pointerId);
+        }
+
+        draggedHeartState = null;
+        draggedHeartPointerId = null;
+      }
+
+      function startOverviewHeartAnimation() {
+        initializeOverviewHearts();
+        resizeOverviewHearts();
+
+        overviewHearts.forEach((heart) => {
+          heart.addEventListener("pointerdown", handleOverviewHeartPointerDown);
+        });
+
+        window.addEventListener("pointermove", handleOverviewHeartPointerMove, { passive: false });
+        window.addEventListener("pointerup", releaseDraggedHeart);
+        window.addEventListener("pointercancel", releaseDraggedHeart);
+
+        if (overviewHeartAnimationFrame !== null) {
+          window.cancelAnimationFrame(overviewHeartAnimationFrame);
+        }
+
+        overviewHeartLastTime = 0;
+        overviewHeartAnimationFrame = window.requestAnimationFrame(animateOverviewHearts);
+      }
+
+      function updateMarqueeSpeeds() {
+        marqueeTracks.forEach((track) => {
+          const speed = Number(track.dataset.marqueeSpeed) || 100;
+          const containerWidth = track.parentElement?.clientWidth || window.innerWidth;
+          const distance = containerWidth + track.scrollWidth;
+          const duration = distance > 0 ? distance / speed : 1;
+          track.style.setProperty("--marquee-duration", duration + "s");
+        });
+      }
+
+      window.addEventListener("wheel", (event) => {
+        if (event.deltaY >= -10) {
+          return;
+        }
+
+        event.preventDefault();
+        goPreviousPage();
+      }, { passive: false });
+
+      window.addEventListener("touchstart", (event) => {
+        if (event.touches.length > 0) {
+          touchStartY = event.touches[0].clientY;
+        }
+      }, { passive: true });
+
+      window.addEventListener("touchend", (event) => {
+        if (!event.changedTouches || event.changedTouches.length === 0) {
+          return;
+        }
+
+        const deltaY = touchStartY - event.changedTouches[0].clientY;
+        if (deltaY >= -30) {
+          return;
+        }
+
+        goPreviousPage();
+      }, { passive: true });
+
+      window.addEventListener("resize", updateMarqueeSpeeds);
+      window.addEventListener("resize", resizeOverviewHearts);
+
+      updateMarqueeSpeeds();
+      startOverviewHeartAnimation();
+    </script>
+  </body>
+</html>

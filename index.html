@@ -220,13 +220,6 @@
         height: min(82svh, 980px);
       }
 
-      .landing-copy {
-        color: #4c4c4c;
-        font-size: 12px;
-        line-height: 1.6;
-        max-width: 560px;
-      }
-
       .button-row {
         display: grid;
         gap: 10px;
@@ -768,10 +761,6 @@
           font-size: 13px;
         }
 
-        .landing-copy {
-          font-size: 13px;
-        }
-
         .landing-video-media {
           height: min(84svh, 980px);
         }
@@ -844,14 +833,7 @@
             </div>
           </div>
 
-          <div class="landing-bottom">
-            <p class="landing-copy">클릭하면 영상이 마지막 장면으로 이동하고, 스크롤하면 영상이 끝으로 이동한 뒤 다음 화면으로 이어집니다.</p>
-            <div>
-              <div class="button-row">
-                <button class="button" id="continue-button" type="button">touch to continue</button>
-              </div>
-            </div>
-          </div>
+          <div class="landing-bottom"></div>
         </div>
       </div>
     </section>
@@ -871,8 +853,6 @@
           </div>
 
           <div class="landing-bottom">
-            <p class="landing-copy">이미지 비율을 유지한 채 화면을 꽉 채워 보여주고, 클릭 또는 스크롤 시 본문으로 이어집니다.</p>
-            <div class="landing-copy">tap or scroll</div>
           </div>
         </div>
       </div>
@@ -923,14 +903,15 @@
     <script>
       let landingScrollLocked = false;
       let touchStartY = 0;
-      let landingScrollTransitionTimer = null;
       let birthVideoEndedPreview = false;
+      let lastLandingScrollY = window.scrollY;
+      const LANDING_SCROLL_ADVANCE_THRESHOLD = 12;
 
       const birthVideo = document.getElementById("birth-video");
       const videoLanding = document.getElementById("landing-video");
       const letterLanding = document.getElementById("landing-letter");
       const invitationContent = document.getElementById("invitation-content");
-      const continueButton = document.getElementById("continue-button");
+      const landingSections = [videoLanding, letterLanding, invitationContent].filter(Boolean);
       const marqueeTracks = document.querySelectorAll("[data-marquee-track]");
       const overviewSection = document.querySelector(".overview-section");
       const overviewHearts = document.querySelectorAll("[data-overview-heart]");
@@ -1250,14 +1231,12 @@
 
         window.setTimeout(() => {
           landingScrollLocked = false;
-        }, 900);
-      }
+          lastLandingScrollY = window.scrollY;
 
-      function clearLandingScrollTransition() {
-        if (landingScrollTransitionTimer) {
-          window.clearTimeout(landingScrollTransitionTimer);
-          landingScrollTransitionTimer = null;
-        }
+          if (section === videoLanding) {
+            resetVideo();
+          }
+        }, 900);
       }
 
       function skipVideoToEnd() {
@@ -1299,7 +1278,6 @@
           return;
         }
 
-        clearLandingScrollTransition();
         birthVideoEndedPreview = false;
         birthVideo.currentTime = 0;
         birthVideo.playbackRate = 3;
@@ -1307,14 +1285,6 @@
         if (playAttempt && typeof playAttempt.catch === "function") {
           playAttempt.catch(() => {});
         }
-      }
-
-      function queueLandingTransition(section, delay) {
-        clearLandingScrollTransition();
-        landingScrollTransitionTimer = window.setTimeout(() => {
-          landingScrollTransitionTimer = null;
-          scrollToSection(section);
-        }, delay);
       }
 
       function isSectionInView(section) {
@@ -1326,42 +1296,45 @@
         return rect.top <= window.innerHeight * 0.35 && rect.bottom >= window.innerHeight * 0.35;
       }
 
-      function handleLandingAdvance(trigger) {
+      function getActiveLandingSectionIndex() {
+        return landingSections.findIndex((section) => isSectionInView(section));
+      }
+
+      function moveLandingSection(direction, trigger = "scroll") {
         if (landingScrollLocked) {
           return;
         }
 
-        if (isSectionInView(videoLanding)) {
-          if (trigger === "scroll") {
-            const skipped = skipVideoToEnd();
-            queueLandingTransition(letterLanding, skipped ? 420 : 120);
-            return;
-          }
-
-          if (isVideoAtEnd()) {
-            scrollToSection(letterLanding);
-            return;
-          }
-
-          if (!skipVideoToEnd()) {
-            scrollToSection(letterLanding);
-          }
+        const activeIndex = getActiveLandingSectionIndex();
+        if (activeIndex === -1) {
           return;
         }
 
-        if (isSectionInView(letterLanding)) {
-          scrollToSection(invitationContent);
+        const nextIndex = direction === "down" ? activeIndex + 1 : activeIndex - 1;
+        const targetSection = landingSections[nextIndex];
+        if (!targetSection) {
+          return;
         }
+
+        if (direction === "down" && activeIndex === 0) {
+          if (trigger === "scroll") {
+            skipVideoToEnd();
+          } else if (!isVideoAtEnd()) {
+            skipVideoToEnd();
+          }
+        }
+
+        scrollToSection(targetSection);
       }
 
       function handleLandingWheel(event) {
-        if (event.deltaY <= 10) {
+        if (Math.abs(event.deltaY) <= 10) {
           return;
         }
 
-        if (isSectionInView(videoLanding) || isSectionInView(letterLanding)) {
+        if (getActiveLandingSectionIndex() !== -1) {
           event.preventDefault();
-          handleLandingAdvance("scroll");
+          moveLandingSection(event.deltaY > 0 ? "down" : "up", "scroll");
         }
       }
 
@@ -1378,8 +1351,8 @@
 
         const touchEndY = event.changedTouches[0].clientY;
         const deltaY = touchStartY - touchEndY;
-        if (deltaY > 30 && (isSectionInView(videoLanding) || isSectionInView(letterLanding))) {
-          handleLandingAdvance("scroll");
+        if (Math.abs(deltaY) > 30 && getActiveLandingSectionIndex() !== -1) {
+          moveLandingSection(deltaY > 0 ? "down" : "up", "scroll");
         }
       }
 
@@ -1389,8 +1362,41 @@
           return;
         }
 
-        if (isSectionInView(videoLanding) || isSectionInView(letterLanding)) {
-          handleLandingAdvance("click");
+        if (getActiveLandingSectionIndex() === 0 && !isVideoAtEnd()) {
+          skipVideoToEnd();
+        }
+      }
+
+      function handleLandingScroll() {
+        if (landingScrollLocked) {
+          lastLandingScrollY = window.scrollY;
+          return;
+        }
+
+        const currentScrollY = window.scrollY;
+        const isScrollingDown = currentScrollY > lastLandingScrollY;
+        const isScrollingUp = currentScrollY < lastLandingScrollY;
+        lastLandingScrollY = currentScrollY;
+
+        if (currentScrollY <= 1) {
+          resetVideo();
+        }
+
+        const activeIndex = getActiveLandingSectionIndex();
+        if (activeIndex === -1) {
+          return;
+        }
+
+        const activeSection = landingSections[activeIndex];
+        const sectionOffset = currentScrollY - activeSection.offsetTop;
+
+        if (isScrollingDown && sectionOffset >= LANDING_SCROLL_ADVANCE_THRESHOLD) {
+          moveLandingSection("down", "scroll");
+          return;
+        }
+
+        if (isScrollingUp && sectionOffset <= -LANDING_SCROLL_ADVANCE_THRESHOLD) {
+          moveLandingSection("up", "scroll");
         }
       }
 
@@ -1414,24 +1420,13 @@
       });
 
       updateGiftCount();
-
-      if (continueButton) {
-        continueButton.addEventListener("click", () => {
-          scrollToSection(letterLanding);
-        });
-      }
-
       document.addEventListener("click", handleLandingClick);
       window.addEventListener("wheel", handleLandingWheel, { passive: false });
       window.addEventListener("touchstart", handleLandingTouchStart, { passive: true });
       window.addEventListener("touchend", handleLandingTouchEnd, { passive: true });
       window.addEventListener("resize", updateMarqueeSpeeds);
       window.addEventListener("resize", resizeOverviewHearts);
-      window.addEventListener("scroll", () => {
-        if (window.scrollY < window.innerHeight * 0.35) {
-          resetVideo();
-        }
-      }, { passive: true });
+      window.addEventListener("scroll", handleLandingScroll, { passive: true });
 
       updateMarqueeSpeeds();
       startOverviewHeartAnimation();

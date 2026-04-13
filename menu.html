@@ -94,8 +94,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 72px;
-        padding: 16px 14px 10px;
+        min-height: 54px;
+        padding: 6px 14px 8px;
         overflow: hidden;
         text-align: center;
         color: #000000;
@@ -108,11 +108,10 @@
       .overview-message-track {
         position: absolute;
         left: 100%;
-        top: 18%;
+        top: 50%;
         width: max-content;
         pointer-events: none;
         will-change: transform;
-        transform: translateY(-50%);
         animation: overview-marquee var(--marquee-duration, 12s) linear infinite;
       }
 
@@ -125,15 +124,16 @@
 
       @keyframes overview-marquee {
         from {
-          transform: translateX(0);
+          transform: translateX(0) translateY(-50%);
         }
 
         to {
-          transform: translateX(calc(-100vw - 100%));
+          transform: translateX(calc(-100vw - 100%)) translateY(-50%);
         }
       }
 
       .overview-figure {
+        flex: 0 0 auto;
         padding: 0;
         border-bottom: 4px solid #000000;
         background: #ffffff;
@@ -142,9 +142,9 @@
       .overview-figure img {
         display: block;
         width: 100%;
-        min-height: 320px;
-        height: auto;
+        height: clamp(240px, 31svh, 320px);
         object-fit: cover;
+        object-position: center top;
       }
 
       .overview-menu {

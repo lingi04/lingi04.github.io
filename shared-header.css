@@ -35,8 +35,8 @@ button {
   border: 0;
   background: transparent;
   color: #7e7e7e;
-  font-family: "CAChildrenModu", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
-  font-size: 12px;
+  font-family: "NostalgicPoliceFairness", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -62,7 +62,7 @@ button {
   padding: 0;
   color: #7e7e7e;
   font-family: "CAChildrenModu", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.02em;
   line-height: 1.2;
@@ -71,7 +71,7 @@ button {
 }
 
 .shared-hero-menu a + a {
-  margin-top: 6px;
+  margin-top: 12px;
 }
 
 .shared-title {

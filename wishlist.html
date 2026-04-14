@@ -44,14 +44,17 @@
       body {
         margin: 0;
         font-family: var(--font-body);
-        background: #ffffff;
+        background: #d2fc4f;
         color: #000000;
+        overflow: hidden;
       }
 
       main {
-        min-height: 100svh;
+        height: 100svh;
         display: flex;
         flex-direction: column;
+        background: #d2fc4f;
+        overflow: hidden;
       }
 
       a { color: inherit; text-decoration: none; }
@@ -61,259 +64,247 @@
         padding: 22px 22px 0;
       }
 
-      .lead {
-        max-width: 620px;
-        margin: 14px auto 0;
-        padding: 0 22px;
-        font-size: 17px;
-        line-height: 1.55;
-        font-weight: 700;
-        text-align: center;
-      }
-
-      .wishlist-shell {
+      .wishlist-poster {
+        width: 100%;
+        max-width: none;
         flex: 1;
         display: flex;
+        flex-direction: column;
         min-height: 0;
+        margin: 12px 0 0;
+        padding: 0 22px 20px;
+      }
+
+      .wishlist-note {
+        margin-top: 10px;
+        padding: 0 4px;
+        font-size: 12px;
+        line-height: 1.55;
       }
 
       .wishlist-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-auto-rows: 1fr;
+        grid-template-columns: minmax(0, 6.6fr) minmax(0, 4.4fr);
         flex: 1;
-        width: 100%;
         min-height: 0;
-        gap: 0;
+        margin-top: 12px;
+        border: 1.5px solid rgba(0, 0, 0, 0.32);
+        background: rgba(210, 252, 79, 0.36);
       }
 
-      .gift-option {
-        position: relative;
-      }
-
-      .gift-option input {
-        position: absolute;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      .gift-card {
-        display: block;
+      .wishlist-column {
+        min-width: 0;
         min-height: 0;
-        border-bottom: 4px solid var(--line);
-        background: var(--white);
-        cursor: pointer;
       }
 
-      .gift-card-inner {
-        position: relative;
+      .wishlist-column.left {
         display: grid;
-        min-height: 0;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: minmax(0, 1.15fr) minmax(0, 1.15fr) minmax(0, 0.8fr) minmax(0, 0.9fr);
       }
 
-      .gift-media {
-        position: relative;
-        aspect-ratio: 1 / 1;
-        overflow: hidden;
-        background: #f5f5f5;
+      .wishlist-column.right {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: minmax(0, 1.05fr) minmax(0, 1.75fr) minmax(0, 1.2fr);
+        border-left: 1.5px solid rgba(0, 0, 0, 0.32);
       }
 
-      .gift-media img {
-        display: block;
+      .wishlist-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 8px;
+        min-width: 0;
+        padding: 10px 8px 8px;
+      }
+
+      .wishlist-item img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
+        object-position: center;
       }
 
-      .gift-index {
-        position: absolute;
-        left: 14px;
-        top: 14px;
-        display: inline-flex;
+      .wishlist-visual {
+        flex: 1;
+        min-height: 0;
+        display: flex;
         align-items: center;
         justify-content: center;
-        width: 42px;
-        height: 42px;
-        border: 2px solid var(--line);
-        background: rgba(255, 255, 255, 0.92);
-        font-size: 14px;
-        font-weight: 900;
       }
 
-      .gift-copy {
-        padding: 14px 14px 16px;
-        background: transparent;
+      .wishlist-stack-visual {
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        align-items: stretch;
+        gap: 6px;
       }
 
-      .gift-topline {
+      .wishlist-stack-header {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
+      }
+
+      .wishlist-stack-top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        min-height: 0;
+        align-self: center;
+      }
+
+      .wishlist-stack-top img {
+        width: 64%;
+        height: auto;
+        max-height: 100%;
+      }
+
+      .wishlist-stack-top img + img {
+        margin-left: -18%;
+      }
+
+      .wishlist-stack-bottom {
+        display: flex;
         align-items: flex-start;
-        gap: 12px;
+        justify-content: center;
+        min-height: 0;
+        align-self: end;
       }
 
-      .gift-name {
-        font-size: clamp(20px, 5.6vw, 44px);
-        line-height: 0.95;
-        letter-spacing: -0.05em;
-        font-weight: 900;
+      .wishlist-stack-bottom img {
+        width: 100%;
+        height: auto;
+        max-height: 100%;
       }
 
-      .gift-tag {
-        display: inline-flex;
-        padding: 6px 10px;
-        border: 2px solid var(--line);
-        background: var(--white);
+      .wishlist-label {
+        font-family: "CAChildrenModu", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
         font-size: 11px;
-        font-weight: 900;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        white-space: nowrap;
+        line-height: 1.15;
+        letter-spacing: -0.01em;
+        word-break: keep-all;
       }
 
-      .gift-desc {
-        margin-top: 12px;
-        font-size: 13px;
-        line-height: 1.55;
-        font-weight: 700;
+      .wishlist-item.large {
+        grid-column: 1 / span 2;
+        grid-row: span 2;
       }
 
-      .gift-note {
-        display: inline-flex;
-        margin-top: 14px;
-        padding: 8px 11px;
-        border: 2px solid var(--line);
-        background: rgba(255, 255, 255, 0.86);
-        font-size: 11px;
-        font-weight: 900;
+      .wishlist-item.stroller {
+        grid-column: 1 / span 2;
+        grid-row: 1 / span 2;
       }
 
-      .gift-option:nth-child(4n + 1) .gift-card { background: linear-gradient(135deg, #fff6cd 0%, #fffdf4 100%); }
-      .gift-option:nth-child(4n + 2) .gift-card { background: linear-gradient(135deg, #ffb9e8 0%, #ffe5f7 100%); }
-      .gift-option:nth-child(4n + 3) .gift-card { background: linear-gradient(135deg, #bdf6d2 0%, #effff6 100%); }
-      .gift-option:nth-child(4n + 4) .gift-card { background: linear-gradient(135deg, #fff1b8 0%, #fffdf0 100%); }
-
-      .gift-option input:checked + .gift-card .gift-media {
-        box-shadow: inset 0 0 0 10px rgba(0, 0, 0, 0.18);
+      .wishlist-item.books {
+        grid-column: 1 / span 2;
+        grid-row: 1;
+        justify-content: flex-start;
+        gap: 4px;
+        padding-top: 10px;
+        padding-bottom: 8px;
       }
 
-      .gift-option input:checked + .gift-card .gift-tag {
-        background: #111111;
-        color: #ffffff;
+      .wishlist-item.books .wishlist-visual {
+        flex: 1;
+        min-height: 0;
+        align-items: center;
+        justify-content: center;
       }
 
-      @media (hover: hover) and (pointer: fine) {
-        .gift-copy {
-          opacity: 0;
-          transform: translateY(14px);
-          pointer-events: none;
-          position: absolute;
-          inset: auto 0 0 0;
-          background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.72) 24%, rgba(255, 255, 255, 0.92) 100%);
-          transition: opacity 0.22s ease, transform 0.22s ease;
+      .wishlist-item.books img {
+        transform: scale(0.85);
+        transform-origin: center;
+      }
+
+      .wishlist-item.stack {
+        grid-column: 1 / span 2;
+        grid-row: 2;
+        justify-content: flex-start;
+        border-top: 1.5px solid rgba(0, 0, 0, 0.32);
+      }
+
+      .wishlist-item.crocs {
+        grid-column: 1;
+        grid-row: 3;
+        border-top: 1.5px solid rgba(0, 0, 0, 0.32);
+      }
+
+      .wishlist-item.pass {
+        grid-column: 2;
+        grid-row: 3;
+        border-left: 1.5px solid rgba(0, 0, 0, 0.32);
+        border-top: 1.5px solid rgba(0, 0, 0, 0.32);
+      }
+
+      .wishlist-item.money {
+        grid-column: 1;
+        grid-row: 4;
+        border-top: 1.5px solid rgba(0, 0, 0, 0.32);
+      }
+
+      .wishlist-item.mic {
+        grid-column: 2;
+        grid-row: 4;
+        border-left: 1.5px solid rgba(0, 0, 0, 0.32);
+        border-top: 1.5px solid rgba(0, 0, 0, 0.32);
+      }
+
+      .wishlist-item.lumi {
+        grid-column: 1 / span 2;
+        grid-row: 3;
+        border-top: 1.5px solid rgba(0, 0, 0, 0.32);
+        justify-content: flex-start;
+        padding-top: 8px;
+      }
+
+      .wishlist-item.lumi .wishlist-visual {
+        flex: 1;
+        min-height: 0;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .wishlist-item.small {
+        justify-content: flex-end;
+      }
+
+      .wishlist-item.large .wishlist-label,
+      .wishlist-item.books .wishlist-label,
+      .wishlist-item.stack .wishlist-label {
+        font-size: 12px;
+      }
+
+      .wishlist-item.books .wishlist-label {
+        width: 100%;
+        text-align: right;
+      }
+
+      .wishlist-stack-header .wishlist-label {
+        text-align: right;
+      }
+
+      .wishlist-item.lumi .wishlist-label {
+        width: 100%;
+        text-align: left;
+      }
+
+      @media (min-width: 740px) {
+        .wishlist-poster {
+          margin-top: 16px;
+          padding: 0 28px 24px;
         }
 
-        .gift-card:hover .gift-copy,
-        .gift-card:focus-within .gift-copy {
-          opacity: 1;
-          transform: translateY(0);
+        .wishlist-note {
+          font-size: 13px;
+        }
+
+        .wishlist-label {
+          font-size: 12px;
         }
       }
 
-      @media (max-width: 819px) {
-        main {
-          display: block;
-          min-height: auto;
-        }
-
-        .wishlist-shell {
-          display: block;
-          flex: none;
-        }
-
-        .wishlist-grid {
-          grid-auto-rows: auto;
-          min-height: auto;
-        }
-
-        .gift-card,
-        .gift-card-inner {
-          min-height: auto;
-          height: auto;
-        }
-
-        .gift-media {
-          aspect-ratio: 1 / 0.8;
-          height: auto;
-          overflow: hidden;
-        }
-
-        .gift-media img {
-          aspect-ratio: 1 / 0.8;
-          height: 100%;
-        }
-
-        .gift-option:nth-child(odd) .gift-card {
-          border-right: 4px solid var(--line);
-        }
-
-        .gift-option:nth-last-child(-n + 2) .gift-card {
-          border-bottom: 0;
-        }
-
-        .gift-topline {
-          flex-direction: column;
-          gap: 8px;
-        }
-
-        .gift-copy {
-          padding: 14px 14px 16px;
-        }
-
-        .gift-tag {
-          font-size: 10px;
-          padding: 5px 8px;
-        }
-      }
-
-      @media (min-width: 820px) {
-        .wishlist-grid {
-          grid-template-columns: 1fr 1fr;
-          grid-template-rows: repeat(2, minmax(0, 1fr));
-          min-height: calc(100svh - 214px);
-        }
-
-        .gift-option:nth-child(odd) .gift-card {
-          border-right: 4px solid var(--line);
-        }
-
-        .gift-option:nth-last-child(-n + 2) .gift-card {
-          border-bottom: 0;
-        }
-
-        .gift-card-inner {
-          grid-template-rows: minmax(0, 1fr);
-          height: 100%;
-        }
-
-        .gift-media {
-          height: 100%;
-          aspect-ratio: auto;
-        }
-
-        .gift-copy {
-          padding: 22px 22px 24px;
-        }
-
-        .gift-name {
-          font-size: clamp(34px, 3.8vw, 56px);
-        }
-
-        .gift-desc {
-          max-width: 28ch;
-          font-size: 16px;
-        }
-      }
     </style>
   </head>
   <body>
@@ -328,88 +319,77 @@
         </div>
       </section>
       <h1 class="title shared-title">위시리스트</h1>
-      <p class="lead">해린이를 위해 준비해 주시는 마음만으로도 충분히 감사합니다. 필요하신 분들을 위해 선물 후보를 정리해 두었습니다.</p>
 
-      <section class="wishlist-shell">
+      <section class="wishlist-poster">
+        <p class="wishlist-note">※ 선착순으로 찜할 수 있습니다.<br />주고싶은 선물을 카톡으로 알려주세요</p>
+
         <div class="wishlist-grid">
-          <div class="gift-option">
-            <input id="gift-clothes" type="checkbox" />
-            <label class="gift-card" for="gift-clothes">
-              <div class="gift-card-inner">
-                <div class="gift-media">
-                  <img src="./_resource/wishlist/clothes.jpeg" alt="아기 옷 선물 이미지" />
-                  <span class="gift-index">01</span>
-                </div>
-                <div class="gift-copy">
-                  <div class="gift-topline">
-                    <strong class="gift-name">외출복</strong>
-                    <span class="gift-tag">Daily</span>
-                  </div>
-                  <p class="gift-desc">자주 입기 좋은 편한 옷이 있으면 오래 잘 입을 것 같아요. 계절감 맞는 90 사이즈면 특히 좋습니다.</p>
-                  <span class="gift-note">편하게 오래 입는 선물</span>
-                </div>
+          <div class="wishlist-column left">
+            <article class="wishlist-item large stroller">
+              <div class="wishlist-visual">
+                <img src="./_resource/wishlist/휴대용유모차.png" alt="휴대용 유모차" />
               </div>
-            </label>
+              <p class="wishlist-label">휴대용유모차</p>
+            </article>
+
+            <article class="wishlist-item small crocs">
+              <div class="wishlist-visual">
+                <img src="./_resource/wishlist/아기크록스.png" alt="아기 크록스" />
+              </div>
+              <p class="wishlist-label">아기크록스</p>
+            </article>
+
+            <article class="wishlist-item small pass">
+              <div class="wishlist-visual">
+                <img src="./_resource/wishlist/자유이용권3회.png" alt="자유이용권" />
+              </div>
+              <p class="wishlist-label">자유이용권 3회권</p>
+            </article>
+
+            <article class="wishlist-item small money">
+              <div class="wishlist-visual">
+                <img src="./_resource/wishlist/머니머니머니.png" alt="미니 머니머니" />
+              </div>
+              <p class="wishlist-label">머니머니머니</p>
+            </article>
+
+            <article class="wishlist-item small mic">
+              <div class="wishlist-visual">
+                <img src="./_resource/wishlist/돌잔치축하공연.png" alt="마이크 장난감" />
+              </div>
+              <p class="wishlist-label">돌잔치 축하공연</p>
+            </article>
           </div>
 
-          <div class="gift-option">
-            <input id="gift-stroller" type="checkbox" />
-            <label class="gift-card" for="gift-stroller">
-              <div class="gift-card-inner">
-                <div class="gift-media">
-                  <img src="./_resource/wishlist/stroller.webp" alt="유모차 선물 이미지" />
-                  <span class="gift-index">02</span>
-                </div>
-                <div class="gift-copy">
-                  <div class="gift-topline">
-                    <strong class="gift-name">유모차</strong>
-                    <span class="gift-tag">Outdoor</span>
-                  </div>
-                  <p class="gift-desc">외출할 때 자주 쓰는 아이템이라 실용성이 높아요. 가볍고 다루기 편한 쪽을 생각하고 있습니다.</p>
-                  <span class="gift-note">밖에 나갈 때 늘 함께</span>
-                </div>
+          <div class="wishlist-column right">
+            <article class="wishlist-item books">
+              <div class="wishlist-visual">
+                <img src="./_resource/wishlist/그레이트북스-놀자전집.png" alt="그레이트북스 놀라운 자연" />
               </div>
-            </label>
-          </div>
+              <p class="wishlist-label">그레이트북스-놀자 전집</p>
+            </article>
 
-          <div class="gift-option">
-            <input id="gift-shoes" type="checkbox" />
-            <label class="gift-card" for="gift-shoes">
-              <div class="gift-card-inner">
-                <div class="gift-media">
-                  <img src="./_resource/wishlist/shoose.webp" alt="아기 신발 선물 이미지" />
-                  <span class="gift-index">03</span>
+            <article class="wishlist-item stack">
+              <div class="wishlist-visual wishlist-stack-visual">
+                <div class="wishlist-stack-header">
+                  <p class="wishlist-label">캠핑의자/매트</p>
                 </div>
-                <div class="gift-copy">
-                  <div class="gift-topline">
-                    <strong class="gift-name">신발</strong>
-                    <span class="gift-tag">Walk</span>
-                  </div>
-                  <p class="gift-desc">첫걸음마에 잘 맞는 가벼운 신발도 좋아요. 발이 편하고 자주 신게 되는 디자인이면 더 좋습니다.</p>
-                  <span class="gift-note">가볍고 편한 착용감</span>
+                <div class="wishlist-stack-top">
+                  <img src="./_resource/wishlist/캠핑의자.png" alt="몬테라 CTV2 체어" />
+                  <img src="./_resource/wishlist/캠핑의자.png" alt="몬테라 CTV2 체어" />
+                </div>
+                <div class="wishlist-stack-bottom">
+                  <img src="./_resource/wishlist/매트.png" alt="몬테라 전용 매트" />
                 </div>
               </div>
-            </label>
-          </div>
+            </article>
 
-          <div class="gift-option">
-            <input id="gift-toy" type="checkbox" />
-            <label class="gift-card" for="gift-toy">
-              <div class="gift-card-inner">
-                <div class="gift-media">
-                  <img src="./_resource/wishlist/toy.jpg" alt="장난감 선물 이미지" />
-                  <span class="gift-index">04</span>
-                </div>
-                <div class="gift-copy">
-                  <div class="gift-topline">
-                    <strong class="gift-name">장난감</strong>
-                    <span class="gift-tag">Play</span>
-                  </div>
-                  <p class="gift-desc">반복해서 오래 가지고 놀 수 있는 장난감을 좋아해요. 단순하지만 자꾸 손이 가는 종류면 충분합니다.</p>
-                  <span class="gift-note">보고 만지고 오래 노는 선물</span>
-                </div>
+            <article class="wishlist-item lumi">
+              <div class="wishlist-visual">
+                <img src="./_resource/wishlist/루미플레이쿠션.png" alt="노리터 루미플레이쿠션" />
               </div>
-            </label>
+              <p class="wishlist-label">노리터프로젝트_<br>루미 플레이쿠션</p>
+            </article>
           </div>
         </div>
       </section>
@@ -417,19 +397,24 @@
     </main>
     <script src="./shared-header.js"></script>
     <script>
-      function updateGiftCount() {
-        const selectedCount = document.querySelectorAll(".gift-option input:checked").length;
-        const giftCount = document.getElementById("gift-count");
-        if (giftCount) {
-          giftCount.textContent = selectedCount + "개 선택";
-        }
-      }
+      const logViewportSizes = () => {
+        console.log("window size:", {
+          innerWidth: window.innerWidth,
+          innerHeight: window.innerHeight,
+          outerWidth: window.outerWidth,
+          outerHeight: window.outerHeight,
+        });
 
-      document.querySelectorAll(".gift-option input").forEach((input) => {
-        input.addEventListener("change", updateGiftCount);
-      });
+        console.log("screen size:", {
+          width: window.screen.width,
+          height: window.screen.height,
+          availWidth: window.screen.availWidth,
+          availHeight: window.screen.availHeight,
+        });
+      };
 
-      updateGiftCount();
+      window.addEventListener("load", logViewportSizes);
+      window.addEventListener("resize", logViewportSizes);
     </script>
   </body>
 </html>

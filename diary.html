@@ -6,13 +6,16 @@
     <title>해린이 첫돌 초대장 · 다이어리</title>
     <link rel="stylesheet" href="./shared-header.css" />
     <style>
+      @font-face {
+        font-family: "CAChildrenModu";
+        src: url("./_resource/font/cachildren-modu.otf") format("opentype");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
       * { box-sizing: border-box; }
       :root {
-        --line: #000000;
-        --pink: #ff39d1;
-        --mint: #71ffae;
-        --lavender: #f4c6ff;
-        --paper: #fff9db;
         --shared-hero-bg: #fff5b0;
       }
       body {
@@ -23,74 +26,34 @@
       }
       a { color: inherit; text-decoration: none; }
       img { display: block; width: 100%; }
-      h1, p { margin: 0; }
+      h1 { margin: 0; }
       .title {
         padding: 22px 22px 0;
       }
-      .diary-scene {
-        display: grid;
-        border-bottom: 4px solid var(--line);
+      .hero-image {
+        padding: 16px 22px 0;
+        display: flex;
+        justify-content: center;
       }
-      .scene-photo {
-        padding: 22px;
-        background: linear-gradient(135deg, #ffffff 0%, #fff8fe 100%);
-        border-bottom: 4px solid var(--line);
+      .hero-image img {
+        width: 40vw;
+        max-width: 100%;
+        height: auto;
       }
-      .photo-frame {
-        border: 4px solid var(--line);
-        background: #ffffff;
-        box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.12);
-        overflow: hidden;
+      .diary-copy {
+        padding: 24px 22px 40px;
       }
-      .photo-frame img {
-        aspect-ratio: 16 / 11;
-        object-fit: cover;
-      }
-      .scene-copy {
-        padding: 28px 22px 32px;
-        background: linear-gradient(135deg, #efffd6 0%, #dff8b7 100%);
-      }
-      .quote {
-        max-width: 760px;
-        font-size: clamp(40px, 8vw, 86px);
-        line-height: 0.94;
-        letter-spacing: -0.06em;
-        font-weight: 900;
-        white-space: pre-line;
-      }
-      .memo {
-        max-width: 460px;
-        margin-top: 20px;
-        padding: 14px 16px;
-        border: 2px solid var(--line);
-        background: #fffdf4;
+      .diary-copy p {
+        margin: 0;
+        font-family: "CAChildrenModu", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
         font-size: 15px;
-        line-height: 1.5;
-        font-weight: 700;
-        box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.14);
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        word-break: keep-all;
+        text-align: center;
       }
-      .memo strong {
-        display: block;
-        margin-bottom: 6px;
-        font-size: 11px;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-      }
-      @media (min-width: 740px) {
-        .diary-scene {
-          grid-template-columns: 1fr 1fr;
-        }
-        .scene-photo {
-          border-right: 4px solid var(--line);
-          border-bottom: 0;
-        }
-        .scene-copy {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          min-height: 100%;
-          border-left: 4px solid var(--line);
-        }
+      .diary-copy p + p {
+        margin-top: 24px;
       }
     </style>
   </head>
@@ -106,19 +69,15 @@
         </div>
       </section>
       <h1 class="title shared-title">해린이에 대하여</h1>
-
-      <section class="diary-scene">
-        <div class="scene-photo">
-          <div class="photo-frame">
-            <img src="./_resource/sample_1-1.jpeg" alt="해린이의 일상 사진" />
-          </div>
-        </div>
-        <div class="scene-copy">
-          <p class="quote">너를 키운다기보다,
-우리도 너와 함께 하루하루 자라고 있다는 걸
-자주 느끼는 1년이었어.</p>
-          <p class="memo"><strong>Note</strong>해린이와 보낸 시간은 특별한 사건보다도, 매일 조금씩 더 사랑하게 되는 감정으로 기억될 것 같아요.</p>
-        </div>
+      <section class="hero-image">
+        <img src="./_resource/haerin_with_cherryblossoms.jpeg" alt="벚꽃과 함께한 해린이" />
+      </section>
+      <section class="diary-copy">
+        <p>우리 해린이는 엄마아빠 앞에서 웃음이 많아요.<br />낯선 환경은 싫어하구요<br />낯선 사람이 만지는것도 싫어해요.<br />집순이여서 산책을 할 때는 웃음이 사라지구요,<br />아파트 입구만 들어오면 다시 씨익~ 하고 웃는답니다.</p>
+        <p>해린이는 웃을 때 눈웃음이 너무 이뻐요.<br />한쪽만 들어간 보조개가 매력적이구요,<br />엄마, 아빠랑 장난칠 때 새초롬하게<br />v(브이) 하는 입술이 정말 귀엽답니다.</p>
+        <p>해린이는 먹는것도얼마나 잘먹는지<br />어린이집에서 제일 커요 ^^<br />배가 얼마나 볼록한지 기저귀 갈때마다 놀란답니다.<br />언젠가는 들어가겠죠??? 기도해주세요!</p>
+        <p>해린이가 좋아하는 음식은 닭고기 입니다.<br />닭고기 들어간 국, 닭고기 조림, 닭고기 야채볶음<br />남김없이 다 먹을 수 있어요! 근데 아직......<br />김치는 싫어요. 귀신같이 뱉습니다.</p>
+        <p>또 해린이가 세상에서제일 좋아하는건 할머니 품 같아요.<br />할머니 집에 가면 엄마 품으로 잘 안옵니다.<br />요즘은 또 안기는걸 조아해서 할머니들만 보면 폭하고 안겨요.<br />이렇게 이쁜 시기에 양가 할무니들이 해린이 많이 보러 와주세요.</p>
       </section>
     </main>
     <script src="./shared-header.js"></script>

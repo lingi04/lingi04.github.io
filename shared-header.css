@@ -75,8 +75,9 @@ button {
 }
 
 .shared-title {
+  width: min(100%, 820px);
   padding: 22px 22px 0;
-  max-width: 820px;
+  margin: 0 auto;
   font-family: "NostalgicPoliceFairness", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
   font-size: clamp(32px, 6.3vw, 67px);
   line-height: 0.94;

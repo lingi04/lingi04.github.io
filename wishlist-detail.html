@@ -183,49 +183,40 @@
           name: "휴대용유모차",
           image: "./_resource/wishlist/stroller.png",
           price: "40만원예상",
-          model: "선호 모델 협의 가능",
-          request: "있으면 쓰고 없으면 안씀.",
-          extra: "기타설명은 필요한 경우에만 적을 예정입니다.",
+          model: "선호 모델 협의 하면 좋겠습니다",
+          extra: "해린이 태어나기 전에 산 디럭스 유모차는 너무 크더라고요. 휴대용인 만큼 기동성이 확보 되어 할머니 할아버지를 더 잘 보러 갈수도..?",
         },
         crocs: {
           name: "아기크록스",
           image: "./_resource/wishlist/crocs.png",
           price: "5만원내외",
-          model: "사이즈 맞는 제품",
-          request: "편하게 신길 수 있는 디자인이면 좋아요.",
-          extra: "색상은 기본 계열이면 충분합니다.",
+          model: "정품? 모르겠고 일단 귀여운게 필요해요",
+          request: "귀엽고 귀엽고 귀여운 신발이었으면 좋겠습니다."
         },
         pass: {
           name: "자유이용권 3회권",
           image: "./_resource/wishlist/freeticket.png",
-          price: "금액 변동 가능",
-          model: "사용 가능한 형태면 괜찮아요",
-          request: "해린이가 즐길 수 있는 곳이면 좋아요.",
-          extra: "브랜드나 업체는 상황에 맞게 선택 가능합니다.",
+          model: "해린이 대신 봐주기 찬스",
+          extra: "가끔.. 그럴 때 있잖아요. 해린이가 너무너무 귀엽지만 그래도 자유시간이 필요할 때",
         },
         money: {
           name: "머니머니머니",
           image: "./_resource/wishlist/money-money-money.png",
           price: "마음 전하시는 만큼",
-          model: "해당 없음",
-          request: "부담 없이 축하해주셔도 충분합니다.",
-          extra: "소중한 마음 감사히 잘 쓰겠습니다.",
+          extra: "부담 없이 축하해주셔도 충분합니다. 소중한 마음 감사히 잘 받겠습니다.",
         },
         mic: {
           name: "돌잔치 축하공연",
           image: "./_resource/wishlist/ceremony.png",
-          price: "자유",
-          model: "해당 없음",
-          request: "축하의 마음만으로도 충분해요.",
-          extra: "마이크 놀이를 좋아해서 관련 장난감도 괜찮아요.",
+          request: "노래, 연극, 마임 뭐든지 상관 없습니다. 잘하지 못해도 괜찮아요. 마음껏 축하해주시면 됩니다. ^_^",
         },
         books: {
           name: "그레이트북스-놀자 전집",
           image: "./_resource/wishlist/nolza.png",
-          price: "가격대 다양함",
+          price: "60만원",
           model: "놀자 전집",
-          request: "세트 구성이 맞으면 좋습니다.",
-          extra: "자세한 구성은 필요 시 함께 상의할 수 있어요.",
+          request: "구매해주실 분 부모와 상담. (어린이 서점 가면 10% DC 가능해요.)",
+          extra: "무려 3세 이후로도 볼 수 있으며 정품을 사야 AS가 가능해요 ㅎㅎ",
         },
         stack: {
           name: "캠핑의자/매트",
@@ -238,12 +229,11 @@
           extra: "컬러나 세부 옵션은 구매 전 같이 맞추면 됩니다.",
         },
         lumi: {
-          name: "노리터프로젝트_ 루미 플레이쿠션",
+          name: "노리터프로젝트_루미 플레이쿠션",
           image: "./_resource/wishlist/cushion.png",
           price: "20만원대 예상",
           model: "루미 플레이쿠션",
-          request: "실내에서 오래 쓸 수 있는 구성이면 좋아요.",
-          extra: "재고 상황에 맞춰 비슷한 모델도 괜찮습니다.",
+          extra: "재고 상황에 맞춰 비슷한 모델도 괜찮아요.",
         },
       };
 
@@ -273,11 +263,14 @@
 
       name.textContent = detail.name;
       meta.innerHTML = [
-        `금액대 : ${detail.price}`,
-        `원하는 모델명 : ${detail.model}`,
-        `요청사항 : ${detail.request}`,
-        `기타설명 : ${detail.extra}`,
-      ].join("<br />");
+        ["금액대", detail.price],
+        ["원하는 모델명", detail.model],
+        ["요청사항", detail.request],
+        ["기타설명", detail.extra],
+      ]
+        .filter(([, value]) => value)
+        .map(([label, value]) => `${label} : ${value}`)
+        .join("<br />");
     </script>
   </body>
 </html>

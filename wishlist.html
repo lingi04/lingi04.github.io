@@ -117,6 +117,12 @@
         gap: 8px;
         min-width: 0;
         padding: 10px 8px 8px;
+        cursor: pointer;
+      }
+
+      .wishlist-item:focus-visible {
+        outline: 2px solid rgba(0, 0, 0, 0.6);
+        outline-offset: -2px;
       }
 
       .wishlist-item img {
@@ -310,6 +316,7 @@
   <body>
     <main>
       <section class="hero shared-hero" data-shared-menu>
+        <a class="shared-hero-home" href="./menu.html">BACK</a>
         <button class="shared-hero-toggle" data-shared-menu-button type="button" aria-expanded="false" aria-controls="wishlist-shared-menu">MENU</button>
         <div class="shared-hero-menu" id="wishlist-shared-menu" data-shared-menu-panel>
           <a href="./diary.html">해린이에 대하여</a>
@@ -325,35 +332,35 @@
 
         <div class="wishlist-grid">
           <div class="wishlist-column left">
-            <article class="wishlist-item large stroller">
+            <article class="wishlist-item large stroller" data-item="stroller" role="link" tabindex="0" aria-label="휴대용유모차 상세 보기">
               <div class="wishlist-visual">
                 <img src="./_resource/wishlist/stroller.png" alt="휴대용 유모차" />
               </div>
               <p class="wishlist-label">휴대용유모차</p>
             </article>
 
-            <article class="wishlist-item small crocs">
+            <article class="wishlist-item small crocs" data-item="crocs" role="link" tabindex="0" aria-label="아기크록스 상세 보기">
               <div class="wishlist-visual">
                 <img src="./_resource/wishlist/crocs.png" alt="아기 크록스" />
               </div>
               <p class="wishlist-label">아기크록스</p>
             </article>
 
-            <article class="wishlist-item small pass">
+            <article class="wishlist-item small pass" data-item="pass" role="link" tabindex="0" aria-label="자유이용권 3회권 상세 보기">
               <div class="wishlist-visual">
                 <img src="./_resource/wishlist/freeticket.png" alt="자유이용권" />
               </div>
               <p class="wishlist-label">자유이용권 3회권</p>
             </article>
 
-            <article class="wishlist-item small money">
+            <article class="wishlist-item small money" data-item="money" role="link" tabindex="0" aria-label="머니머니머니 상세 보기">
               <div class="wishlist-visual">
                 <img src="./_resource/wishlist/money-money-money.png" alt="미니 머니머니" />
               </div>
               <p class="wishlist-label">머니머니머니</p>
             </article>
 
-            <article class="wishlist-item small mic">
+            <article class="wishlist-item small mic" data-item="mic" role="link" tabindex="0" aria-label="돌잔치 축하공연 상세 보기">
               <div class="wishlist-visual">
                 <img src="./_resource/wishlist/ceremony.png" alt="마이크 장난감" />
               </div>
@@ -362,14 +369,14 @@
           </div>
 
           <div class="wishlist-column right">
-            <article class="wishlist-item books">
+            <article class="wishlist-item books" data-item="books" role="link" tabindex="0" aria-label="그레이트북스-놀자 전집 상세 보기">
               <div class="wishlist-visual">
                 <img src="./_resource/wishlist/nolza.png" alt="그레이트북스 놀라운 자연" />
               </div>
               <p class="wishlist-label">그레이트북스-놀자 전집</p>
             </article>
 
-            <article class="wishlist-item stack">
+            <article class="wishlist-item stack" data-item="stack" role="link" tabindex="0" aria-label="캠핑의자 매트 상세 보기">
               <div class="wishlist-visual wishlist-stack-visual">
                 <div class="wishlist-stack-header">
                   <p class="wishlist-label">캠핑의자/매트</p>
@@ -384,7 +391,7 @@
               </div>
             </article>
 
-            <article class="wishlist-item lumi">
+            <article class="wishlist-item lumi" data-item="lumi" role="link" tabindex="0" aria-label="루미 플레이쿠션 상세 보기">
               <div class="wishlist-visual">
                 <img src="./_resource/wishlist/cushion.png" alt="노리터 루미플레이쿠션" />
               </div>
@@ -397,24 +404,24 @@
     </main>
     <script src="./shared-header.js"></script>
     <script>
-      const logViewportSizes = () => {
-        console.log("window size:", {
-          innerWidth: window.innerWidth,
-          innerHeight: window.innerHeight,
-          outerWidth: window.outerWidth,
-          outerHeight: window.outerHeight,
-        });
-
-        console.log("screen size:", {
-          width: window.screen.width,
-          height: window.screen.height,
-          availWidth: window.screen.availWidth,
-          availHeight: window.screen.availHeight,
-        });
+      const openWishlistDetail = (itemId) => {
+        window.location.href = `./wishlist-detail.html?item=${encodeURIComponent(itemId)}`;
       };
 
-      window.addEventListener("load", logViewportSizes);
-      window.addEventListener("resize", logViewportSizes);
+      document.querySelectorAll(".wishlist-item[data-item]").forEach((item) => {
+        item.addEventListener("click", () => {
+          openWishlistDetail(item.dataset.item);
+        });
+
+        item.addEventListener("keydown", (event) => {
+          if (event.key !== "Enter" && event.key !== " ") {
+            return;
+          }
+
+          event.preventDefault();
+          openWishlistDetail(item.dataset.item);
+        });
+      });
     </script>
   </body>
 </html>

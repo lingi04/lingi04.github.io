@@ -18,6 +18,7 @@ button {
 }
 
 .shared-hero {
+  position: relative;
   display: grid;
   justify-items: center;
   align-content: start;
@@ -25,6 +26,32 @@ button {
   min-height: 54px;
   padding: 6px 14px 8px;
   background: var(--shared-hero-bg, #d2fc4f);
+}
+
+.shared-hero-home {
+  position: absolute;
+  left: 14px;
+  top: 28px;
+  padding: 0 0 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #7e7e7e;
+  font-family: "NostalgicPoliceFairness", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(126, 126, 126, 0.45);
+}
+
+.shared-hero-home::before {
+  content: "<";
+  margin-right: 4px;
+  font-size: 12px;
+  line-height: 1;
 }
 
 .shared-hero-toggle {

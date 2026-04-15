@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>해린이 첫돌 초대장 · 선물 상세</title>
+    <link rel="stylesheet" href="./shared-header.css" />
+    <style>
+      @font-face {
+        font-family: "CAChildrenModu";
+        src: url("./_resource/font/cachildren-modu.otf") format("opentype");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "NostalgicPoliceFairness";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/Griun_PolFairness-Rg.woff2") format("woff2");
+        font-weight: normal;
+        font-display: swap;
+      }
+
+      * { box-sizing: border-box; }
+
+      :root {
+        --shared-hero-bg: #d2fc4f;
+        --page-bg: #d2fc4f;
+        --ink: #000000;
+      }
+
+      body {
+        margin: 0;
+        background: var(--page-bg);
+        color: var(--ink);
+        font-family: "CAChildrenModu", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+      }
+
+      h1, h2, p {
+        margin: 0;
+      }
+
+      .title {
+        padding: 22px 22px 0;
+      }
+
+      .detail-page {
+        min-height: 100svh;
+        background: var(--page-bg);
+      }
+
+      .detail-shell {
+        width: min(100%, 980px);
+        margin: 0 auto;
+        padding-bottom: 80px;
+      }
+
+      .detail-content {
+        padding: 56px 22px 0;
+      }
+
+      .detail-visual {
+        background: #ffffff;
+        border: 1.5px solid rgba(0, 0, 0, 0.35);
+        aspect-ratio: 1 / 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 28px;
+      }
+
+      .detail-visual img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .detail-stack-visual {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-rows: minmax(0, 1fr) auto;
+        gap: 18px;
+      }
+
+      .detail-stack-top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        min-height: 0;
+      }
+
+      .detail-stack-top img {
+        width: 62%;
+        height: auto;
+        max-height: 100%;
+      }
+
+      .detail-stack-top img + img {
+        margin-left: -22%;
+      }
+
+      .detail-stack-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .detail-stack-bottom img {
+        width: 48%;
+        height: auto;
+        max-height: 100%;
+      }
+
+      .detail-name {
+        margin-top: 20px;
+        font-family: "CAChildrenModu", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+        font-size: clamp(34px, 6.6vw, 64px);
+        line-height: 1.02;
+        letter-spacing: -0.04em;
+      }
+
+      .detail-meta {
+        margin-top: 34px;
+        font-size: clamp(21px, 4vw, 38px);
+        line-height: 1.42;
+        letter-spacing: -0.03em;
+      }
+
+      .detail-back {
+        margin-top: 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 0;
+        font-size: 16px;
+        line-height: 1.2;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+      }
+
+      @media (min-width: 740px) {
+        .detail-content {
+          padding-top: 64px;
+        }
+
+        .detail-visual {
+          padding: 40px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="detail-page">
+      <div class="detail-shell">
+        <section class="hero shared-hero" data-shared-menu>
+          <a class="shared-hero-home" href="./wishlist.html">BACK</a>
+          <button class="shared-hero-toggle" data-shared-menu-button type="button" aria-expanded="false" aria-controls="wishlist-detail-shared-menu">MENU</button>
+          <div class="shared-hero-menu" id="wishlist-detail-shared-menu" data-shared-menu-panel>
+            <a href="./diary.html">해린이에 대하여</a>
+            <a href="./album.html">시크릿 사진첩</a>
+            <a href="./wishlist.html">선물 리스트</a>
+            <a href="./location.html">오시는길</a>
+          </div>
+        </section>
+        <h1 class="title shared-title">선물리스트</h1>
+
+        <section class="detail-content">
+          <div class="detail-visual" id="detail-visual"></div>
+
+          <h2 class="detail-name" id="detail-name"></h2>
+
+          <div class="detail-meta" id="detail-meta"></div>
+
+          <a class="detail-back" href="./wishlist.html">목록으로 돌아가기</a>
+        </section>
+      </div>
+    </main>
+
+    <script src="./shared-header.js"></script>
+    <script>
+      const wishlistDetails = {
+        stroller: {
+          name: "휴대용유모차",
+          image: "./_resource/wishlist/stroller.png",
+          price: "40만원예상",
+          model: "선호 모델 협의 가능",
+          request: "있으면 쓰고 없으면 안씀.",
+          extra: "기타설명은 필요한 경우에만 적을 예정입니다.",
+        },
+        crocs: {
+          name: "아기크록스",
+          image: "./_resource/wishlist/crocs.png",
+          price: "5만원내외",
+          model: "사이즈 맞는 제품",
+          request: "편하게 신길 수 있는 디자인이면 좋아요.",
+          extra: "색상은 기본 계열이면 충분합니다.",
+        },
+        pass: {
+          name: "자유이용권 3회권",
+          image: "./_resource/wishlist/freeticket.png",
+          price: "금액 변동 가능",
+          model: "사용 가능한 형태면 괜찮아요",
+          request: "해린이가 즐길 수 있는 곳이면 좋아요.",
+          extra: "브랜드나 업체는 상황에 맞게 선택 가능합니다.",
+        },
+        money: {
+          name: "머니머니머니",
+          image: "./_resource/wishlist/money-money-money.png",
+          price: "마음 전하시는 만큼",
+          model: "해당 없음",
+          request: "부담 없이 축하해주셔도 충분합니다.",
+          extra: "소중한 마음 감사히 잘 쓰겠습니다.",
+        },
+        mic: {
+          name: "돌잔치 축하공연",
+          image: "./_resource/wishlist/ceremony.png",
+          price: "자유",
+          model: "해당 없음",
+          request: "축하의 마음만으로도 충분해요.",
+          extra: "마이크 놀이를 좋아해서 관련 장난감도 괜찮아요.",
+        },
+        books: {
+          name: "그레이트북스-놀자 전집",
+          image: "./_resource/wishlist/nolza.png",
+          price: "가격대 다양함",
+          model: "놀자 전집",
+          request: "세트 구성이 맞으면 좋습니다.",
+          extra: "자세한 구성은 필요 시 함께 상의할 수 있어요.",
+        },
+        stack: {
+          name: "캠핑의자/매트",
+          image: "./_resource/wishlist/camping-chair.png",
+          secondaryImage: "./_resource/wishlist/mat.png",
+          layout: "stack",
+          price: "세트 기준 협의",
+          model: "몬테라 CTV2 체어 + 전용 매트",
+          request: "의자와 매트를 같이 맞추면 더 좋아요.",
+          extra: "컬러나 세부 옵션은 구매 전 같이 맞추면 됩니다.",
+        },
+        lumi: {
+          name: "노리터프로젝트_ 루미 플레이쿠션",
+          image: "./_resource/wishlist/cushion.png",
+          price: "20만원대 예상",
+          model: "루미 플레이쿠션",
+          request: "실내에서 오래 쓸 수 있는 구성이면 좋아요.",
+          extra: "재고 상황에 맞춰 비슷한 모델도 괜찮습니다.",
+        },
+      };
+
+      const params = new URLSearchParams(window.location.search);
+      const itemId = params.get("item") || "stroller";
+      const detail = wishlistDetails[itemId] || wishlistDetails.stroller;
+
+      const visual = document.getElementById("detail-visual");
+      const name = document.getElementById("detail-name");
+      const meta = document.getElementById("detail-meta");
+
+      if (detail.layout === "stack") {
+        visual.innerHTML = `
+          <div class="detail-stack-visual">
+            <div class="detail-stack-top">
+              <img src="${detail.image}" alt="${detail.name}" />
+              <img src="${detail.image}" alt="${detail.name}" />
+            </div>
+            <div class="detail-stack-bottom">
+              <img src="${detail.secondaryImage}" alt="${detail.name} 매트" />
+            </div>
+          </div>
+        `;
+      } else {
+        visual.innerHTML = `<img src="${detail.image}" alt="${detail.name}" />`;
+      }
+
+      name.textContent = detail.name;
+      meta.innerHTML = [
+        `금액대 : ${detail.price}`,
+        `원하는 모델명 : ${detail.model}`,
+        `요청사항 : ${detail.request}`,
+        `기타설명 : ${detail.extra}`,
+      ].join("<br />");
+    </script>
+  </body>
+</html>

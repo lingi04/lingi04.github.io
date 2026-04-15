@@ -140,17 +140,6 @@
         letter-spacing: -0.03em;
       }
 
-      .detail-back {
-        margin-top: 28px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 8px 0;
-        font-size: 16px;
-        line-height: 1.2;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-      }
-
       @media (min-width: 740px) {
         .detail-content {
           padding-top: 64px;
@@ -166,9 +155,9 @@
     <main class="detail-page">
       <div class="detail-shell">
         <section class="hero shared-hero" data-shared-menu>
-          <a class="shared-hero-home" href="./wishlist.html">BACK</a>
           <button class="shared-hero-toggle" data-shared-menu-button type="button" aria-expanded="false" aria-controls="wishlist-detail-shared-menu">MENU</button>
           <div class="shared-hero-menu" id="wishlist-detail-shared-menu" data-shared-menu-panel>
+            <a href="./menu.html">메인으로</a>
             <a href="./diary.html">해린이에 대하여</a>
             <a href="./album.html">시크릿 사진첩</a>
             <a href="./wishlist.html">선물 리스트</a>
@@ -183,8 +172,6 @@
           <h2 class="detail-name" id="detail-name"></h2>
 
           <div class="detail-meta" id="detail-meta"></div>
-
-          <a class="detail-back" href="./wishlist.html">목록으로 돌아가기</a>
         </section>
       </div>
     </main>

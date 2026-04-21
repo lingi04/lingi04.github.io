@@ -73,7 +73,7 @@
         padding: 72px 22px 96px;
       }
       .album-section + .album-section {
-        margin-top: 120px;
+        margin-top: 72px;
       }
       .album-date {
         margin: 0 0 18px;
@@ -88,10 +88,24 @@
       .album-media img {
         height: auto;
       }
-      .album-media.grid-two {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
+      .album-media.scroller {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        padding-bottom: 6px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+      }
+      .album-media.scroller img {
+        flex: 0 0 auto;
+        width: min(78vw, 320px);
+      }
+      .album-media.scroller::-webkit-scrollbar {
+        height: 8px;
+      }
+      .album-media.scroller::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 999px;
       }
       .album-copy {
         margin-top: 26px;
@@ -105,10 +119,13 @@
           padding: 52px 22px 72px;
         }
         .album-section + .album-section {
-          margin-top: 92px;
+          margin-top: 55px;
         }
-        .album-media.grid-two {
-          gap: 12px;
+        .album-media.scroller {
+          gap: 8px;
+        }
+        .album-media.scroller img {
+          width: min(72vw, 280px);
         }
         .album-copy {
           margin-top: 18px;
@@ -134,18 +151,143 @@
         <article class="album-section">
           <h2 class="album-date">2025.05.12. 한해린 탄생일</h2>
           <div class="album-media">
-            <img src="./_resource/album/출생.jpeg" alt="태어난 직후의 해린이" />
+            <img src="./_resource/album/album_1.jpeg" alt="태어난 직후의 해린이" />
           </div>
           <p class="album-copy">오전 11시 42분. 3.43kg의 작고 소중한 해린이가 태어났단다.<br />엄마는 그때 죽을뻔했었지만 너를 보고 싶어서 얼렁 차병원으로 달려가고 싶었어.</p>
         </article>
 
         <article class="album-section">
           <h2 class="album-date">2025.05.18. 아빠가 너를 처음 안아본날</h2>
-          <div class="album-media grid-two">
-            <img src="./_resource/album/조리원에서_2.jpeg" alt="아빠가 해린이를 처음 안아본 모습" />
-            <img src="./_resource/album/조리원에서.jpeg" alt="엄마 아빠와 함께 있는 해린이" />
+          <div class="album-media scroller">
+            <img src="./_resource/album/album_2_1.jpeg" alt="아빠가 해린이를 처음 안아본 모습" />
+            <img src="./_resource/album/album_2_2.jpeg" alt="엄마 아빠와 함께 있는 해린이" />
           </div>
           <p class="album-copy">병원에서 한번도 못안아보고 조리원오자마자 너를 안아보고 아빠는 무한한 감동을 느꼈단다. 우리가 가족이 된게 너무 새롭고 신기한 날이었어.</p>
+        </article>
+
+        <article class="album-section">
+          <h2 class="album-date">2025.06. 초보 아빠와 낮잠 타임</h2>
+          <div class="album-media scroller">
+            <img src="./_resource/album/album_3_1.jpeg" alt="해린이와 함께 누워 잠든 아빠" />
+            <img src="./_resource/album/album_3_2.jpeg" alt="해린이를 품에 안고 잠든 아빠" />
+            <img src="./_resource/album/album_3_3.jpeg" alt="해린이 옆에서 잠든 아빠" />
+          </div>
+          <p class="album-copy">아빠는 늘 피곤하다며 누웠는데, 이상하게 해린이 옆에만 가면 가장 먼저 잠이 들었단다. 그래서 남은 건 사랑스러운 낮잠 사진 세 장이야.</p>
+        </article>
+
+        <article class="album-section">
+          <h2 class="album-date">2025.06.26. 첫 나들이, 셋이서 카페</h2>
+          <div class="album-media scroller">
+            <img src="./_resource/album/album_4_1.jpeg" alt="엄마 아빠와 해린이가 함께 찍은 셀카" />
+            <img src="./_resource/album/album_4_2.jpeg" alt="엄마 품에 안긴 해린이와 아빠" />
+            <img src="./_resource/album/album_4_3.jpeg" alt="아기띠로 해린이를 안고 있는 아빠" />
+          </div>
+          <p class="album-copy">조심조심 외출 준비를 하고 처음으로 셋이 카페에 갔던 날. 커피 한잔 앞에 두고도 온 마음은 전부 해린이한테 가 있었지.</p>
+        </article>
+
+        <article class="album-section">
+          <h2 class="album-date">2025.06.29. 우렁찬 울음 퍼레이드</h2>
+          <div class="album-media scroller">
+            <img src="./_resource/album/album_5_1.jpeg" alt="울기 시작한 해린이" />
+            <img src="./_resource/album/album_5_2.jpeg" alt="울음을 터뜨린 해린이" />
+            <img src="./_resource/album/album_5_3.jpeg" alt="더 크게 우는 해린이" />
+            <img src="./_resource/album/album_5_4.jpeg" alt="울면서 몸을 움직이는 해린이" />
+          </div>
+          <p class="album-copy">표정이 하나씩 바뀌다가 결국 세상 떠나가라 울어버린 순간들. 그 와중에도 너무 귀여워서 사진을 멈출 수 없었던 날이었단다.</p>
+        </article>
+
+        <article class="album-section">
+          <h2 class="album-date">2025.07.03. 꼬까옷 입고 찰칵</h2>
+          <div class="album-media">
+            <img src="./_resource/album/album_6.jpeg" alt="분홍색 뜨개 옷을 입고 카메라를 바라보는 해린이" />
+          </div>
+          <p class="album-copy">조그만 몸에 꼬까옷을 입혀놓으니 정말 인형 같았어. 가만히 바라보다가도 표정 하나에 온 집안이 웃음으로 가득 찼지.</p>
+        </article>
+
+        <article class="album-section">
+          <h2 class="album-date">2025.07. 우리 가족의 다정한 시간</h2>
+          <div class="album-media scroller">
+            <img src="./_resource/album/album_7_1.jpeg" alt="해린이와 함께 누워 있는 할머니" />
+            <img src="./_resource/album/album_7_2.jpeg" alt="해린이와 함께 쉬고 있는 할머니" />
+          </div>
+          <p class="album-copy">품에 안기고, 곁에 누워 쉬고, 그렇게 해린이는 여러 사람의 사랑을 한가득 받으며 자라고 있어. 사진마다 다정한 공기가 남아 있단다.</p>
+        </article>
+
+        <article class="album-section">
+          <h2 class="album-date">2025.08. 백일의 기록</h2>
+          <div class="album-media scroller">
+            <img src="./_resource/album/album_8_1.jpeg" alt="백일 촬영 한복을 입고 앉아 있는 해린이" />
+            <img src="./_resource/album/album_8_2.jpeg" alt="백일 촬영 중 울음을 터뜨린 해린이" />
+            <img src="./_resource/album/album_8_3.jpeg" alt="엄마 아빠와 함께 찍은 백일 기념 사진" />
+            <img src="./_resource/album/album_8_4.jpeg" alt="케이크 앞에서 함께 찍은 가족 사진" />
+            <img src="./_resource/album/album_8_5.jpeg" alt="온 가족이 함께 모여 찍은 백일 축하 사진" />
+          </div>
+          <p class="album-copy">얌전히 앉아 있다가도 금세 울고, 다시 가족 품에서 표정이 풀어지던 백일의 하루. 해린이의 첫 큰 기념일답게 우리 모두가 함께 웃고 기뻐했던 순간들이야.</p>
+        </article>
+
+        <article class="album-section">
+          <h2 class="album-date">2025.09. 첫 명절 인사</h2>
+          <div class="album-media">
+            <img src="./_resource/album/album_9_1.jpeg" alt="차례상 앞에서 엎드린 채 바라보는 해린이" />
+          </div>
+          <p class="album-copy">처음 맞이한 명절, 해린이는 차례상 앞에서도 호기심 가득한 눈으로 세상을 구경했어. 작은 뒷모습 하나에도 온 가족 마음이 사르르 녹아내렸지.</p>
+        </article>
+
+        <article class="album-section">
+          <h2 class="album-date">2025.09. 뒤집기 성공</h2>
+          <div class="album-media scroller">
+            <img src="./_resource/album/album_10_1.jpeg" alt="엎드린 자세로 고개를 들고 있는 해린이" />
+            <img src="./_resource/album/album_10_2.jpeg" alt="엎드린 자세로 미소 짓는 해린이" />
+          </div>
+          <p class="album-copy">고개를 번쩍 들고 제법 익숙한 표정을 짓던 순간. 조금씩 몸을 가누고 스스로 움직여보려는 모습에, 해린이가 또 한 걸음 자랐다는 걸 실감했단다.</p>
+        </article>
+
+        <article class="album-section">
+          <h2 class="album-date">2025.10. 가을꽃 나들이</h2>
+          <div class="album-media scroller">
+            <img src="./_resource/album/album_11_1.jpeg" alt="유모차 옆에서 해린이를 바라보는 아빠" />
+            <img src="./_resource/album/album_11_2.jpeg" alt="꽃밭에서 셀카를 찍는 엄마 아빠" />
+            <img src="./_resource/album/album_11_3.jpeg" alt="꽃밭에서 해린이를 안고 있는 엄마" />
+            <img src="./_resource/album/album_11_4.jpeg" alt="꽃밭에서 해린이를 안고 서 있는 아빠" />
+          </div>
+          <p class="album-copy">선선한 바람이 불던 날, 꽃밭 사이를 함께 걸으며 가족 사진을 남겼어. 해린이를 중심으로 계절도, 풍경도, 우리 하루도 전부 환하게 빛났던 날이야.</p>
+        </article>
+
+        <article class="album-section">
+          <h2 class="album-date">2025.10. 명절의 품 안에서</h2>
+          <div class="album-media scroller">
+            <img src="./_resource/album/album_13_1.jpeg" alt="가족 품에서 서 있는 해린이" />
+            <img src="./_resource/album/album_13_2.jpeg" alt="할아버지 품에 안긴 해린이" />
+            <img src="./_resource/album/album_13_3.jpeg" alt="제사상 앞에서 손을 잡고 서 있는 해린이" />
+            <img src="./_resource/album/album_13_4.jpeg" alt="가족들이 해린이를 향해 손을 뻗는 모습" />
+          </div>
+          <p class="album-copy">온 가족이 둘러앉은 명절날, 해린이는 여기저기서 사랑을 한몸에 받았어. 누구 품에 안겨도 금세 적응하고, 또 금세 중심이 되어버리는 우리 집 막내였지.</p>
+        </article>
+
+        <article class="album-section">
+          <h2 class="album-date">2025.11. 이유식 모험가</h2>
+          <div class="album-media scroller">
+            <img src="./_resource/album/album_14_1.jpeg" alt="간식을 손에 들고 앉아 있는 해린이" />
+            <img src="./_resource/album/album_14_2.jpeg" alt="간식을 먹으며 카메라를 보는 해린이" />
+            <img src="./_resource/album/album_14_3.jpeg" alt="친구들과 함께 놀이하는 해린이" />
+            <img src="./_resource/album/album_14_4.jpeg" alt="식판 앞에서 국수를 먹는 해린이" />
+            <img src="./_resource/album/album_14_5.jpeg" alt="손에 음식을 묻히고 먹는 해린이" />
+            <img src="./_resource/album/album_14_6.jpeg" alt="주먹밥을 들고 먹는 해린이" />
+            <img src="./_resource/album/album_14_7.jpeg" alt="국수를 한가득 먹고 있는 해린이" />
+          </div>
+          <p class="album-copy">조심스럽게 집어 먹던 손끝이 어느새 아주 씩씩해졌어. 흘리고 묻히고 엉망이 되어도, 스스로 먹어보겠다는 마음만큼은 정말 멋진 성장의 기록이야.</p>
+        </article>
+
+        <article class="album-section">
+          <h2 class="album-date">2025.11. 캐리어 탐험대</h2>
+          <div class="album-media scroller">
+            <img src="./_resource/album/album_15_1.jpeg" alt="캐리어 안에 타고 골목길에 있는 해린이" />
+            <img src="./_resource/album/album_15_2.jpeg" alt="캐리어 안에서 장난감을 들고 있는 해린이" />
+            <img src="./_resource/album/album_15_3.jpeg" alt="캐리어 안에서 인형을 들고 있는 해린이" />
+            <img src="./_resource/album/album_15_4.jpeg" alt="캐리어 안에 서 있는 해린이" />
+            <img src="./_resource/album/album_15_5.jpeg" alt="캐리어 안에서 손잡이를 잡고 웃는 해린이" />
+          </div>
+          <p class="album-copy">해린이에게는 평범한 캐리어도 금세 신나는 탈것이 되었어. 집 안에서도 복도에서도, 작은 상자 하나만 있으면 어디든 떠나는 탐험이 시작됐단다.</p>
         </article>
       </section>
     </main>

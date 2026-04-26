@@ -100,6 +100,10 @@
         flex: 0 0 auto;
         width: min(78vw, 320px);
       }
+      .album-media.scroller.scroller-framed img {
+        height: 400px;
+        object-fit: cover;
+      }
       .album-media.scroller::-webkit-scrollbar {
         height: 8px;
       }
@@ -127,6 +131,9 @@
         .album-media.scroller img {
           width: min(72vw, 280px);
         }
+        .album-media.scroller.scroller-framed img {
+          height: 350px;
+        }
         .album-copy {
           margin-top: 18px;
           font-size: 16px;
@@ -153,16 +160,16 @@
           <div class="album-media">
             <img src="./_resource/album/album_1.jpeg" alt="태어난 직후의 해린이" />
           </div>
-          <p class="album-copy">오전 11시 42분. 3.43kg의 작고 소중한 해린이가 태어났단다.<br />엄마는 그때 죽을뻔했었지만 너를 보고 싶어서 얼렁 차병원으로 달려가고 싶었어.</p>
+          <p class="album-copy">오전 11시 42분. 3.43kg의 작고 소중한 해린이가 태어났단다.<br />엄마는 그때 죽을 뻔했었지만 너를 보고 싶어서 얼렁 차병원으로 달려가고 싶었어.</p>
         </article>
 
         <article class="album-section">
-          <h2 class="album-date">2025.05.18. 아빠가 너를 처음 안아본날</h2>
+          <h2 class="album-date">2025.05.18. 아빠가 너를 처음 안아 본 날</h2>
           <div class="album-media scroller">
             <img src="./_resource/album/album_2_1.jpeg" alt="아빠가 해린이를 처음 안아본 모습" />
             <img src="./_resource/album/album_2_2.jpeg" alt="엄마 아빠와 함께 있는 해린이" />
           </div>
-          <p class="album-copy">병원에서 한번도 못안아보고 조리원오자마자 너를 안아보고 아빠는 무한한 감동을 느꼈단다. 우리가 가족이 된게 너무 새롭고 신기한 날이었어.</p>
+          <p class="album-copy">병원에서 한 번도 못 안아보고 조리원 오자마자 너를 안아보고 아빠는 무한한 감동을 느꼈단다. 우리가 가족이 된 게 너무 새롭고 신기한 날이었어.</p>
         </article>
 
         <article class="album-section">
@@ -182,22 +189,22 @@
             <img src="./_resource/album/album_4_2.jpeg" alt="엄마 품에 안긴 해린이와 아빠" />
             <img src="./_resource/album/album_4_3.jpeg" alt="아기띠로 해린이를 안고 있는 아빠" />
           </div>
-          <p class="album-copy">조심조심 외출 준비를 하고 처음으로 셋이 카페에 갔던 날. 커피 한잔 앞에 두고도 온 마음은 전부 해린이한테 가 있었지.</p>
+          <p class="album-copy">해린이가 30일 되던 날 조심조심 외출 준비를 하고 처음으로 셋이 카페에 갔어. 오랜만에 바깥바람을 아빠 엄마가 같이 쐐다니... 너무 기분이 좋았단다. 만두만 먹다 세상 밖으로 나온 최민식이 이런 기분이었을까.... 네가 품 안에 있는 걸 잊어버린 채 아메리카노를 벌컥 마셨단다.</p>
         </article>
 
         <article class="album-section">
-          <h2 class="album-date">2025.06.29. 우렁찬 울음 퍼레이드</h2>
+          <h2 class="album-date">2025.06.29. 우렁찬 울음 소리</h2>
           <div class="album-media scroller">
-            <img src="./_resource/album/album_5_1.jpeg" alt="울기 시작한 해린이" />
             <img src="./_resource/album/album_5_2.jpeg" alt="울음을 터뜨린 해린이" />
-            <img src="./_resource/album/album_5_3.jpeg" alt="더 크게 우는 해린이" />
             <img src="./_resource/album/album_5_4.jpeg" alt="울면서 몸을 움직이는 해린이" />
+            <img src="./_resource/album/album_5_1.jpeg" alt="울기 시작한 해린이" />
+            <img src="./_resource/album/album_5_3.jpeg" alt="더 크게 우는 해린이" />
           </div>
-          <p class="album-copy">표정이 하나씩 바뀌다가 결국 세상 떠나가라 울어버린 순간들. 그 와중에도 너무 귀여워서 사진을 멈출 수 없었던 날이었단다.</p>
+          <p class="album-copy">오후 6시 이후부터 찾아오는 울음마녀. 표정이 하나씩 바뀌다가 결국 세상 떠나가라 울어버린 순간들. 100일의 기적이 뭔지... 마녀가 사라질 수 있는 건지... 엄마 아빠는 100일이 오기만을 기다렸단다.</p>
         </article>
 
         <article class="album-section">
-          <h2 class="album-date">2025.07.03. 꼬까옷 입고 찰칵</h2>
+          <h2 class="album-date">2025.07.03. 해린이의 50일</h2>
           <div class="album-media">
             <img src="./_resource/album/album_6.jpeg" alt="분홍색 뜨개 옷을 입고 카메라를 바라보는 해린이" />
           </div>
@@ -205,24 +212,26 @@
         </article>
 
         <article class="album-section">
-          <h2 class="album-date">2025.07. 우리 가족의 다정한 시간</h2>
+          <h2 class="album-date">2025.07. 외가댁 나들이</h2>
           <div class="album-media scroller">
             <img src="./_resource/album/album_7_1.jpeg" alt="해린이와 함께 누워 있는 할머니" />
             <img src="./_resource/album/album_7_2.jpeg" alt="해린이와 함께 쉬고 있는 할머니" />
+            <img src="./_resource/album/album_7_4.jpeg" alt="식탁에서 할아버지와 마주 보고 있는 해린이" />
+            <img src="./_resource/album/album_7_3.jpeg" alt="식탁에서 할아버지와 마주 보고 있는 해린이" />
           </div>
-          <p class="album-copy">품에 안기고, 곁에 누워 쉬고, 그렇게 해린이는 여러 사람의 사랑을 한가득 받으며 자라고 있어. 사진마다 다정한 공기가 남아 있단다.</p>
+          <p class="album-copy">짐을 바리바리 싸서 한 달 가까이 있었던 외할머니네. 할머니 품에 안기고, 곁에 누워 쉬고, 그렇게 해린이는 사랑을 한가득 받으며 시간을 보냈단다. 그때는 너무 작고 목도 잘 못 가눌 때라 누워만 있었지만 너의 작은 몸짓, 손짓마저도 우리에게 큰 기쁨이 되던 시간이었어. </p>
         </article>
 
         <article class="album-section">
           <h2 class="album-date">2025.08. 백일의 기록</h2>
           <div class="album-media scroller">
-            <img src="./_resource/album/album_8_1.jpeg" alt="백일 촬영 한복을 입고 앉아 있는 해린이" />
-            <img src="./_resource/album/album_8_2.jpeg" alt="백일 촬영 중 울음을 터뜨린 해린이" />
-            <img src="./_resource/album/album_8_3.jpeg" alt="엄마 아빠와 함께 찍은 백일 기념 사진" />
             <img src="./_resource/album/album_8_4.jpeg" alt="케이크 앞에서 함께 찍은 가족 사진" />
             <img src="./_resource/album/album_8_5.jpeg" alt="온 가족이 함께 모여 찍은 백일 축하 사진" />
+            <img src="./_resource/album/album_8_3.jpeg" alt="엄마 아빠와 함께 찍은 백일 기념 사진" />
+            <img src="./_resource/album/album_8_1.jpeg" alt="백일 촬영 한복을 입고 앉아 있는 해린이" />
+            <img src="./_resource/album/album_8_2.jpeg" alt="백일 촬영 중 울음을 터뜨린 해린이" />
           </div>
-          <p class="album-copy">얌전히 앉아 있다가도 금세 울고, 다시 가족 품에서 표정이 풀어지던 백일의 하루. 해린이의 첫 큰 기념일답게 우리 모두가 함께 웃고 기뻐했던 순간들이야.</p>
+          <p class="album-copy">고모가 준비해준 백일잔치. 친가에서 가족 모두가 축하를 해줬단다. 이때만 해도 우리 해린이가 정말 작았구나~ 엄마 아빠 품에 쏙 들어왔었는데.... 엄마가 열심히 준비한 백일상에서 울음이 터진 너와 어떻게든 사진으로 담겠다고 셔터를 누르던 모습이 아직도 생생하단다.</p>
         </article>
 
         <article class="album-section">
@@ -234,48 +243,48 @@
         </article>
 
         <article class="album-section">
-          <h2 class="album-date">2025.11. ????</h2>
+          <h2 class="album-date">2025.11. 고개 들고 읏쌰</h2>
           <div class="album-media scroller">
             <img src="./_resource/album/album_10_1.jpeg" alt="엎드린 자세로 고개를 들고 있는 해린이" />
             <img src="./_resource/album/album_10_2.jpeg" alt="엎드린 자세로 미소 짓는 해린이" />
           </div>
-          <p class="album-copy">고개를 번쩍 들고 제법 익숙한 표정을 짓던 순간. 조금씩 몸을 가누고 스스로 움직여보려는 모습에, 해린이가 또 한 걸음 자랐다는 걸 실감했단다.</p>
+          <p class="album-copy">엄마가 생각하는 해린이 최고의 귀여운 시기란다. 닭벼슬 머리에 뱃살과 다리가 오동통한 것이 사진만 봐도 미소가 나오네. 고개를 번쩍 들고 조금씩 몸을 가누고 스스로 움직여보려는 모습에, 해린이가 또 한 걸음 자랐다는 걸 실감했단다.</p>
         </article>
 
         <article class="album-section">
           <h2 class="album-date">2025.10. 가을꽃 나들이</h2>
-          <div class="album-media scroller">
-            <img src="./_resource/album/album_11_1.jpeg" alt="유모차 옆에서 해린이를 바라보는 아빠" />
-            <img src="./_resource/album/album_11_2.jpeg" alt="꽃밭에서 셀카를 찍는 엄마 아빠" />
+          <div class="album-media scroller scroller-framed">
             <img src="./_resource/album/album_11_3.jpeg" alt="꽃밭에서 해린이를 안고 있는 엄마" />
             <img src="./_resource/album/album_11_4.jpeg" alt="꽃밭에서 해린이를 안고 서 있는 아빠" />
+            <img src="./_resource/album/album_11_1.jpeg" alt="유모차 옆에서 해린이를 바라보는 아빠" />
+            <img src="./_resource/album/album_11_2.jpeg" alt="꽃밭에서 셀카를 찍는 엄마 아빠" />
           </div>
-          <p class="album-copy">선선한 바람이 불던 날, 꽃밭 사이를 함께 걸으며 가족 사진을 남겼어. 해린이를 중심으로 계절도, 풍경도, 우리 하루도 전부 환하게 빛났던 날이야.</p>
+          <p class="album-copy">아마도 우리의 첫 여행, 아산으로 은행나무와 꽃을 보러 가던 날. 은행나무는 아직 노랗게 되지 않아 아쉬웠지만 꽃밭에서 해린이를 안고 엄마 아빠는 사진을 찍었단다. 그날의 날씨도, 햇볕도 해가 살짝 지려 하는 시간도 엄마 아빠가 다 기억한단다. </p>
         </article>
 
         <article class="album-section">
-          <h2 class="album-date">2025.11. 이때부터 였나</h2>
+          <h2 class="album-date">2025.11. 먹짱의 시작</h2>
           <div class="album-media scroller">
             <img src="./_resource/album/album_14_1.jpeg" alt="할머니 할아버지와 함께 귤을 먹는 해린이" />
             <img src="./_resource/album/album_14_2.jpeg" alt="할머니 할아버지 곁에 앉아 있는 해린이" />
             <img src="./_resource/album/album_14_3.jpeg" alt="식탁에서 할아버지와 마주 보고 있는 해린이" />
           </div>
-          <p class="album-copy">할머니 할아버지 곁에 앉아 같이 먹고 같이 바라보던 시간. 무얼 먹는지도 중요했지만, 함께 둘러앉아 웃고 챙겨주던 그 분위기부터가 해린이에겐 큰 사랑이었어.</p>
+          <p class="album-copy">할머니, 할아버지가 주는 건 뭐든지 다 오케이~ 엄마가 안 보는 사이 할아버지 한입, 할머니 한입, 과일을 쏙쏙 넣어주셨어. 그때부터인 건가... 우리 해린이가 맛에 눈을 떴단다. 세상에 이렇게 맛있는 게 많이 있다니!! </p>
         </article>
 
         <article class="album-section">
-          <h2 class="album-date">2026.02. 명절의 품 안에서</h2>
+          <h2 class="album-date">2026.02. 명절, 운동 많이 된다</h2>
           <div class="album-media scroller">
             <img src="./_resource/album/album_13_1.jpeg" alt="가족 품에서 서 있는 해린이" />
             <img src="./_resource/album/album_13_2.jpeg" alt="할아버지 품에 안긴 해린이" />
             <img src="./_resource/album/album_13_3.jpeg" alt="제사상 앞에서 손을 잡고 서 있는 해린이" />
             <img src="./_resource/album/album_13_4.jpeg" alt="가족들이 해린이를 향해 손을 뻗는 모습" />
           </div>
-          <p class="album-copy">온 가족이 둘러앉은 명절날, 해린이는 여기저기서 사랑을 한몸에 받았어. 누구 품에 안겨도 금세 적응하고, 또 금세 중심이 되어버리는 우리 집 막내였지.</p>
+          <p class="album-copy">할아버지가 언제부턴가 은근슬쩍 시도해온 다리힘 테스트. 이날은 완벽한 자세로 성공했단다. 할머니, 고모, 유라 언니, 엄마 아빠가 다 모여서 해린이가 꼿꼿하게 서 있는 걸 보았지. 해린이의 두 번째 명절엔 한복도 입고 할아버지랑 같이 차례 준비도 했단다. 내년부터는 전을 예쁘게 부쳐보자!</p>
         </article>
 
         <article class="album-section">
-          <h2 class="album-date">2025.02. 이유식 모험가</h2>
+          <h2 class="album-date">2026.02. 먹짱2222</h2>
           <div class="album-media scroller">
             <img src="./_resource/album/album_15_1.jpeg" alt="간식을 손에 들고 앉아 있는 해린이" />
             <img src="./_resource/album/album_15_2.jpeg" alt="간식을 먹으며 카메라를 보는 해린이" />
@@ -284,19 +293,35 @@
             <img src="./_resource/album/album_15_5.jpeg" alt="손에 음식을 묻히고 먹는 해린이" />
             <img src="./_resource/album/album_15_6.jpeg" alt="주먹밥을 들고 먹는 해린이" />
           </div>
-          <p class="album-copy">조심스럽게 집어 먹던 손끝이 어느새 아주 씩씩해졌어. 흘리고 묻히고 엉망이 되어도, 스스로 먹어보겠다는 마음만큼은 정말 멋진 성장의 기록이야.</p>
+          <p class="album-copy">이유식을 졸업하고 고형식인 유아식으로 넘어가던 시기. 엄마는 다양한 방법을 시도하면서 해린이가 어떻게 하면 잘 먹을까 노력했어. 이때까지만 해도 어린이집을 안 가던 시기라 해린이가 남들보다 월등하게 잘 먹는지 엄마는 몰랐단다. 알았으면 덜 먹이는 건데..... </p>
         </article>
 
         <article class="album-section">
-          <h2 class="album-date">2026.03. 캐리어 탐험대</h2>
+          <h2 class="album-date">2026.03. 카트라이더</h2>
           <div class="album-media scroller">
-            <img src="./_resource/album/album_16_1.jpeg" alt="캐리어 안에 타고 골목길에 있는 해린이" />
-            <img src="./_resource/album/album_16_2.jpeg" alt="캐리어 안에서 장난감을 들고 있는 해린이" />
-            <img src="./_resource/album/album_16_3.jpeg" alt="캐리어 안에서 인형을 들고 있는 해린이" />
-            <img src="./_resource/album/album_16_4.jpeg" alt="캐리어 안에 서 있는 해린이" />
             <img src="./_resource/album/album_16_5.jpeg" alt="캐리어 안에서 손잡이를 잡고 웃는 해린이" />
+            <img src="./_resource/album/album_16_4.jpeg" alt="캐리어 안에 서 있는 해린이" />
+            <img src="./_resource/album/album_16_3.jpeg" alt="캐리어 안에서 인형을 들고 있는 해린이" />
+            <img src="./_resource/album/album_16_2.jpeg" alt="캐리어 안에서 장난감을 들고 있는 해린이" />
+            <img src="./_resource/album/album_16_1.jpeg" alt="캐리어 안에 타고 골목길에 있는 해린이" />
           </div>
-          <p class="album-copy">해린이에게는 평범한 캐리어도 금세 신나는 탈것이 되었어. 집 안에서도 복도에서도, 작은 상자 하나만 있으면 어디든 떠나는 탐험이 시작됐단다.</p>
+          <p class="album-copy">카트를 두 손 꼭 잡고 서 있는 네가 귀여워서 매일매일 카트에 태우고 다녔어. 등원할 때, 산책할 때 카트 손잡이를 꼭 잡고 해린이는 세상 구경을 했단다. 세상에 궁금한 게 많은 너에게 엄마 아빠는 언제나 든든한 손잡이가 되어 줄게.</p>
+        </article>
+
+        <article class="album-section">
+          <h2 class="album-date">2026.04. 만세! 만세! 만만만세세세!</h2>
+          <div class="album-media scroller">
+            <img src="./_resource/album/album_17_1.jpeg" alt="캐리어 안에서 손잡이를 잡고 웃는 해린이" />
+            <img src="./_resource/album/album_17_2.jpeg" alt="캐리어 안에서 손잡이를 잡고 웃는 해린이" />
+            <img src="./_resource/album/album_17_3.jpeg" alt="캐리어 안에서 손잡이를 잡고 웃는 해린이" />
+            <img src="./_resource/album/album_17_4.jpeg" alt="캐리어 안에서 손잡이를 잡고 웃는 해린이" />
+            <img src="./_resource/album/album_17_5.jpeg" alt="캐리어 안에서 손잡이를 잡고 웃는 해린이" />
+            <img src="./_resource/album/album_17_6.jpeg" alt="캐리어 안에서 손잡이를 잡고 웃는 해린이" />
+            <img src="./_resource/album/album_17_7.jpeg" alt="캐리어 안에서 손잡이를 잡고 웃는 해린이" />
+            <img src="./_resource/album/album_17_8.jpeg" alt="캐리어 안에서 손잡이를 잡고 웃는 해린이" />
+            
+          </div>
+          <p class="album-copy">아빠 생일 맞이 제주도 여행을 다녀왔어. 기분 좋은지 연신 만세를 외치던 해린이를 보고 엄마 아빠의 얼굴엔 웃음이 떠나질 않았단다. 둘이서는 느끼지 못했던 행복을 느끼게 해준 해린이. 엄마 아빠도 해린이가 항상 행복한 웃음을 지을 수 있도록 노력할게. 내년에도 또 오자!</p>
         </article>
       </section>
     </main>
